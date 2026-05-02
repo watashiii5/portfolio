@@ -66,6 +66,17 @@
       margin: 10px auto;
     }
 
+    ul {
+      max-width: 860px;
+      margin: 10px auto;
+      padding-left: 22px;
+      line-height: 1.65;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
     .subtitle {
       color: rgba(255, 255, 255, 0.82);
       font-size: clamp(14px, 0.8vw + 12px, 18px);
@@ -175,8 +186,22 @@
 
       <h2>What I Built</h2>
       <p>
-        This project integrates the <b>Groq</b> AI API to generate responses and connects it to a web-based chat interface
+        This project integrates the <b>Groq</b> LLM API to generate responses and connects it to a web-based chat interface
         with message input and actions like sending and speaking messages.
+      </p>
+
+      <h2>Highlights</h2>
+      <ul>
+        <li><b>Character-first UI:</b> simple companion card + chat panel layout.</li>
+        <li><b>Interactive chat:</b> message input and send flow designed for quick back-and-forth.</li>
+        <li><b>AI responses:</b> user prompts are sent to Groq, then rendered back into the conversation.</li>
+        <li><b>Deploy-ready:</b> hosted on Vercel so it’s accessible as a live demo.</li>
+      </ul>
+
+      <h2>How It Works</h2>
+      <p>
+        A user message is submitted from the front-end, the app calls the Groq API to generate the assistant reply,
+        and the response is displayed back in the chat UI.
       </p>
 
       <h2>Tech Notes</h2>
