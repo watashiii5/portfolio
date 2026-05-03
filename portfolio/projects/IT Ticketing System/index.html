@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IT Ticketing System</title>
+  <style>
+    :root {
+      --accent: #7dd3fc;
+      --text: rgba(255, 255, 255, 0.95);
+      --panel: rgba(255, 255, 255, 0.05);
+      --panel-border: rgba(255, 255, 255, 0.14);
+    }
+
+    body {
+      margin: 0;
+      padding: clamp(14px, 3vw, 28px);
+      min-height: 100svh;
+      background:
+        radial-gradient(900px 500px at 50% 10%, rgba(125, 211, 252, 0.10), rgba(18, 18, 18, 0.0)),
+        linear-gradient(180deg, rgba(18, 18, 18, 1), rgba(10, 10, 10, 1));
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      position: relative;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 60px auto 40px auto;
+      background-color: var(--panel);
+      padding: clamp(16px, 2.5vw, 24px);
+      border-radius: 12px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    h1, h2, p {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: clamp(30px, 3vw + 14px, 46px);
+      margin: 10px 0;
+      line-height: 1.12;
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: clamp(18px, 1.2vw + 14px, 24px);
+      margin-top: 26px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: clamp(15px, 0.55vw + 13px, 18px);
+      line-height: 1.65;
+      max-width: 860px;
+      margin: 10px auto;
+    }
+
+    ul {
+      max-width: 860px;
+      margin: 10px auto;
+      padding-left: 22px;
+      line-height: 1.65;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    .subtitle {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: clamp(14px, 0.8vw + 12px, 18px);
+      margin-top: -2px;
+      margin-bottom: 14px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 18px 0 6px 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      transition: transform 120ms ease, background-color 160ms ease, border-color 160ms ease;
+      user-select: none;
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.10);
+      border-color: rgba(255, 255, 255, 0.30);
+    }
+
+    .btn:active {
+      transform: translateY(0px);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .btn-primary:hover {
+      background: rgba(125, 211, 252, 0.22);
+      border-color: rgba(125, 211, 252, 0.55);
+    }
+
+    .btn-primary:active {
+      background: rgba(125, 211, 252, 0.26);
+      border-color: rgba(125, 211, 252, 0.65);
+    }
+
+    .btn-sm {
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 800;
+    }
+
+    .note {
+      margin-top: 18px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.78);
+      font-style: italic;
+    }
+
+    /* Home Button */
+    .home-button {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 10;
+    }
+
+    /* Back Button */
+    .back-button {
+      display: block;
+      width: fit-content;
+      margin: 22px auto 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <a href="../../../index.html" class="btn btn-sm home-button">Home</a>
+
+  <main class="page">
+    <div class="container">
+      <h1>IT Ticketing System</h1>
+      <p class="subtitle">Centralized support desk for tracking, prioritizing, and resolving requests</p>
+
+      <div class="buttons">
+        <a class="btn btn-primary" href="https://ticketing-system-8yho.onrender.com" target="_blank" rel="noopener noreferrer">View Live Demo</a>
+      </div>
+
+      <h2>Overview</h2>
+      <p>
+        The IT Ticketing System is a web-based help desk that streamlines how support requests are submitted, assigned, and resolved.
+        It brings together end users and support staff in one place so issues can be tracked with clear ownership, priority, and status.
+      </p>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li><b>Ticket intake:</b> users submit issues with categories, priority, and details.</li>
+        <li><b>Status tracking:</b> every request moves through stages like open, in progress, and resolved.</li>
+        <li><b>Assignment flow:</b> tickets are routed to the right support staff or team.</li>
+        <li><b>Search and filtering:</b> quickly find tickets by status, requester, or priority.</li>
+        <li><b>Audit trail:</b> comments and updates keep the full history of each ticket.</li>
+      </ul>
+
+      <h2>Workflow</h2>
+      <p>
+        A user submits a request, the system captures key details and priority, and a support agent takes ownership.
+        Updates and resolutions are recorded so the requester can see progress until the ticket is closed.
+      </p>
+
+      <h2>Why It Matters</h2>
+      <p>
+        IT teams need reliable visibility to keep service levels consistent. This project highlights how a focused interface
+        and a simple workflow can reduce missed requests and improve response time.
+      </p>
+
+      <div class="note">Portfolio project showcasing a practical IT support workflow.</div>
+
+      <a href="javascript:history.back()" class="btn back-button">Back</a>
+    </div>
+  </main>
+</body>
+</html>
