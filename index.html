@@ -363,5 +363,22 @@
     </div>
   </div>
   </main>
+  <script>
+    (function () {
+      const renderUrl = 'https://ticketing-system-8yho.onrender.com';
+      const link = document.createElement('link');
+      link.rel = 'preconnect';
+      link.href = renderUrl;
+      document.head.appendChild(link);
+      const dns = document.createElement('link');
+      dns.rel = 'dns-prefetch';
+      dns.href = renderUrl;
+      document.head.appendChild(dns);
+
+      window.addEventListener('load', function () {
+        fetch(renderUrl, { mode: 'no-cors', cache: 'no-store' }).catch(function () {});
+      });
+    })();
+  </script>
 </body>
 </html>

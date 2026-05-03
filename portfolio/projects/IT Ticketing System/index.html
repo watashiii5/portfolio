@@ -159,6 +159,95 @@
       font-style: italic;
     }
 
+    .gallery {
+      display: grid;
+      gap: 14px;
+      margin: 12px auto 4px auto;
+    }
+
+    .gallery a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .gallery img {
+      display: block;
+      width: min(720px, 92%);
+      height: auto;
+      margin: 0 auto;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.03);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.40);
+      cursor: zoom-in;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0, 0, 0, 0.86);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .lightbox[hidden] {
+      display: none;
+    }
+
+    .lightbox__panel {
+      width: min(1100px, 96vw);
+      max-height: 90vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(18, 18, 18, 0.86);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    .lightbox__bar {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .lightbox__close {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      padding: 10px 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      cursor: pointer;
+    }
+
+    .lightbox__close:hover {
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .lightbox__imgWrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .lightbox__img {
+      max-width: 100%;
+      max-height: 78vh;
+      width: auto;
+      height: auto;
+      border-radius: 10px;
+    }
+
     /* Home Button */
     .home-button {
       position: fixed;
@@ -182,28 +271,35 @@
     <div class="container">
       <h1>IT Ticketing System</h1>
       <p class="subtitle">Centralized support desk for tracking, prioritizing, and resolving requests</p>
-	<img
-        class="hero-img"
-        src="ticket.jpg"
-        alt="Ticketing Darkmode screenshot"
-        loading="lazy"
-        decoding="async"
-        onerror="this.onerror=null; this.style.display='none';"
-      /><img
-        class="hero-img"
-        src="ticket2.jpg"
-        alt="Ticketing Lightmode screenshot"
-        loading="lazy"
-        decoding="async"
-        onerror="this.onerror=null; this.style.display='none';"
-      /><img
-        class="hero-img"
-        src="ticket3.jpg"
-        alt="Ticketing Lightmode screenshot"
-        loading="lazy"
-        decoding="async"
-        onerror="this.onerror=null; this.style.display='none';"
-      />
+      <div class="gallery">
+        <a href="ticket.jpg" data-lightbox aria-label="Open dark mode screenshot">
+          <img
+            src="ticket.jpg"
+            alt="Ticketing Darkmode screenshot"
+            loading="lazy"
+            decoding="async"
+            onerror="this.onerror=null; this.style.display='none';"
+          />
+        </a>
+        <a href="ticket2.jpg" data-lightbox aria-label="Open light mode screenshot 1">
+          <img
+            src="ticket2.jpg"
+            alt="Ticketing Lightmode screenshot"
+            loading="lazy"
+            decoding="async"
+            onerror="this.onerror=null; this.style.display='none';"
+          />
+        </a>
+        <a href="ticket3.jpg" data-lightbox aria-label="Open light mode screenshot 2">
+          <img
+            src="ticket3.jpg"
+            alt="Ticketing Lightmode screenshot"
+            loading="lazy"
+            decoding="async"
+            onerror="this.onerror=null; this.style.display='none';"
+          />
+        </a>
+      </div>
       <div class="buttons">
         <a class="btn btn-primary" href="https://ticketing-system-8yho.onrender.com" target="_blank" rel="noopener noreferrer">View Live Demo</a>
       </div>
@@ -240,5 +336,61 @@
       <a href="javascript:history.back()" class="btn back-button">Back</a>
     </div>
   </main>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
+    <div class="lightbox__panel" role="document">
+      <div class="lightbox__bar">
+        <button id="lightboxClose" class="lightbox__close" type="button">Close</button>
+      </div>
+      <div class="lightbox__imgWrap">
+        <img id="lightboxImg" class="lightbox__img" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const closeBtn = document.getElementById('lightboxClose');
+      let lastFocused = null;
+
+      function openLightbox(src, alt) {
+        lastFocused = document.activeElement;
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || 'Preview image';
+        lightbox.hidden = false;
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.hidden = true;
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+        if (lastFocused && typeof lastFocused.focus === 'function') {
+          lastFocused.focus();
+        }
+      }
+
+      document.addEventListener('click', function (e) {
+        const link = e.target.closest('a[data-lightbox]');
+        if (!link) return;
+        const img = link.querySelector('img');
+        e.preventDefault();
+        openLightbox(link.getAttribute('href'), img ? img.alt : 'Preview image');
+      });
+
+      closeBtn.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (lightbox.hidden) return;
+        if (e.key === 'Escape') closeLightbox();
+      });
+    })();
+  </script>
 </body>
 </html>
