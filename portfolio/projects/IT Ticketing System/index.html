@@ -83,6 +83,16 @@
       margin-top: -2px;
       margin-bottom: 14px;
     }
+	.hero-img {
+      display: block;
+      width: min(720px, 92%);
+      height: auto;
+      margin: 14px auto 6px auto;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.03);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.40);
+    }
 
     .buttons {
       display: flex;
@@ -172,7 +182,28 @@
     <div class="container">
       <h1>IT Ticketing System</h1>
       <p class="subtitle">Centralized support desk for tracking, prioritizing, and resolving requests</p>
-
+	<img
+        class="hero-img"
+        src="ticket.jpg"
+        alt="Ticketing Darkmode screenshot"
+        loading="lazy"
+        decoding="async"
+        onerror="this.onerror=null; this.style.display='none';"
+      /><img
+        class="hero-img"
+        src="ticket2.jpg"
+        alt="Ticketing Lightmode screenshot"
+        loading="lazy"
+        decoding="async"
+        onerror="this.onerror=null; this.style.display='none';"
+      /><img
+        class="hero-img"
+        src="ticket3.jpg"
+        alt="Ticketing Lightmode screenshot"
+        loading="lazy"
+        decoding="async"
+        onerror="this.onerror=null; this.style.display='none';"
+      />
       <div class="buttons">
         <a class="btn btn-primary" href="https://ticketing-system-8yho.onrender.com" target="_blank" rel="noopener noreferrer">View Live Demo</a>
       </div>
