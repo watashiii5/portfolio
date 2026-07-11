@@ -149,11 +149,51 @@ a {
 }
 
 .topbar {
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr auto;
   align-items: center;
   gap: 16px;
   margin-bottom: clamp(18px, 4vw, 32px);
   justify-items: start;
+  justify-content: space-between;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-self: end;
+  flex-wrap: wrap;
+}
+
+.topbar-socials {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.topbar-icon-link {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface-strong) 88%, transparent);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.topbar-icon-link:hover,
+.topbar-icon-link:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+}
+
+.topbar-icon-link svg {
+  width: 18px;
+  height: 18px;
 }
 
 .brand {
@@ -248,7 +288,7 @@ a {
 .hero {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(18px, 4vw, 34px);
-  align-items: center;
+  align-items: start;
   margin-bottom: clamp(26px, 5vw, 48px);
   justify-items: center;
 }
@@ -447,6 +487,19 @@ a {
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.46);
   backdrop-filter: blur(16px);
   transform: none;
+}
+
+.hero-card--photo {
+  display: grid;
+  place-items: center;
+}
+
+.hero-card--photo img {
+  width: 100%;
+  aspect-ratio: 0.92;
+  object-fit: cover;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .hero-card img {
@@ -650,10 +703,13 @@ a {
   font-size: 0.84rem;
   font-weight: 700;
   width: fit-content;
+  color: var(--text);
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border));
+  background: color-mix(in srgb, var(--surface-strong) 82%, var(--accent) 10%);
 }
 
 .pill {
-  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
 .project-preview {
@@ -687,7 +743,7 @@ a {
 .contact-card,
 .info-card,
 .media-card {
-  background: var(--surface-soft);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface-strong) 92%, transparent), color-mix(in srgb, var(--surface) 96%, transparent));
   width: 100%;
   max-width: 34rem;
 }
@@ -700,6 +756,7 @@ a {
 .feature-card {
   display: grid;
   gap: 12px;
+  overflow: hidden;
 }
 
 .contact-card {
@@ -901,7 +958,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--border);
   background: color-mix(in srgb, var(--surface-strong) 92%, transparent);
   color: var(--text);
   border-radius: 999px;
@@ -910,14 +967,22 @@ a {
   cursor: pointer;
 }
 
+.theme-toggle-button--compact {
+  padding: 8px;
+}
+
+.theme-toggle-button--compact .theme-toggle-label {
+  display: none;
+}
+
 .theme-toggle-icon {
   width: 34px;
   height: 34px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 44%, white), color-mix(in srgb, var(--accent-3) 28%, white));
-  color: #fff;
+  background: linear-gradient(145deg, #ffdf66, #f2b72d);
+  color: #c98b00;
   font-size: 1rem;
 }
 
@@ -930,7 +995,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--border);
   background: color-mix(in srgb, var(--surface-strong) 92%, transparent);
   color: var(--text);
   border-radius: 999px;
@@ -1012,7 +1077,7 @@ a {
 
 .chatbot-close,
 .chatbot-send {
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.06);
   color: var(--text);
   border-radius: 12px;
@@ -1106,7 +1171,7 @@ a {
 .chatbot-input {
   width: 100%;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--border);
   background: var(--surface-soft);
   color: var(--text);
   padding: 12px;
@@ -1170,6 +1235,10 @@ a {
   .topbar,
   .section-head {
     grid-template-columns: 1fr;
+  }
+
+  .topbar-actions {
+    justify-self: center;
   }
 
   .brand {

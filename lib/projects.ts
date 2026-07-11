@@ -6,8 +6,8 @@ export type ProjectMedia =
 
 export type Project = {
   slug: string;
-  title: string;
-  category: string;
+    summary: 'Character-first companion interface powered by Groq with a light, approachable conversation flow.',
+    intro: 'A lightweight companion experience built around a simple card-and-chat layout, quick responses, and a live demo that keeps the interaction focused.',
   summary: string;
   intro: string;
   accent: string;
@@ -38,15 +38,15 @@ export const siteStats = [
   { label: 'Primary stack', value: 'Next.js + Supabase' },
 ];
 
-export const featuredProjects = ['thesis-project', 'web-developer-intern', 'yui-ai-companion'];
+export const featuredProjects = ['thesis-project', 'web-developer-intern'];
 
 export const projects: Project[] = [
   {
     slug: 'thesis-project',
     title: 'QTime Room Allocation',
     category: 'Thesis',
-    summary: 'Room allocation tool for the College of Science.',
-    intro: 'Built end to end with the UI, logic, backend integration, and deployment workflow.',
+    summary: 'Room allocation tool for the College of Science with a cleaner scheduling workflow.',
+    intro: 'Designed the scheduling flow, built the interface, connected the backend, and prepared the thesis for deployment as a polished academic prototype.',
     accent: '#7dd3fc',
     visual: {
       kind: 'image',
@@ -56,10 +56,14 @@ export const projects: Project[] = [
     role: 'Main developer',
     timeline: 'Thesis project',
     tech: ['Next.js', 'TypeScript', 'Supabase', 'Python'],
-    highlights: ['Allocation flow', 'Full stack build', 'Practical scheduling'],
+    highlights: [
+      'Built a room allocation flow that reduces scheduling conflicts and keeps the process easy to review.',
+      'Integrated the interface with Supabase-backed data handling so the prototype works as a full stack system.',
+      'Shaped the experience for daily academic use instead of a one-off demo so it reads like a real tool.',
+    ],
     metrics: [
-      { label: 'Scope', value: 'Full stack thesis build' },
-      { label: 'Focus', value: 'Room allocation optimization' },
+      { label: 'Scope', value: 'End-to-end thesis system' },
+      { label: 'Focus', value: 'Room allocation and scheduling' },
       { label: 'Deployment', value: 'Vercel demo' },
     ],
     liveUrl: 'https://qia-room-allocation.vercel.app/',
@@ -76,8 +80,8 @@ export const projects: Project[] = [
     slug: 'web-developer-intern',
     title: 'Web Developer Intern',
     category: 'Internship',
-    summary: '300-hour internship with FlutterFlow, Supabase, Figma, and Groq.',
-    intro: 'Completed my OJT at Nantes Bautista Consulting Inc. with weekly team planning and review sessions.',
+    summary: '300-hour internship with FlutterFlow, Supabase, Figma, and Groq for product UI and chatbot work.',
+    intro: 'Completed my OJT at Nantes Bautista Consulting Inc. with weekly team planning, review sessions, and product-focused UI work across the stack.',
     accent: '#f59e0b',
     visual: {
       kind: 'image',
@@ -87,7 +91,11 @@ export const projects: Project[] = [
     role: 'Web developer intern',
     timeline: 'June 2025 to July 2025',
     tech: ['FlutterFlow', 'Supabase', 'Figma', 'Groq API'],
-    highlights: ['Team workflow', 'Groq chatbot', 'Product UI flows'],
+    highlights: [
+      'Collaborated through weekly reviews to keep the work aligned with team goals, delivery timing, and product direction.',
+      'Built and refined UI flows in FlutterFlow while keeping the Groq-powered chatbot and data pieces organized around the product.',
+      'Focused on clear, usable screens so the internship output felt polished, practical, and ready to show professionally.',
+    ],
     metrics: [
       { label: 'Company', value: 'Nantes Bautista Consulting Inc.' },
       { label: 'Hours', value: '300' },
@@ -117,7 +125,11 @@ export const projects: Project[] = [
     role: 'Front-end and AI integration',
     timeline: 'Portfolio demo',
     tech: ['HTML', 'CSS', 'JavaScript', 'Groq API'],
-    highlights: ['Character-first UI', 'Groq responses', 'Live demo'],
+    highlights: [
+      'Character-first UI that keeps the experience friendly and easy to understand at a glance.',
+      'Groq responses shaped to feel quick, conversational, and lightweight for the person using it.',
+      'Live demo that shows the interaction pattern without adding unnecessary interface noise.',
+    ],
     metrics: [
       { label: 'Demo', value: 'Live on Vercel' },
       { label: 'Interaction', value: 'Chat-first companion UI' },
