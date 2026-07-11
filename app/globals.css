@@ -530,7 +530,7 @@ html[data-theme='light'] .hero h1 span {
   display: block;
   width: 100%;
   border-radius: 24px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .project-visual--card {
