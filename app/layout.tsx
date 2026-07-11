@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 
+import SiteThemeToggle from '@/components/site-theme-toggle';
 import SiteChatbot from '@/components/site-chatbot';
 import './globals.css';
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <div className="ambient ambient-one" aria-hidden="true" />
           <div className="ambient ambient-two" aria-hidden="true" />
           <div className="ambient ambient-three" aria-hidden="true" />
+          <SiteThemeToggle />
           {children}
           <SiteChatbot />
         </div>

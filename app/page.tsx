@@ -56,10 +56,10 @@ export default function HomePage() {
           <div className="hero-orbit" />
           <div className="hero-card">
             <ProjectVisual project={projects[0]} variant="hero" />
-            <div className="hero-badge">
-              <strong>Bulacan State University</strong>
-              <span>B.S. Mathematics, Computer Science</span>
-            </div>
+          </div>
+          <div className="hero-badge">
+            <strong>Bulacan State University</strong>
+            <span>B.S. Mathematics, Computer Science</span>
           </div>
         </div>
       </section>
@@ -143,6 +143,16 @@ export default function HomePage() {
             <div className="contact-actions">
               <a className="button" href="https://www.linkedin.com/in/jermaine-pasamba-2b9256355/" target="_blank" rel="noreferrer">
                 View LinkedIn
+              </a>
+            </div>
+          </article>
+
+          <article className="contact-card">
+            <h3>Chatbot</h3>
+            <p>Open my separate chatbot demo hosted on Vercel.</p>
+            <div className="contact-actions">
+              <a className="button" href="https://portfolio-opal-iota-2ffsqksb9m.vercel.app/" target="_blank" rel="noreferrer">
+                Open chatbot
               </a>
             </div>
           </article>
