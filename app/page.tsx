@@ -64,7 +64,7 @@ export default function HomePage() {
         <div className="topbar-actions">
           <div className="topbar-socials" aria-label="Social links">
             {socialLinks.map((link) => (
-              <a className="topbar-icon-link" href={link.href} key={link.label} target="_blank" rel="noreferrer" aria-label={link.label}>
+              <a className="topbar-icon-link" href={link.href} key={link.label} target="_blank" rel="noreferrer" aria-label={link.label} title={link.label}>
                 {link.icon}
               </a>
             ))}
@@ -81,8 +81,7 @@ export default function HomePage() {
             Built for work.
           </h1>
           <p>
-            A short, professional portfolio with centered layouts, cleaner spacing, and a stronger presentation for projects, experience, and
-            contact.
+            Computer Science graduate specializing in modern web architecture and algorithmic precision, dedicated to writing high-performance, maintainable code.
           </p>
           <div className="hero-actions">
             <Link className="button" href="#projects">
@@ -161,7 +160,7 @@ export default function HomePage() {
         </div>
 
         <div className="project-grid">
-          {projects.map((project) => (
+          {projects.filter(p => !featured.some(f => f?.slug === p.slug)).map((project) => (
               <Link className="project-card" href={`/projects/${project.slug}`} key={project.slug}>
                 <ProjectVisual project={project} />
                 <div className="project-pill-row">

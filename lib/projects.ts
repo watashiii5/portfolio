@@ -153,7 +153,11 @@ export const projects: Project[] = [
     role: 'System designer',
     timeline: 'Portfolio project',
     tech: ['Web UI', 'Workflow design', 'Support ops'],
-    highlights: ['Request lifecycle', 'Audit trail', 'Service desk flow'],
+    highlights: [
+      'Follows the full request lifecycle from ticket creation to final resolution.',
+      'Maintains a complete audit trail of all actions and communications.',
+      'Implements a standard service desk workflow for prioritization and assignment.',
+    ],
     metrics: [
       { label: 'Goal', value: 'Ticket tracking' },
       { label: 'Status', value: 'Concept showcase' },
@@ -181,7 +185,11 @@ export const projects: Project[] = [
     role: 'Team project',
     timeline: 'Unity project',
     tech: ['Unity', 'Game design', 'Interaction systems'],
-    highlights: ['Discovery mechanics', 'Logbook system', 'Itch.io demo'],
+    highlights: [
+      'Features exploration and discovery mechanics inspired by natural environments.',
+      'Includes a logbook system to track findings and progress throughout the game.',
+      'Available to play as a live demo published on the Itch.io platform.',
+    ],
     metrics: [
       { label: 'Platform', value: 'Unity' },
       { label: 'Mood', value: 'Nature-inspired adventure' },
@@ -212,7 +220,11 @@ export const projects: Project[] = [
     role: 'Course project',
     timeline: 'Academic project',
     tech: ['C#', 'MySQL', 'PHP', 'Documentation'],
-    highlights: ['Desktop workflow', 'Demo video', 'CRUD-style contacts'],
+    highlights: [
+      'Provides a complete desktop workflow for managing contacts.',
+      'Includes a demo video showcasing the system in action.',
+      'Supports full CRUD operations for phonebook entries.',
+    ],
     metrics: [
       { label: 'Language', value: 'C#' },
       { label: 'Database', value: 'MySQL' },
@@ -239,7 +251,11 @@ export const projects: Project[] = [
     role: 'Course project',
     timeline: 'Academic project',
     tech: ['Java', 'NetBeans', 'MySQL', 'PHP'],
-    highlights: ['Checkout workflow', 'Screenshot set', 'Database logic'],
+    highlights: [
+      'Implements a complete checkout and point-of-sale workflow.',
+      'Includes comprehensive screenshots of the user interface.',
+      'Features robust database logic using MySQL for inventory and transactions.',
+    ],
     metrics: [
       { label: 'Language', value: 'Java' },
       { label: 'Database', value: 'MySQL' },
@@ -270,7 +286,11 @@ export const projects: Project[] = [
     role: 'Design coursework',
     timeline: 'Creative portfolio',
     tech: ['Canva', 'Layout design', 'Visual composition'],
-    highlights: ['Steam poster', 'Storybook layout', 'Visual breadth'],
+    highlights: [
+      'Features a complete Steam-style poster design.',
+      'Includes a multi-page storybook layout focusing on visual hierarchy.',
+      'Demonstrates a wide breadth of graphic design composition techniques.',
+    ],
     metrics: [
       { label: 'Medium', value: 'Canva' },
       { label: 'Pieces', value: 'Poster + storybook' },

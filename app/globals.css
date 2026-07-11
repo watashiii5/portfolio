@@ -267,7 +267,7 @@ a {
 .project-media-card,
 .stat-card {
   border: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(11, 23, 40, 0.9), rgba(8, 16, 29, 0.78));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface-strong) 90%, transparent), color-mix(in srgb, var(--surface) 78%, transparent));
   box-shadow: var(--shadow);
 }
 
@@ -394,7 +394,7 @@ a {
 }
 
 .button {
-  background: linear-gradient(135deg, rgba(125, 211, 252, 0.24), rgba(125, 211, 252, 0.14));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 24%, transparent), color-mix(in srgb, var(--accent) 14%, transparent));
 }
 
 .button-ghost {
@@ -514,6 +514,7 @@ a {
   display: block;
   width: 100%;
   border-radius: 24px;
+  object-fit: cover;
 }
 
 .project-visual--card {
@@ -621,6 +622,11 @@ a {
 .stat-card {
   background: linear-gradient(180deg, var(--surface-soft), color-mix(in srgb, var(--surface-soft) 70%, transparent));
   border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .stat-value {
@@ -855,6 +861,11 @@ a {
   border-radius: 20px;
   padding: 16px;
   background: var(--surface-soft);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .metric .stat-label {
