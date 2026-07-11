@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 
+import SiteChatbot from '@/components/site-chatbot';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <div className="ambient ambient-two" aria-hidden="true" />
           <div className="ambient ambient-three" aria-hidden="true" />
           {children}
+          <SiteChatbot />
         </div>
       </body>
     </html>

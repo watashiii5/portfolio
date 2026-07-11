@@ -11,6 +11,12 @@ export type Project = {
   summary: string;
   intro: string;
   accent: string;
+  visual: {
+    kind: 'image' | 'placeholder';
+    src?: string;
+    alt?: string;
+    label?: string;
+  };
   role?: string;
   timeline?: string;
   tech: string[];
@@ -37,20 +43,20 @@ export const featuredProjects = ['thesis-project', 'web-developer-intern', 'yui-
 export const projects: Project[] = [
   {
     slug: 'thesis-project',
-    title: 'QTime: Quantum-Inspired Optimization for College-Based Room Allocation in Bulacan State University College of Science',
-    category: 'Featured Thesis Project',
-    summary: 'A web app that turns room allocation into an optimization problem and produces practical schedules for the College of Science.',
-    intro:
-      'I served as the main developer and built the project end-to-end: the UI, application logic, backend integration, and deployment workflow.',
+    title: 'QTime Room Allocation',
+    category: 'Thesis',
+    summary: 'Room allocation tool for the College of Science.',
+    intro: 'Built end to end with the UI, logic, backend integration, and deployment workflow.',
     accent: '#7dd3fc',
+    visual: {
+      kind: 'image',
+      src: asset('/projects/Thesis Project/logo.png'),
+      alt: 'QTime project logo',
+    },
     role: 'Main developer',
     timeline: 'Thesis project',
-    tech: ['Next.js', 'TypeScript', 'Supabase', 'Python', 'CSS'],
-    highlights: [
-      'Translated scheduling constraints into a usable allocation flow.',
-      'Handled the full stack from interface design to database integration.',
-      'Focused on a practical schedule that could be iterated with real data.',
-    ],
+    tech: ['Next.js', 'TypeScript', 'Supabase', 'Python'],
+    highlights: ['Allocation flow', 'Full stack build', 'Practical scheduling'],
     metrics: [
       { label: 'Scope', value: 'Full stack thesis build' },
       { label: 'Focus', value: 'Room allocation optimization' },
@@ -68,20 +74,20 @@ export const projects: Project[] = [
   },
   {
     slug: 'web-developer-intern',
-    title: 'Web Developer Intern (OJT)',
-    category: 'Professional Experience',
-    summary: 'A 300-hour internship where I worked on web apps with FlutterFlow, Supabase, Figma, and Groq API-powered features.',
-    intro:
-      'I completed my On-the-Job Training at Nantes Bautista Consulting Inc. as part of my degree requirement, working in a real team environment with weekly planning and review sessions.',
+    title: 'Web Developer Intern',
+    category: 'Internship',
+    summary: '300-hour internship with FlutterFlow, Supabase, Figma, and Groq.',
+    intro: 'Completed my OJT at Nantes Bautista Consulting Inc. with weekly team planning and review sessions.',
     accent: '#f59e0b',
+    visual: {
+      kind: 'image',
+      src: asset('/projects/Web Developer Intern/RecrueIT_Text NEW (1) (1) (2).gif'),
+      alt: 'RecrueIT logo animation',
+    },
     role: 'Web developer intern',
     timeline: 'June 2025 to July 2025',
-    tech: ['FlutterFlow', 'Supabase', 'Figma', 'Groq API', 'Agile workflow'],
-    highlights: [
-      'Built with a collaborative workflow across 2 other interns and a supervisor.',
-      'Integrated a free AI chatbot into the system with Groq API.',
-      'Created UI and product flows that matched a live consulting environment.',
-    ],
+    tech: ['FlutterFlow', 'Supabase', 'Figma', 'Groq API'],
+    highlights: ['Team workflow', 'Groq chatbot', 'Product UI flows'],
     metrics: [
       { label: 'Company', value: 'Nantes Bautista Consulting Inc.' },
       { label: 'Hours', value: '300' },
@@ -99,19 +105,19 @@ export const projects: Project[] = [
   {
     slug: 'yui-ai-companion',
     title: 'YUI AI Companion',
-    category: 'AI Web App',
-    summary: 'A character-first AI companion interface inspired by Yui from Sword Art Online and powered by Groq.',
-    intro:
-      'This project focuses on a lightweight companion experience rather than a generic chatbot, with a simple card-and-chat layout and a deploy-ready demo.',
+    category: 'AI App',
+    summary: 'Character-first companion interface powered by Groq.',
+    intro: 'A lightweight companion experience with a simple card-and-chat layout and a live demo.',
     accent: '#22c55e',
+    visual: {
+      kind: 'image',
+      src: asset('/projects/YUI AI Companion/screenshot.jpg'),
+      alt: 'YUI AI Companion screenshot',
+    },
     role: 'Front-end and AI integration',
     timeline: 'Portfolio demo',
-    tech: ['HTML', 'CSS', 'JavaScript', 'Groq API', 'Vercel'],
-    highlights: [
-      'Kept the interface warm and character-centric.',
-      'Connected the chat flow to Groq API responses.',
-      'Shipped it as a live Vercel demo.',
-    ],
+    tech: ['HTML', 'CSS', 'JavaScript', 'Groq API'],
+    highlights: ['Character-first UI', 'Groq responses', 'Live demo'],
     metrics: [
       { label: 'Demo', value: 'Live on Vercel' },
       { label: 'Interaction', value: 'Chat-first companion UI' },
@@ -123,19 +129,19 @@ export const projects: Project[] = [
   {
     slug: 'it-ticketing-system',
     title: 'IT Ticketing System',
-    category: 'Support Workflow',
-    summary: 'A centralized help desk concept for tracking, assigning, and resolving support requests.',
-    intro:
-      'The project showcases a practical support workflow with request intake, prioritization, ownership, and status tracking.',
+    category: 'Support',
+    summary: 'Centralized help desk concept for tracking and resolving requests.',
+    intro: 'Shows request intake, prioritization, ownership, and status tracking.',
     accent: '#38bdf8',
+    visual: {
+      kind: 'image',
+      src: asset('/projects/IT Ticketing System/ticket.jpg'),
+      alt: 'Ticketing system screenshot',
+    },
     role: 'System designer',
     timeline: 'Portfolio project',
-    tech: ['Web UI', 'Workflow design', 'Support operations'],
-    highlights: [
-      'Focused on the lifecycle of a support request.',
-      'Highlighted routing, comments, and audit history.',
-      'Built to feel like a practical IT service desk.',
-    ],
+    tech: ['Web UI', 'Workflow design', 'Support ops'],
+    highlights: ['Request lifecycle', 'Audit trail', 'Service desk flow'],
     metrics: [
       { label: 'Goal', value: 'Ticket tracking' },
       { label: 'Status', value: 'Concept showcase' },
@@ -150,20 +156,20 @@ export const projects: Project[] = [
   },
   {
     slug: 'game-development',
-    title: 'Lainfern - A Unity Adventure Game',
-    category: 'Game Development',
-    summary: 'A chill nature-inspired adventure game with a logbook system, camera, and fishing spots.',
-    intro:
-      'The game was created as a collaborative project and focuses on exploration, discovery, and a relaxed adventure loop.',
+    title: 'Lainfern Adventure',
+    category: 'Game',
+    summary: 'Nature-inspired adventure game with discovery mechanics.',
+    intro: 'A collaborative project focused on exploration, discovery, and a relaxed loop.',
     accent: '#f97316',
+    visual: {
+      kind: 'image',
+      src: asset('/projects/Game Development/1.png'),
+      alt: 'Lainfern game screenshot',
+    },
     role: 'Team project',
     timeline: 'Unity project',
     tech: ['Unity', 'Game design', 'Interaction systems'],
-    highlights: [
-      'Built around discovery mechanics and exploration.',
-      'Includes a logbook system, camera, and fishing spots.',
-      'Published as an itch.io demo for playtesting.',
-    ],
+    highlights: ['Discovery mechanics', 'Logbook system', 'Itch.io demo'],
     metrics: [
       { label: 'Platform', value: 'Unity' },
       { label: 'Mood', value: 'Nature-inspired adventure' },
@@ -181,20 +187,19 @@ export const projects: Project[] = [
   },
   {
     slug: 'data-structure',
-    title: 'Phonebook Database Project',
-    category: 'Data Structure / Database',
-    summary: 'A C# phonebook system connected to MySQL with PHP for database communication.',
-    intro:
-      'This project shows the system in action through a demo video and the original PDF documentation, emphasizing data entry and retrieval workflows.',
+    title: 'Phonebook System',
+    category: 'Database',
+    summary: 'C# phonebook system connected to MySQL and PHP.',
+    intro: 'Shows the system through a demo video and the original documentation.',
     accent: '#a78bfa',
+    visual: {
+      kind: 'placeholder',
+      label: 'Phonebook',
+    },
     role: 'Course project',
     timeline: 'Academic project',
     tech: ['C#', 'MySQL', 'PHP', 'Documentation'],
-    highlights: [
-      'Combines a desktop workflow with database connectivity.',
-      'Includes a runnable demo video and PDF documentation.',
-      'Shows practical CRUD-style organization for contacts.',
-    ],
+    highlights: ['Desktop workflow', 'Demo video', 'CRUD-style contacts'],
     metrics: [
       { label: 'Language', value: 'C#' },
       { label: 'Database', value: 'MySQL' },
@@ -208,20 +213,19 @@ export const projects: Project[] = [
   },
   {
     slug: 'computer-programming',
-    title: 'POS System Project',
-    category: 'Computer Programming',
-    summary: 'A point-of-sale system built with Java, MySQL, and PHP, presented through screenshots and documentation.',
-    intro:
-      'The page captures how the POS system works in action and includes the original documentation as part of the showcase.',
+    title: 'POS System',
+    category: 'Programming',
+    summary: 'Point-of-sale system built with Java, MySQL, and PHP.',
+    intro: 'Captured through screenshots and the original documentation.',
     accent: '#84cc16',
+    visual: {
+      kind: 'placeholder',
+      label: 'POS',
+    },
     role: 'Course project',
     timeline: 'Academic project',
-    tech: ['Java', 'NetBeans', 'MySQL', 'PHP', 'PDF documentation'],
-    highlights: [
-      'Demonstrates a complete checkout and management workflow.',
-      'Includes multiple screenshots for interface review.',
-      'Uses PHP and MySQL to connect the system logic and data store.',
-    ],
+    tech: ['Java', 'NetBeans', 'MySQL', 'PHP'],
+    highlights: ['Checkout workflow', 'Screenshot set', 'Database logic'],
     metrics: [
       { label: 'Language', value: 'Java' },
       { label: 'Database', value: 'MySQL' },
@@ -239,20 +243,19 @@ export const projects: Project[] = [
   },
   {
     slug: 'canvas-projects',
-    title: 'Canvas Design Projects',
-    category: 'Creative Work',
-    summary: 'Canva-based poster and storybook redesigns created for design coursework.',
-    intro:
-      'These pieces highlight layout, visual hierarchy, and presentation polish rather than application logic.',
+    title: 'Canva Designs',
+    category: 'Design',
+    summary: 'Poster and storybook redesigns for coursework.',
+    intro: 'Highlights layout, hierarchy, and presentation polish.',
     accent: '#fb7185',
+    visual: {
+      kind: 'placeholder',
+      label: 'Canva',
+    },
     role: 'Design coursework',
     timeline: 'Creative portfolio',
     tech: ['Canva', 'Layout design', 'Visual composition'],
-    highlights: [
-      'Recreated a Steam-inspired poster with branding awareness.',
-      'Redesigned a storybook layout for presentation impact.',
-      'Adds visual breadth to the portfolio beyond software projects.',
-    ],
+    highlights: ['Steam poster', 'Storybook layout', 'Visual breadth'],
     metrics: [
       { label: 'Medium', value: 'Canva' },
       { label: 'Pieces', value: 'Poster + storybook' },

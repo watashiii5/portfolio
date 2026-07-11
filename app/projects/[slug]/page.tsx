@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+import { ProjectVisual } from '@/components/project-visual';
 import { getProjectBySlug, projectSlugs, projects } from '@/lib/projects';
 
 type ProjectPageProps = {
@@ -73,13 +74,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           </div>
           <div className="brand-copy">
             <div className="brand-name">Jermaine Pasamba</div>
-            <div className="brand-subtitle">Project detail view</div>
+            <div className="brand-subtitle">Project detail</div>
           </div>
         </div>
-        <Link className="nav-chip" href="/">
-          <strong>Home</strong>
-          <span>Back to the portfolio</span>
-        </Link>
       </div>
 
       <article className="project-shell">
@@ -108,6 +105,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           </section>
 
           <aside className="project-media-card">
+            <ProjectVisual project={project} variant="hero" />
             <div className="project-metrics">
               {project.metrics.map((metric) => (
                 <div className="metric" key={metric.label}>
@@ -131,7 +129,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           <div className="section-head" style={{ marginBottom: 10 }}>
             <div>
               <div className="section-kicker">Highlights</div>
-              <h2>What this project demonstrates.</h2>
+              <h2>Highlights.</h2>
             </div>
           </div>
           <ul className="project-highlights">
@@ -145,7 +143,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           <div className="section-head" style={{ marginBottom: 10 }}>
             <div>
               <div className="section-kicker">Media</div>
-              <h2>Screenshots, documents, and supporting files.</h2>
+              <h2>Media.</h2>
             </div>
           </div>
 
@@ -169,23 +167,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </section>
 
-        {project.sourceUrl ? (
-          <section className="section-panel">
-            <div className="section-head" style={{ marginBottom: 10 }}>
-              <div>
-                <div className="section-kicker">Source</div>
-                <h2>Related external link.</h2>
-              </div>
-            </div>
-            <a className="resource-link" href={project.sourceUrl} target="_blank" rel="noreferrer">
-              Open related site
-            </a>
-          </section>
-        ) : null}
-
         <section className="footer-note">
           <Link className="button-inline" href="/">
-            Return to the portfolio overview
+            Back home
           </Link>
         </section>
       </article>

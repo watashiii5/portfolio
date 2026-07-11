@@ -1,10 +1,7 @@
 import Link from 'next/link';
 
+import { ProjectVisual } from '@/components/project-visual';
 import { featuredProjects, projects, siteStats } from '@/lib/projects';
-
-function accentForIndex(index: number) {
-  return ['#7dd3fc', '#fb923c', '#a78bfa', '#34d399'][index % 4];
-}
 
 export default function HomePage() {
   const featured = featuredProjects
@@ -21,32 +18,28 @@ export default function HomePage() {
           </div>
           <div className="brand-copy">
             <div className="brand-name">Jermaine Pasamba</div>
-            <div className="brand-subtitle">Portfolio redesign in Next.js</div>
+            <div className="brand-subtitle">Next.js portfolio</div>
           </div>
         </div>
-        <Link className="nav-chip" href="#projects">
-          <strong>Explore</strong>
-          <span>Projects and experience</span>
-        </Link>
       </header>
 
       <section className="hero">
         <div className="hero-copy">
-          <div className="eyebrow">Student portfolio</div>
+          <div className="eyebrow">Portfolio</div>
           <h1>
-            <span>Visual polish</span>
-            with a sharper technical edge.
+            <span>Clean. Centered.</span>
+            Built for work.
           </h1>
           <p>
-            This rebuild keeps the original portfolio content but wraps it in a more intentional presentation: richer motion, layered backgrounds,
-            stronger project storytelling, and a route structure that is ready for GitHub Pages export.
+            A short, professional portfolio with centered layouts, cleaner spacing, and a stronger presentation for projects, experience, and
+            contact.
           </p>
           <div className="hero-actions">
             <Link className="button" href="#projects">
-              View featured work
+              Featured work
             </Link>
             <Link className="button-ghost" href="#contact">
-              Contact and links
+              Contact
             </Link>
           </div>
           <div className="hero-meta">
@@ -62,57 +55,28 @@ export default function HomePage() {
         <div className="hero-visual" aria-label="Portfolio preview illustration">
           <div className="hero-orbit" />
           <div className="hero-card">
-            <img src="/portfolio/2by2%20New.png" alt="Jermaine Pasamba portrait" />
+            <ProjectVisual project={projects[0]} variant="hero" />
             <div className="hero-badge">
               <strong>Bulacan State University</strong>
-              <span>B.S. Mathematics, Computer Science specialization</span>
+              <span>B.S. Mathematics, Computer Science</span>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="section-head">
-          <div>
-            <div className="section-kicker">What changed</div>
-            <h2>More depth, better spacing, and a clearer visual hierarchy.</h2>
-          </div>
-          <Link className="button-inline" href="#contact">
-            Jump to contact
-          </Link>
-        </div>
-        <div className="feature-grid">
-          <article className="feature-card">
-            <h3>Strong visual system</h3>
-            <p>
-              The new layout uses layered gradients, glass panels, and color-coded project accents so each section feels intentional instead of
-              stacked HTML blocks.
-            </p>
-          </article>
-          <article className="feature-card">
-            <h3>Project-first structure</h3>
-            <p>
-              Every portfolio item now has a reusable data shape, which makes it easier to add new work without rebuilding the page each time.
-            </p>
-          </article>
         </div>
       </section>
 
       <section className="section" id="projects">
         <div className="section-head">
           <div>
-            <div className="section-kicker">Featured work</div>
-            <h2>Selected projects with live demos, screenshots, and documents.</h2>
+            <div className="section-kicker">Projects</div>
+            <h2>Selected work.</h2>
           </div>
-          <Link className="button-inline" href="#all-projects">
-            See all projects
-          </Link>
         </div>
 
         <div className="feature-grid">
-          {featured.map((project, index) =>
+          {featured.map((project) =>
             project ? (
-              <article className="feature-card" key={project.slug} style={{ ['--card-accent' as never]: accentForIndex(index) } as React.CSSProperties}>
+              <article className="feature-card" key={project.slug}>
+                <ProjectVisual project={project} />
                 <div className="project-pill-row">
                   <span className="pill">{project.category}</span>
                 </div>
@@ -137,24 +101,17 @@ export default function HomePage() {
       <section className="section" id="all-projects">
         <div className="section-head">
           <div>
-            <div className="section-kicker">Full portfolio</div>
-            <h2>All projects in one clean grid.</h2>
+            <div className="section-kicker">All work</div>
+            <h2>Everything in one view.</h2>
           </div>
         </div>
 
         <div className="project-grid">
-          {projects.map((project, index) => (
-            <Link className="project-card" href={`/projects/${project.slug}`} key={project.slug} style={{ ['--card-accent' as never]: project.accent } as React.CSSProperties}>
-              <div className="project-preview">
-                {project.media.find((media) => media.kind === 'image') ? (
-                  <img src={project.media.find((media) => media.kind === 'image' && 'src' in media)?.src} alt={project.title} />
-                ) : (
-                  <div className="pill">Project {index + 1}</div>
-                )}
-              </div>
+          {projects.map((project) => (
+            <Link className="project-card" href={`/projects/${project.slug}`} key={project.slug}>
+              <ProjectVisual project={project} />
               <div className="project-pill-row">
                 <span className="pill">{project.category}</span>
-                {project.liveUrl ? <span className="pill">Live demo</span> : null}
               </div>
               <h3>{project.title}</h3>
               <p>{project.summary}</p>
@@ -174,7 +131,7 @@ export default function HomePage() {
         <div className="section-head">
           <div>
             <div className="section-kicker">Contact</div>
-            <h2>Ways to reach me and the original portfolio links.</h2>
+            <h2>Get in touch.</h2>
           </div>
         </div>
 
@@ -188,15 +145,6 @@ export default function HomePage() {
                 View LinkedIn
               </a>
             </div>
-          </article>
-
-          <article className="contact-card">
-            <h3>Notes</h3>
-            <p>
-              This redesign keeps the same portfolio content but packages it as a Next.js static export, which makes GitHub Pages deployment much
-              cleaner.
-            </p>
-            <p className="small-print">Built from the existing HTML content and media in this repository.</p>
           </article>
         </div>
       </section>
