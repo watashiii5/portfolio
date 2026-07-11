@@ -201,6 +201,16 @@ export default function HomePage() {
           </article>
 
           <article className="contact-card">
+            <h3>Chatbot</h3>
+            <p>Open my separate chatbot demo hosted on Vercel.</p>
+            <div className="contact-actions">
+              <a className="button" href="https://portfolio-opal-iota-2ffsqksb9m.vercel.app/" target="_blank" rel="noreferrer">
+                Open chatbot
+              </a>
+            </div>
+          </article>
+
+          <article className="contact-card contact-card--form">
             <h3>Send an Email</h3>
             <form action="https://api.web3forms.com/submit" method="POST" className="web3-form">
               <input type="hidden" name="access_key" value="08082264-f544-49fc-ab6f-e949be059b53" />
@@ -209,16 +219,6 @@ export default function HomePage() {
               <textarea name="message" placeholder="Your Message" required className="form-textarea"></textarea>
               <button type="submit" className="button">Submit</button>
             </form>
-          </article>
-
-          <article className="contact-card">
-            <h3>Chatbot</h3>
-            <p>Open my separate chatbot demo hosted on Vercel.</p>
-            <div className="contact-actions">
-              <a className="button" href="https://portfolio-opal-iota-2ffsqksb9m.vercel.app/" target="_blank" rel="noreferrer">
-                Open chatbot
-              </a>
-            </div>
           </article>
         </div>
       </section>
