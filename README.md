@@ -38,3 +38,5 @@ If you want Groq-powered replies, set `NEXT_PUBLIC_CHATBOT_API_URL` to your Verc
 3. Add `GROQ_API_KEY` in Vercel environment variables.
 4. Deploy the project and copy the production URL, such as `https://your-project.vercel.app/api/chat`.
 5. Add that URL to the GitHub Pages site as `NEXT_PUBLIC_CHATBOT_API_URL` in your portfolio environment.
+
+Note: `chatbot-vercel` is a separate project folder. The main portfolio build intentionally excludes it, so the GitHub Pages export only checks the portfolio app.
