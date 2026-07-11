@@ -6,8 +6,8 @@ export type ProjectMedia =
 
 export type Project = {
   slug: string;
-    summary: 'Character-first companion interface powered by Groq with a light, approachable conversation flow.',
-    intro: 'A lightweight companion experience built around a simple card-and-chat layout, quick responses, and a live demo that keeps the interaction focused.',
+  title: string;
+  category: string;
   summary: string;
   intro: string;
   accent: string;
@@ -205,8 +205,9 @@ export const projects: Project[] = [
     intro: 'Shows the system through a demo video and the original documentation.',
     accent: '#a78bfa',
     visual: {
-      kind: 'placeholder',
-      label: 'Phonebook',
+      kind: 'image',
+      src: asset('/projects/Data Structure/phonebooklogo.png'),
+      alt: 'Phonebook System logo',
     },
     role: 'Course project',
     timeline: 'Academic project',
@@ -231,8 +232,9 @@ export const projects: Project[] = [
     intro: 'Captured through screenshots and the original documentation.',
     accent: '#84cc16',
     visual: {
-      kind: 'placeholder',
-      label: 'POS',
+      kind: 'image',
+      src: asset('/projects/Computer Programming/1.png'),
+      alt: 'POS System screenshot',
     },
     role: 'Course project',
     timeline: 'Academic project',
@@ -261,8 +263,9 @@ export const projects: Project[] = [
     intro: 'Highlights layout, hierarchy, and presentation polish.',
     accent: '#fb7185',
     visual: {
-      kind: 'placeholder',
-      label: 'Canva',
+      kind: 'image',
+      src: asset('/projects/Canvas Projects/canvalogo.png'),
+      alt: 'Canva Designs logo',
     },
     role: 'Design coursework',
     timeline: 'Creative portfolio',

@@ -19,7 +19,7 @@ function formatTime(date: Date) {
 }
 
 export default function SiteChatbot() {
-  const apiUrl = process.env.NEXT_PUBLIC_CHATBOT_API_URL;
+  const apiUrl = process.env.NEXT_PUBLIC_CHATBOT_API_URL || 'https://portfolio-opal-iota-2ffsqksb9m.vercel.app/api/chat';
   const [open, setOpen] = useState(false);
   const [ready, setReady] = useState(false);
   const [busy, setBusy] = useState(false);

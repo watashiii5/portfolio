@@ -128,30 +128,22 @@ export default function HomePage() {
               return null;
             }
 
-            const projectItem = project as {
-              slug: string;
-              title: string;
-              category: string;
-              summary: string;
-              tech: string[];
-            };
-
             return (
-              <article className="feature-card" key={projectItem.slug}>
-                <ProjectVisual project={projectItem} />
+              <article className="feature-card" key={project.slug}>
+                <ProjectVisual project={project} />
                 <div className="project-pill-row">
-                  <span className="pill">{projectItem.category}</span>
+                  <span className="pill">{project.category}</span>
                 </div>
-                <h3>{projectItem.title}</h3>
-                <p>{projectItem.summary}</p>
+                <h3>{project.title}</h3>
+                <p>{project.summary}</p>
                 <div className="tag-row">
-                  {projectItem.tech.slice(0, 4).map((stack) => (
+                  {project.tech.slice(0, 4).map((stack) => (
                     <span className="tag" key={stack}>
                       {stack}
                     </span>
                   ))}
                 </div>
-                <Link className="project-link" href={`/projects/${projectItem.slug}`}>
+                <Link className="project-link" href={`/projects/${project.slug}`}>
                   Open project
                 </Link>
               </article>
@@ -169,33 +161,23 @@ export default function HomePage() {
         </div>
 
         <div className="project-grid">
-          {projects.map((project) => {
-            const projectItem = project as {
-              slug: string;
-              title: string;
-              category: string;
-              summary: string;
-              tech: string[];
-            };
-
-            return (
-              <Link className="project-card" href={`/projects/${projectItem.slug}`} key={projectItem.slug}>
-                <ProjectVisual project={projectItem} />
+          {projects.map((project) => (
+              <Link className="project-card" href={`/projects/${project.slug}`} key={project.slug}>
+                <ProjectVisual project={project} />
                 <div className="project-pill-row">
-                  <span className="pill">{projectItem.category}</span>
+                  <span className="pill">{project.category}</span>
                 </div>
-                <h3>{projectItem.title}</h3>
-                <p>{projectItem.summary}</p>
+                <h3>{project.title}</h3>
+                <p>{project.summary}</p>
                 <div className="tag-row">
-                  {projectItem.tech.slice(0, 3).map((stack) => (
+                  {project.tech.slice(0, 3).map((stack) => (
                     <span className="tag" key={stack}>
                       {stack}
                     </span>
                   ))}
                 </div>
               </Link>
-            );
-          })}
+          ))}
         </div>
       </section>
 
