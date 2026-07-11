@@ -1,6 +1,8 @@
 import Link from 'next/link';
 
+import { ContactForm } from '@/components/contact-form';
 import { ProjectVisual } from '@/components/project-visual';
+import { ScrollReveal } from '@/components/scroll-reveal';
 import { ThemeToggleButton } from '@/components/site-theme-toggle';
 import { featuredProjects, projects, siteStats } from '@/lib/projects';
 
@@ -113,6 +115,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      <ScrollReveal>
       <section className="section" id="projects">
         <div className="section-head">
           <div>
@@ -150,7 +153,9 @@ export default function HomePage() {
           })}
         </div>
       </section>
+      </ScrollReveal>
 
+      <ScrollReveal delay={100}>
       <section className="section" id="all-projects">
         <div className="section-head">
           <div>
@@ -179,7 +184,9 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+      </ScrollReveal>
 
+      <ScrollReveal delay={150}>
       <section className="section" id="contact">
         <div className="section-head">
           <div>
@@ -189,39 +196,33 @@ export default function HomePage() {
         </div>
 
         <div className="contact-grid">
-          <article className="contact-card">
-            <h3>Direct contact</h3>
-            <p>Email: jermaine.pasamba@gmail.com</p>
-            <p>Contact number: 0942 696 3787</p>
-            <div className="contact-actions">
-              <a className="button" href="https://www.linkedin.com/in/jermaine-pasamba-2b9256355/" target="_blank" rel="noreferrer">
-                View LinkedIn
-              </a>
-            </div>
-          </article>
+          <div className="contact-top-row">
+            <article className="contact-card">
+              <h3>Direct contact</h3>
+              <p>Email: jermaine.pasamba@gmail.com</p>
+              <p>Contact number: 0942 696 3787</p>
+              <div className="contact-actions">
+                <a className="button" href="https://www.linkedin.com/in/jermaine-pasamba-2b9256355/" target="_blank" rel="noreferrer">
+                  View LinkedIn
+                </a>
+              </div>
+            </article>
 
-          <article className="contact-card">
-            <h3>Chatbot</h3>
-            <p>Open my separate chatbot demo hosted on Vercel.</p>
-            <div className="contact-actions">
-              <a className="button" href="https://portfolio-opal-iota-2ffsqksb9m.vercel.app/" target="_blank" rel="noreferrer">
-                Open chatbot
-              </a>
-            </div>
-          </article>
+            <article className="contact-card">
+              <h3>Chatbot</h3>
+              <p>Open my separate chatbot demo hosted on Vercel.</p>
+              <div className="contact-actions">
+                <a className="button" href="https://portfolio-opal-iota-2ffsqksb9m.vercel.app/" target="_blank" rel="noreferrer">
+                  Open chatbot
+                </a>
+              </div>
+            </article>
+          </div>
 
-          <article className="contact-card contact-card--form">
-            <h3>Send an Email</h3>
-            <form action="https://api.web3forms.com/submit" method="POST" className="web3-form">
-              <input type="hidden" name="access_key" value="08082264-f544-49fc-ab6f-e949be059b53" />
-              <input type="text" name="name" placeholder="Your Name" required className="form-input" />
-              <input type="email" name="email" placeholder="Your Email" required className="form-input" />
-              <textarea name="message" placeholder="Your Message" required className="form-textarea"></textarea>
-              <button type="submit" className="button">Submit</button>
-            </form>
-          </article>
+          <ContactForm />
         </div>
       </section>
+      </ScrollReveal>
     </main>
   );
 }

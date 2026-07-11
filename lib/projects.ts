@@ -29,7 +29,7 @@ export type Project = {
 
 const basePath = '/portfolio';
 
-const asset = (path: string) => `${basePath}${path.startsWith('/') ? path : `/${path}`}`;
+const asset = (path: string) => encodeURI(`${basePath}${path.startsWith('/') ? path : `/${path}`}`);
 
 export const siteStats = [
   { label: 'Projects', value: '8' },
@@ -163,7 +163,7 @@ export const projects: Project[] = [
       { label: 'Status', value: 'Concept showcase' },
       { label: 'Access', value: 'Live demo linked' },
     ],
-    liveUrl: 'https://ticketing-system-8yho.onrender.com',
+    liveUrl: 'https://ticketing-system-8yho.onrender.com/',
     media: [
       { kind: 'image', src: asset('/projects/IT Ticketing System/ticket.jpg'), alt: 'Ticketing system dark mode screenshot' },
       { kind: 'image', src: asset('/projects/IT Ticketing System/ticket2.jpg'), alt: 'Ticketing system light mode screenshot 1' },
@@ -269,6 +269,7 @@ export const projects: Project[] = [
       { kind: 'image', src: asset('/projects/Computer Programming/5.png'), alt: 'POS screenshot 5' },
       { kind: 'image', src: asset('/projects/Computer Programming/6.png'), alt: 'POS screenshot 6' },
       { kind: 'pdf', src: asset('/projects/Computer Programming/POS Project.pdf'), label: 'Open POS documentation PDF' },
+      { kind: 'link', href: asset('/projects/Computer Programming/Java_pointofsalesproject.zip'), label: 'Download POS Source Code (ZIP)' },
     ],
   },
   {
