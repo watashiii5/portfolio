@@ -33,7 +33,7 @@ const asset = (path: string) => encodeURI(`${basePath}${path.startsWith('/') ? p
 
 export const siteStats = [
   { label: 'Projects', value: '8' },
-  { label: 'Internship', value: '300 hrs' },
+  { label: 'Internship', value: '250 hrs' },
   { label: 'Live demos', value: '3' },
   { label: 'Primary stack', value: 'Next.js + Supabase' },
 ];

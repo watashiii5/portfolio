@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 type ZoomableImageProps = {
   src: string;
@@ -9,6 +10,44 @@ type ZoomableImageProps = {
 
 export function ZoomableImage({ src, alt }: ZoomableImageProps) {
   const [zoomed, setZoomed] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!zoomed) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setZoomed(false);
+    };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [zoomed]);
+
+  const overlay = zoomed && mounted
+    ? createPortal(
+        <div
+          className="image-lightbox"
+          onClick={() => setZoomed(false)}
+        >
+          <button className="image-lightbox__close" onClick={() => setZoomed(false)} aria-label="Close">
+            ×
+          </button>
+          <img
+            src={src}
+            alt={alt}
+            className="image-lightbox__img"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>,
+        document.body
+      )
+    : null;
 
   return (
     <>
@@ -18,44 +57,9 @@ export function ZoomableImage({ src, alt }: ZoomableImageProps) {
         loading="lazy"
         decoding="async"
         onClick={() => setZoomed(true)}
-        style={{ cursor: 'zoom-in', transition: 'transform 0.3s ease' }}
+        style={{ cursor: 'zoom-in' }}
       />
-      {zoomed && (
-        <div
-          className="image-modal-overlay"
-          onClick={() => setZoomed(false)}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 9999,
-            backgroundColor: 'rgba(0, 0, 0, 0.85)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '24px',
-            cursor: 'zoom-out',
-            animation: 'fadeIn 0.2s ease-out'
-          }}
-        >
-          <img
-            src={src}
-            alt={alt}
-            style={{
-              maxHeight: '100%',
-              maxWidth: '100%',
-              objectFit: 'contain',
-              borderRadius: '8px',
-              boxShadow: '0 24px 64px rgba(0,0,0,0.5)',
-              transform: 'scale(1)',
-              animation: 'zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
-            }}
-            onClick={(e) => {
-              // Prevent click from bubbling to overlay if needed, though clicking image should also close
-              setZoomed(false);
-            }}
-          />
-        </div>
-      )}
+      {overlay}
     </>
   );
 }

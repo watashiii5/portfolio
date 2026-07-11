@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { ContactForm } from '@/components/contact-form';
+import { OpenChatbotButton } from '@/components/open-chatbot-button';
 import { ProjectVisual } from '@/components/project-visual';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { ThemeToggleButton } from '@/components/site-theme-toggle';
@@ -88,6 +89,9 @@ export default function HomePage() {
           <div className="hero-actions">
             <Link className="button" href="#projects">
               Featured work
+            </Link>
+            <Link className="button-ghost" href="#about">
+              About me
             </Link>
             <Link className="button-ghost" href="#contact">
               Contact
@@ -285,6 +289,41 @@ export default function HomePage() {
       </section>
       </ScrollReveal>
 
+      <ScrollReveal delay={120}>
+      <section className="section" id="about">
+        <div className="section-head">
+          <div>
+            <div className="section-kicker">About</div>
+            <h2>About me.</h2>
+          </div>
+        </div>
+
+        <div className="about-card">
+          <div className="about-card__inner">
+            <div className="about-card__photo">
+              <img src="/portfolio/2by2New.png" alt="Jermaine Pasamba" />
+            </div>
+            <div className="about-card__text">
+              <p>I am a Computer Science student at Bulacan State University graduated in June 2026, with full-stack experience in Next.js and FastAPI, a 250-hour web development internship, and specialized expertise in building algorithmic optimization systems.</p>
+              <div className="about-card__actions">
+                <a className="button" href="/portfolio/workExperience/CV_Jermaine_Pasamba.pdf" download>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: 6 }}>
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  Download CV
+                </a>
+                <Link className="button-ghost" href="#contact">
+                  Get in touch
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      </ScrollReveal>
+
       <ScrollReveal delay={150}>
       <section className="section" id="contact">
         <div className="section-head">
@@ -309,11 +348,9 @@ export default function HomePage() {
 
             <article className="contact-card">
               <h3>Chatbot</h3>
-              <p>Open my separate chatbot demo hosted on Vercel.</p>
+              <p>Chat with my AI assistant to learn more about my experience.</p>
               <div className="contact-actions">
-                <a className="button" href="https://portfolio-opal-iota-2ffsqksb9m.vercel.app/" target="_blank" rel="noreferrer">
-                  Open chatbot
-                </a>
+                <OpenChatbotButton />
               </div>
             </article>
           </div>

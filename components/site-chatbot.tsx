@@ -57,6 +57,12 @@ export default function SiteChatbot() {
   }, []);
 
   useEffect(() => {
+    const handleOpen = () => setOpen(true);
+    window.addEventListener('open-chatbot', handleOpen);
+    return () => window.removeEventListener('open-chatbot', handleOpen);
+  }, []);
+
+  useEffect(() => {
     if (!ready) return;
 
     const sections = [
@@ -64,6 +70,7 @@ export default function SiteChatbot() {
       { id: 'all-projects', msg: 'Here is a complete view of all his work. 📚' },
       { id: 'experience', msg: 'His internship experience at NB Consulting! 💼' },
       { id: 'education', msg: 'His academic journey from elementary to college. 🎓' },
+      { id: 'about', msg: 'Learn more about Jermaine here! 🧑‍💻' },
       { id: 'contact', msg: 'Need to reach him? You can send a direct email here! ✉️' }
     ];
 
@@ -161,7 +168,7 @@ export default function SiteChatbot() {
     <div className="chatbot-shell">
       <button className="chatbot-launcher" type="button" onClick={() => { setOpen((value) => !value); setLiveHint(null); }} aria-expanded={open} aria-controls="portfolio-chatbot-panel" aria-label="Ask about Jermaine">
         <span className="chatbot-launcher__logoWrap" aria-hidden="true">
-          <img className="chatbot-launcher__logo" src="/portfolio/Gemini_Generated_chatbotLogo.png" alt="" />
+          <img className="chatbot-launcher__logo" src={busy || (!open && !!liveHint) ? "/portfolio/merged.gif" : "/portfolio/Gemini_Generated_chatbotLogo.png"} alt="" />
         </span>
         {liveHint && !open && (
           <div className="chatbot-bubble">
@@ -175,7 +182,7 @@ export default function SiteChatbot() {
           <header className="chatbot-panel__header">
             <div className="chatbot-panel__brand">
               <span className="chatbot-panel__avatar" aria-hidden="true">
-                <img src="/portfolio/Gemini_Generated_chatbotLogo.png" alt="" />
+                <img src={busy ? "/portfolio/merged.gif" : "/portfolio/Gemini_Generated_chatbotLogo.png"} alt="" />
               </span>
               <div>
               <strong>Porcha</strong>
