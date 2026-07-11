@@ -21,7 +21,8 @@ export function ScrollReveal({ children, className = '', delay = 0 }: ScrollReve
           setTimeout(() => {
             el.classList.add('revealed');
           }, delay);
-          observer.unobserve(el);
+        } else {
+          el.classList.remove('revealed');
         }
       },
       { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }

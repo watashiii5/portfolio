@@ -186,6 +186,105 @@ export default function HomePage() {
       </section>
       </ScrollReveal>
 
+      <ScrollReveal delay={100}>
+      <section className="section" id="experience">
+        <div className="section-head">
+          <div>
+            <div className="section-kicker">Experience</div>
+            <h2>Work experience.</h2>
+          </div>
+        </div>
+
+        <div className="timeline">
+          <article className="timeline-item">
+            <div className="timeline-logo">
+              <img src="/portfolio/workExperience/nbconsulting(ojtlogo).png" alt="Nantes Bautista Consulting" />
+            </div>
+            <div className="timeline-content">
+              <div className="timeline-header">
+                <h3>Web Developer Intern</h3>
+                <span className="timeline-date">June 2025 – July 2025</span>
+              </div>
+              <p className="timeline-org">Nantes Bautista Consulting</p>
+              <ul className="timeline-details">
+                <li>Served as the primary technical developer for a web-app system, utilizing FlutterFlow and Supabase to transition legacy processes into a modern digital interface.</li>
+                <li>Built and implemented complex system logic, including advanced search filtering and database queries, overcoming technical limitations in a low-code environment.</li>
+                <li>Collaborated with a cross-functional team to refine UI/UX components and ensure system performance met business objectives.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+      </ScrollReveal>
+
+      <ScrollReveal delay={100}>
+      <section className="section" id="education">
+        <div className="section-head">
+          <div>
+            <div className="section-kicker">Education</div>
+            <h2>Academic background.</h2>
+          </div>
+          <a className="button" href="/portfolio/workExperience/CV_Jermaine_Pasamba.pdf" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: 6 }}>
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Download CV
+          </a>
+        </div>
+
+        <div className="timeline">
+          <article className="timeline-item">
+            <div className="timeline-logo">
+              <img src="/portfolio/education/bulsuLogo.png" alt="Bulacan State University" />
+            </div>
+            <div className="timeline-content">
+              <div className="timeline-header">
+                <h3>Bulacan State University</h3>
+                <span className="timeline-date">August 2022 – June 2026</span>
+              </div>
+              <p className="timeline-org">Bachelor of Science in Mathematics with Specialization in Computer Science</p>
+              <ul className="timeline-details">
+                <li>Organization/Club: BulSu Microsoft Student Community</li>
+              </ul>
+            </div>
+          </article>
+
+          <article className="timeline-item">
+            <div className="timeline-logo">
+              <img src="/portfolio/education/eccat(hsLogo).png" alt="Early Christian College of Arts and Technology" />
+            </div>
+            <div className="timeline-content">
+              <div className="timeline-header">
+                <h3>Early Christian College of Arts and Technology</h3>
+                <span className="timeline-date">June 2016 – May 2022</span>
+              </div>
+              <p className="timeline-org">Junior & Senior High School</p>
+              <ul className="timeline-details">
+                <li>Designed and optimized a robotic control system (Robotics)</li>
+                <li>Math Quiz Bee Section Representative</li>
+                <li>Memberships: Peer Counseling, Math Wizard, Book Lovers, Chess Club</li>
+              </ul>
+            </div>
+          </article>
+
+          <article className="timeline-item">
+            <div className="timeline-logo">
+              <img src="/portfolio/education/elemLogo.png" alt="Santa Maria Elementary School" />
+            </div>
+            <div className="timeline-content">
+              <div className="timeline-header">
+                <h3>Santa Maria Central School</h3>
+                <span className="timeline-date">June 2007 – March 2016</span>
+              </div>
+              <p className="timeline-org">Elementary Education</p>
+            </div>
+          </article>
+        </div>
+      </section>
+      </ScrollReveal>
+
       <ScrollReveal delay={150}>
       <section className="section" id="contact">
         <div className="section-head">

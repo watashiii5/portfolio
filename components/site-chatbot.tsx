@@ -25,8 +25,10 @@ export default function SiteChatbot() {
   const [busy, setBusy] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [liveHint, setLiveHint] = useState<string | null>(null);
   const sessionIdRef = useRef('');
   const viewportRef = useRef<HTMLDivElement | null>(null);
+  const hintTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const saved = sessionStorage.getItem(STORAGE_KEY);
@@ -53,6 +55,49 @@ export default function SiteChatbot() {
     ]);
     setReady(true);
   }, []);
+
+  useEffect(() => {
+    if (!ready) return;
+
+    const sections = [
+      { id: 'projects', msg: 'Check out these featured projects! 🚀' },
+      { id: 'all-projects', msg: 'Here is a complete view of all his work. 📚' },
+      { id: 'experience', msg: 'His internship experience at NB Consulting! 💼' },
+      { id: 'education', msg: 'His academic journey from elementary to college. 🎓' },
+      { id: 'contact', msg: 'Need to reach him? You can send a direct email here! ✉️' }
+    ];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const section = sections.find(s => s.id === entry.target.id);
+            if (section) {
+              setLiveHint(section.msg);
+              if (hintTimerRef.current) clearTimeout(hintTimerRef.current);
+              hintTimerRef.current = setTimeout(() => {
+                setLiveHint(null);
+              }, 4500);
+            }
+          }
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    sections.forEach(s => {
+      const el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    });
+
+    // Initial hint
+    setTimeout(() => {
+      setLiveHint("Hi! I'm Porcha, Jermaine's AI assistant. 👋");
+      hintTimerRef.current = setTimeout(() => setLiveHint(null), 5000);
+    }, 1500);
+
+    return () => observer.disconnect();
+  }, [ready]);
 
   useEffect(() => {
     if (!ready) return;
@@ -114,11 +159,15 @@ export default function SiteChatbot() {
 
   return (
     <div className="chatbot-shell">
-      <button className="chatbot-launcher" type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-controls="portfolio-chatbot-panel">
+      <button className="chatbot-launcher" type="button" onClick={() => { setOpen((value) => !value); setLiveHint(null); }} aria-expanded={open} aria-controls="portfolio-chatbot-panel" aria-label="Ask about Jermaine">
         <span className="chatbot-launcher__logoWrap" aria-hidden="true">
           <img className="chatbot-launcher__logo" src="/portfolio/Gemini_Generated_chatbotLogo.png" alt="" />
         </span>
-        <span className="chatbot-launcher__label">{title}</span>
+        {liveHint && !open && (
+          <div className="chatbot-bubble">
+            {liveHint}
+          </div>
+        )}
       </button>
 
       {open ? (

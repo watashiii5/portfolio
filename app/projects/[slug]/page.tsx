@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { ProjectVisual } from '@/components/project-visual';
+import { ZoomableImage } from '@/components/zoomable-image';
 import { getProjectBySlug, projectSlugs, projects } from '@/lib/projects';
 
 type ProjectPageProps = {
@@ -28,7 +29,7 @@ export function generateMetadata({ params }: ProjectPageProps): Metadata {
 
 function mediaFrame(media: (typeof projects)[number]['media'][number]) {
   if (media.kind === 'image') {
-    return <img src={media.src} alt={media.alt} loading="lazy" decoding="async" />;
+    return <ZoomableImage src={media.src} alt={media.alt} />;
   }
 
   if (media.kind === 'video') {
@@ -128,7 +129,6 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         <section className="section-panel">
           <div className="section-head" style={{ marginBottom: 10 }}>
             <div>
-              <div className="section-kicker">Highlights</div>
               <h2>Highlights.</h2>
             </div>
           </div>
@@ -142,7 +142,6 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         <section className="section-panel">
           <div className="section-head" style={{ marginBottom: 10 }}>
             <div>
-              <div className="section-kicker">Media</div>
               <h2>Media.</h2>
             </div>
           </div>
