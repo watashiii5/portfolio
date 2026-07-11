@@ -201,6 +201,17 @@ export default function HomePage() {
           </article>
 
           <article className="contact-card">
+            <h3>Send an Email</h3>
+            <form action="https://api.web3forms.com/submit" method="POST" className="web3-form">
+              <input type="hidden" name="access_key" value="08082264-f544-49fc-ab6f-e949be059b53" />
+              <input type="text" name="name" placeholder="Your Name" required className="form-input" />
+              <input type="email" name="email" placeholder="Your Email" required className="form-input" />
+              <textarea name="message" placeholder="Your Message" required className="form-textarea"></textarea>
+              <button type="submit" className="button">Submit</button>
+            </form>
+          </article>
+
+          <article className="contact-card">
             <h3>Chatbot</h3>
             <p>Open my separate chatbot demo hosted on Vercel.</p>
             <div className="contact-actions">

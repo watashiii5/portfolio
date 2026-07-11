@@ -328,6 +328,13 @@ a {
   color: transparent;
 }
 
+html[data-theme='light'] .hero h1 span {
+  background: linear-gradient(110deg, #1e293b 0%, #0369a1 38%, #c2410c 70%, #4338ca 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .hero-copy p,
 .section-panel p,
 .project-lead,
@@ -347,9 +354,16 @@ a {
 }
 
 .hero-meta {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
   justify-items: center;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .hero-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .button-row,
@@ -496,10 +510,12 @@ a {
 
 .hero-card--photo img {
   width: 100%;
+  max-width: 100%;
   aspect-ratio: 0.92;
   object-fit: cover;
-  border-radius: 22px;
+  border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.12);
+  display: block;
 }
 
 .hero-card img {
@@ -739,10 +755,15 @@ a {
   border-radius: 16px;
 }
 
-.feature-grid,
-.contact-grid {
+.feature-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   justify-items: center;
+}
+
+.contact-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  justify-items: center;
+  align-items: stretch;
 }
 
 .feature-card,
@@ -773,6 +794,30 @@ a {
 .contact-card p,
 .feature-card p {
   margin: 0;
+}
+
+.web3-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
 }
 
 .project-shell {
