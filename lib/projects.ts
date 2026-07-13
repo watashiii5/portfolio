@@ -163,7 +163,7 @@ export const projects: Project[] = [
       { label: 'Status', value: 'Concept showcase' },
       { label: 'Access', value: 'Live demo linked' },
     ],
-    liveUrl: 'https://ticketing-system-8yho.onrender.com/',
+    liveUrl: 'https://ticketing-system-beta-ten.vercel.app/',
     media: [
       { kind: 'image', src: asset('/projects/IT Ticketing System/ticket.jpg'), alt: 'Ticketing system dark mode screenshot' },
       { kind: 'image', src: asset('/projects/IT Ticketing System/ticket2.jpg'), alt: 'Ticketing system light mode screenshot 1' },
