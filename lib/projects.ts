@@ -32,9 +32,9 @@ const basePath = '/portfolio';
 const asset = (path: string) => encodeURI(`${basePath}${path.startsWith('/') ? path : `/${path}`}`);
 
 export const siteStats = [
-  { label: 'Projects', value: '8' },
+  { label: 'Projects', value: '9' },
   { label: 'Internship', value: '250 hrs' },
-  { label: 'Live demos', value: '3' },
+  { label: 'Live demos', value: '4' },
   { label: 'Primary stack', value: 'Next.js + Supabase' },
 ];
 
@@ -203,6 +203,40 @@ export const projects: Project[] = [
       { kind: 'image', src: asset('/projects/Game Development/4.png'), alt: 'Game screenshot 4' },
       { kind: 'image', src: asset('/projects/Game Development/5.png'), alt: 'Game screenshot 5' },
       { kind: 'image', src: asset('/projects/Game Development/6.png'), alt: 'Game screenshot 6' },
+    ],
+  },
+  {
+    slug: 'word-sprint-island-escape',
+    title: 'Word Sprint: Island Escape',
+    category: 'Game',
+    summary: 'Side-scrolling educational word game where you answer vocabulary questions to escape an island.',
+    intro: 'A Phaser-powered HTML5 game that blends platforming with vocabulary practice, challenging players to answer word questions to jump across gaps and progress through levels.',
+    accent: '#06b6d4',
+    visual: {
+      kind: 'image',
+      src: asset('/projects/WordSprintt_IslandEscape/logo.png'),
+      alt: 'Word Sprint: Island Escape logo',
+    },
+    role: 'Main developer',
+    timeline: 'HTML5 game',
+    tech: ['Phaser 3', 'JavaScript', 'HTML5 Canvas', 'Vite'],
+    highlights: [
+      'Built with Phaser 3.80.1 using Vanilla JavaScript and HTML5 Canvas for smooth side-scrolling gameplay.',
+      'Combines vocabulary questions with platforming mechanics, making learning interactive and engaging.',
+      'Players answer word-based questions to power jumps across gaps and advance through island levels.',
+    ],
+    metrics: [
+      { label: 'Engine', value: 'Phaser 3' },
+      { label: 'Genre', value: 'Educational platformer' },
+      { label: 'Live demo', value: 'Vercel' },
+    ],
+    liveUrl: 'https://word-sprint-island-escape.vercel.app/',
+    media: [
+      { kind: 'image', src: asset('/projects/WordSprintt_IslandEscape/wordsprintGamePlay.png'), alt: 'Word Sprint gameplay 1' },
+      { kind: 'image', src: asset('/projects/WordSprintt_IslandEscape/wordsprintGamePlay1.png'), alt: 'Word Sprint gameplay 2' },
+      { kind: 'image', src: asset('/projects/WordSprintt_IslandEscape/wordsprintGamePlay2.png'), alt: 'Word Sprint gameplay 3' },
+      { kind: 'image', src: asset('/projects/WordSprintt_IslandEscape/wordsprintGamePlay3.png'), alt: 'Word Sprint gameplay 4' },
+      { kind: 'image', src: asset('/projects/WordSprintt_IslandEscape/wordsprintGamePlay4.png'), alt: 'Word Sprint gameplay 5' },
     ],
   },
   {
