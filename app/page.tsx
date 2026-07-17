@@ -83,6 +83,7 @@ export default function HomePage() {
             <span>Engineered for Speed.</span>
             Built for work.
           </h1>
+          <p className="hero-subtitle">Full-Stack Developer</p>
           <p>
             Computer Science graduate specializing in modern web architecture and algorithmic precision, dedicated to writing high-performance, maintainable code.
           </p>
@@ -114,7 +115,7 @@ export default function HomePage() {
           </div>
           <div className="hero-badge">
             <strong>Bulacan State University</strong>
-            <span>B.S. Mathematics, Computer Science</span>
+            <span>B.S. Computer Science — June 2026 Graduate</span>
           </div>
         </div>
       </section>
