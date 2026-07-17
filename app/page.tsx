@@ -55,7 +55,7 @@ export default function HomePage() {
 
   return (
     <main className="page page--home">
-      <header className="topbar">
+      <header className="topbar" id="site-topbar">
         <div className="brand">
           <div className="brand-mark" aria-hidden="true">
             JP
@@ -76,6 +76,7 @@ export default function HomePage() {
           <ThemeToggleButton />
         </div>
       </header>
+      <div id="theme-sentinel" className="theme-sentinel" aria-hidden="true" />
 
       <section className="hero">
         <div className="hero-copy">

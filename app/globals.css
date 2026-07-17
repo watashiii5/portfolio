@@ -1251,11 +1251,29 @@ html[data-theme='light'] .hero h1 span {
   z-index: 50;
 }
 
-.theme-toggle-shell {
+.theme-sentinel {
+  position: absolute;
+  top: 0;
+  height: 1px;
+  width: 100%;
+  pointer-events: none;
+}
+
+.theme-float {
   position: fixed;
   left: clamp(12px, 2vw, 20px);
   bottom: clamp(12px, 2vw, 20px);
   z-index: 50;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.4) translateY(20px);
+  transition: opacity 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.theme-float--visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
 }
 
 .theme-orb {
@@ -1707,7 +1725,7 @@ html[data-theme='light'] .hero h1 span {
     width: min(22rem, calc(100vw - 18px));
   }
 
-  .theme-toggle-shell {
+  .theme-float {
     left: 12px;
   }
 }

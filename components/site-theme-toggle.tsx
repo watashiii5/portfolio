@@ -93,10 +93,42 @@ export function ThemeToggleButton() {
   );
 }
 
-export default function SiteThemeToggle() {
+function FloatingThemeToggle() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    let observer: IntersectionObserver | null = null;
+    let retryTimer: ReturnType<typeof setTimeout> | null = null;
+
+    function setup() {
+      const sentinel = document.getElementById('theme-sentinel');
+      if (!sentinel) {
+        retryTimer = setTimeout(setup, 200);
+        return;
+      }
+
+      observer = new IntersectionObserver(
+        ([entry]) => setVisible(!entry.isIntersecting),
+        { threshold: 0 }
+      );
+      observer.observe(sentinel);
+    }
+
+    setup();
+
+    return () => {
+      if (observer) observer.disconnect();
+      if (retryTimer) clearTimeout(retryTimer);
+    };
+  }, []);
+
   return (
-    <div className="theme-toggle-shell">
+    <div className={`theme-float ${visible ? 'theme-float--visible' : ''}`}>
       <ThemeToggleButton />
     </div>
   );
+}
+
+export default function SiteThemeToggle() {
+  return <FloatingThemeToggle />;
 }
