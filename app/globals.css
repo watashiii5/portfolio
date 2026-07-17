@@ -1419,7 +1419,7 @@ html[data-theme='light'] .hero h1 span {
 /* ── Theme dome transition ── */
 .theme-float:has(.theme-orb--animating) {
   opacity: 1 !important;
-  transform: scale(1) translateY(0) !important;
+  transform: none !important;
   pointer-events: auto !important;
 }
 
@@ -1439,13 +1439,14 @@ html[data-theme='light'] .hero h1 span {
   position: fixed !important;
   bottom: 0 !important;
   left: 0 !important;
-  width: min(55vw, 55vh, 280px);
-  height: min(55vw, 55vh, 280px);
+  width: min(42vw, 42vh, 220px);
+  height: min(42vw, 42vh, 220px);
   border-radius: 0 100% 0 0;
   overflow: hidden;
   z-index: 9999;
   pointer-events: none;
-  filter: brightness(1);
+  contain: layout style;
+  will-change: transform, opacity;
   animation: domeLifecycle 3.8s cubic-bezier(0.22, 1, 0.36, 1) forwards,
              domeGlow 3.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
@@ -1453,12 +1454,14 @@ html[data-theme='light'] .hero h1 span {
 .theme-orb__dome-inner {
   position: absolute;
   inset: 0;
+  will-change: opacity;
   animation: innerFade 3.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .theme-orb__sky {
   position: absolute;
   inset: 0;
+  will-change: background;
 }
 
 .theme-orb--sunrise .theme-orb__sky {
@@ -1477,6 +1480,7 @@ html[data-theme='light'] .hero h1 span {
   height: 100%;
   transform-origin: bottom center;
   z-index: 2;
+  will-change: transform;
 }
 
 .theme-orb__arm--set {
@@ -1692,12 +1696,12 @@ html[data-theme='light'] .hero h1 span {
 }
 
 @keyframes domeGlow {
-  0%   { box-shadow: 0 0 0 0 transparent; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); }
-  12%  { box-shadow: 0 0 30px 8px rgba(127, 216, 228, 0.25), 0 0 60px 16px rgba(127, 216, 228, 0.1); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); }
-  45%  { box-shadow: 0 0 40px 12px rgba(255, 200, 100, 0.35), 0 0 80px 24px rgba(255, 160, 60, 0.12); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
-  55%  { box-shadow: 0 0 40px 12px rgba(100, 180, 220, 0.3), 0 0 80px 24px rgba(80, 160, 200, 0.1); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
-  80%  { box-shadow: 0 0 20px 6px rgba(127, 216, 228, 0.15), 0 0 40px 12px rgba(127, 216, 228, 0.05); backdrop-filter: blur(1px); -webkit-backdrop-filter: blur(1px); }
-  100% { box-shadow: 0 0 0 0 transparent; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); }
+  0%   { box-shadow: 0 0 0 0 transparent; }
+  12%  { box-shadow: 0 0 24px 6px rgba(127, 216, 228, 0.22), 0 0 48px 12px rgba(127, 216, 228, 0.08); }
+  45%  { box-shadow: 0 0 32px 10px rgba(255, 200, 100, 0.3), 0 0 64px 20px rgba(255, 160, 60, 0.1); }
+  55%  { box-shadow: 0 0 32px 10px rgba(100, 180, 220, 0.25), 0 0 64px 20px rgba(80, 160, 200, 0.08); }
+  80%  { box-shadow: 0 0 16px 5px rgba(127, 216, 228, 0.12), 0 0 32px 10px rgba(127, 216, 228, 0.04); }
+  100% { box-shadow: 0 0 0 0 transparent; }
 }
 
 @keyframes armSet {
