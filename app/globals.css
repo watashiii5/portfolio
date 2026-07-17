@@ -1421,6 +1421,7 @@ html[data-theme='light'] .hero h1 span {
   opacity: 1 !important;
   transform: none !important;
   pointer-events: auto !important;
+  transition: none !important;
 }
 
 .theme-orb--animating {
