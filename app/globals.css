@@ -50,7 +50,6 @@ html[data-theme='light'] {
 }
 
 html {
-  color-scheme: dark;
   scroll-behavior: smooth;
 }
 
@@ -64,6 +63,7 @@ body {
     linear-gradient(160deg, var(--bg) 0%, var(--bg-2) 48%, color-mix(in srgb, var(--bg) 76%, #000 24%) 100%);
   color: var(--text);
   font-family: 'Manrope', 'Segoe UI', sans-serif;
+  transition: background 0.6s ease, color 0.6s ease;
 }
 
 a {
@@ -185,7 +185,7 @@ a {
   background: color-mix(in srgb, var(--surface-strong) 88%, transparent);
   color: var(--text);
   box-shadow: var(--shadow);
-  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+  transition: transform 180ms ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .topbar-icon-link:hover,
@@ -245,6 +245,7 @@ a {
 .note,
 .small-print {
   color: var(--muted);
+  transition: color 0.5s ease;
 }
 
 .nav-chip,
@@ -272,6 +273,7 @@ a {
   border: 1px solid var(--border);
   background: linear-gradient(180deg, color-mix(in srgb, var(--surface-strong) 90%, transparent), color-mix(in srgb, var(--surface) 78%, transparent));
   box-shadow: var(--shadow);
+  transition: border-color 0.5s ease, background 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
 }
 
 .nav-chip {
@@ -339,6 +341,7 @@ a {
   color: var(--accent);
   letter-spacing: 0.04em;
   margin: 0;
+  transition: color 0.5s ease;
 }
 
 html[data-theme='light'] .hero h1 span {
@@ -1051,6 +1054,7 @@ html[data-theme='light'] .hero h1 span {
   color: var(--text);
   font-family: inherit;
   font-size: 0.95rem;
+  transition: border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .form-textarea {
@@ -1307,7 +1311,7 @@ html[data-theme='light'] .hero h1 span {
   display: grid;
   place-items: center;
   cursor: pointer;
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: border-color 0.5s, box-shadow 0.2s, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.5s, color 0.5s;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -1817,7 +1821,7 @@ html[data-theme='light'] .hero h1 span {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   padding: 0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.5s ease, border-color 0.5s ease;
 }
 
 .chatbot-launcher:hover {
@@ -1885,6 +1889,7 @@ html[data-theme='light'] .hero h1 span {
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
   overflow: hidden;
   resize: none;
+  transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
 }
 
 .chatbot-drag-handle {
@@ -1960,6 +1965,7 @@ html[data-theme='light'] .hero h1 span {
   color: var(--text);
   border-radius: 12px;
   cursor: pointer;
+  transition: border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .chatbot-close {
@@ -1990,16 +1996,22 @@ html[data-theme='light'] .hero h1 span {
   display: grid;
   gap: 4px;
   animation: popIn 220ms ease-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: background 0.5s ease, border-color 0.5s ease, color 0.5s ease;
 }
 
 .chatbot-message--assistant {
-  justify-self: start;
-  background: color-mix(in srgb, var(--surface-soft) 85%, var(--accent) 15%);
+  align-self: flex-start;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 4px;
 }
 
 .chatbot-message--user {
-  justify-self: end;
-  background: color-mix(in srgb, var(--accent) 16%, var(--surface-soft));
+  align-self: flex-end;
+  background: var(--accent);
+  color: #fff;
+  border-bottom-right-radius: 4px;
 }
 
 .chatbot-message__text {
@@ -2012,6 +2024,10 @@ html[data-theme='light'] .hero h1 span {
   font-size: 0.72rem;
   color: var(--muted);
   text-align: right;
+}
+
+.chatbot-message--user .chatbot-message__time {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .chatbot-message--assistant .chatbot-message__time {
@@ -2060,10 +2076,11 @@ html[data-theme='light'] .hero h1 span {
   background: var(--surface-soft);
   color: var(--text);
   padding: 12px;
+  transition: border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .chatbot-input::placeholder {
-  color: rgba(218, 228, 241, 0.55);
+  color: var(--muted);
 }
 
 .chatbot-send {
@@ -2212,6 +2229,7 @@ html[data-theme='light'] .hero h1 span {
   border: 1px solid var(--border);
   padding: 32px;
   box-shadow: var(--shadow);
+  transition: border-color 0.5s ease, background 0.5s ease, box-shadow 0.5s ease;
 }
 
 .about-card__inner {
@@ -2299,7 +2317,7 @@ html[data-theme='light'] .hero h1 span {
   background: color-mix(in srgb, var(--surface-strong) 60%, transparent);
   border: 1px solid var(--border);
   margin-bottom: 16px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.5s ease, box-shadow 0.2s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .timeline-item:hover {
