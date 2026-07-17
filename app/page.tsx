@@ -5,6 +5,7 @@ import { OpenChatbotButton } from '@/components/open-chatbot-button';
 import { ProjectVisual } from '@/components/project-visual';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { ThemeToggleButton } from '@/components/site-theme-toggle';
+import TechLogo from '@/components/tech-logo';
 import { featuredProjects, projects } from '@/lib/projects';
 
 const socialLinks = [
@@ -102,18 +103,14 @@ export default function HomePage() {
             <div className="stack-bento__header">Primary stack</div>
             <div className="stack-bento__grid">
               {[
-                { name: 'Next.js', slug: 'nextdotjs', color: 'FFFFFF' },
-                { name: 'TypeScript', slug: 'typescript', color: '3178C6' },
-                { name: 'Python', slug: 'python', color: '3776AB' },
-                { name: 'Supabase', slug: 'supabase', color: '3ECF8E' },
-                { name: 'FlutterFlow', slug: 'flutterflow', color: '6C63FF' },
-                { name: 'Groq', slug: 'groq', color: 'F55036' },
-                { name: 'Vercel', slug: 'vercel', color: 'FFFFFF' },
-                { name: 'Render', slug: 'render', color: '46E3B7' },
-              ].map((t) => (
-                <div className="stack-tile" key={t.name} title={t.name}>
-                  <img className="stack-tile__logo" src={`https://cdn.simpleicons.org/${t.slug}/${t.color}`} alt={`${t.name} logo`} loading="lazy" decoding="async" />
-                  <span className="stack-tile__name">{t.name}</span>
+                'Next.js', 'TypeScript', 'Python', 'Supabase',
+                'FlutterFlow', 'Groq', 'Vercel', 'Render',
+              ].map((name) => (
+                <div className="stack-tile" key={name} title={name}>
+                  <span className="stack-tile__logo-wrap">
+                    <TechLogo name={name} />
+                  </span>
+                  <span className="stack-tile__name">{name}</span>
                 </div>
               ))}
             </div>
@@ -121,16 +118,13 @@ export default function HomePage() {
             <div className="stack-bento__header stack-bento__header--sub">Also experienced with</div>
             <div className="stack-bento__grid stack-bento__grid--secondary">
               {[
-                { name: 'Unity', slug: 'unity', color: 'FFFFFF' },
-                { name: 'Phaser', slug: 'phaser', color: 'C53AFF' },
-                { name: 'Java', slug: 'java', color: 'ED8B00' },
-                { name: 'C#', slug: 'csharp', color: '68217A' },
-                { name: 'Figma', slug: 'figma', color: 'A259FF' },
-                { name: 'FastAPI', slug: 'fastapi', color: '009688' },
-              ].map((t) => (
-                <div className="stack-tile stack-tile--sm" key={t.name} title={t.name}>
-                  <img className="stack-tile__logo stack-tile__logo--sm" src={`https://cdn.simpleicons.org/${t.slug}/${t.color}`} alt={`${t.name} logo`} loading="lazy" decoding="async" />
-                  <span className="stack-tile__name">{t.name}</span>
+                'Unity', 'Phaser', 'Java', 'C#', 'Figma', 'FastAPI',
+              ].map((name) => (
+                <div className="stack-tile stack-tile--sm" key={name} title={name}>
+                  <span className="stack-tile__logo-wrap stack-tile__logo-wrap--sm">
+                    <TechLogo name={name} />
+                  </span>
+                  <span className="stack-tile__name">{name}</span>
                 </div>
               ))}
             </div>
