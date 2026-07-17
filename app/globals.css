@@ -299,6 +299,7 @@ a {
 
 .hero-copy {
   gap: 18px;
+  text-align: center;
 }
 
 .eyebrow,
@@ -322,6 +323,7 @@ a {
 .hero h1 {
   font-size: clamp(3.5rem, 9vw, 7.2rem);
   max-width: 9ch;
+  margin-inline: auto;
 }
 
 .hero h1 span {
@@ -1698,6 +1700,10 @@ html[data-theme='light'] .hero h1 span {
     left: 15px;
   }
 
+  .timeline-item {
+    padding: 18px 14px;
+  }
+
   .timeline-item::before {
     left: -22px;
   }
@@ -1710,6 +1716,10 @@ html[data-theme='light'] .hero h1 span {
   .timeline-header {
     flex-direction: column;
     gap: 2px;
+  }
+
+  .timeline-details li {
+    padding-left: 12px;
   }
 }
 
