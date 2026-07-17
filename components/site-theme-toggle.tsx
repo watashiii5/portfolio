@@ -9,29 +9,7 @@ const THEME_KEY = 'jermaine-portfolio-theme';
 const THEME_EVENT = 'jermaine-portfolio-theme-change';
 const CYCLE_MS = 3800;
 
-const SunSVG = () => (
-  <svg viewBox="0 0 36 36" width="30" height="30" fill="none">
-    <circle cx="18" cy="18" r="7" fill="#ffd700" />
-    <circle cx="18" cy="18" r="7" fill="url(#sunGlow)" />
-    <defs>
-      <radialGradient id="sunGlow">
-        <stop offset="0%" stopColor="#fff8e0" />
-        <stop offset="50%" stopColor="#ffd700" />
-        <stop offset="100%" stopColor="#ff9500" />
-      </radialGradient>
-    </defs>
-    <g stroke="#ffb300" strokeWidth="1.4" strokeLinecap="round" opacity="0.85">
-      <line x1="18" y1="3" x2="18" y2="7.5" />
-      <line x1="18" y1="28.5" x2="18" y2="33" />
-      <line x1="3" y1="18" x2="7.5" y2="18" />
-      <line x1="28.5" y1="18" x2="33" y2="18" />
-      <line x1="7.4" y1="7.4" x2="10.6" y2="10.6" />
-      <line x1="25.4" y1="25.4" x2="28.6" y2="28.6" />
-      <line x1="7.4" y1="28.6" x2="10.6" y2="25.4" />
-      <line x1="25.4" y1="10.6" x2="28.6" y2="7.4" />
-    </g>
-  </svg>
-);
+const SunSVG = () => <span className="theme-orb__sun-disk" />;
 
 const MoonSVG = () => (
   <svg viewBox="0 0 36 36" width="30" height="30" fill="none">
@@ -163,6 +141,17 @@ export function ThemeToggleButton() {
           </span>
           <span className="theme-orb__stars">
             <i /><i /><i /><i /><i /><i /><i /><i />
+            <i /><i /><i /><i /><i /><i /><i /><i />
+          </span>
+          <span className="theme-orb__clouds">
+            <span className="theme-orb__cloud theme-orb__cloud--1" />
+            <span className="theme-orb__cloud theme-orb__cloud--2" />
+            <span className="theme-orb__cloud theme-orb__cloud--3" />
+          </span>
+          <span className="theme-orb__birds">
+            <span className="theme-orb__bird theme-orb__bird--1" />
+            <span className="theme-orb__bird theme-orb__bird--2" />
+            <span className="theme-orb__bird theme-orb__bird--3" />
           </span>
         </span>
       )}
