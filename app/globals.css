@@ -1970,16 +1970,19 @@ html[data-theme='light'] .hero h1 span {
 }
 
 .chatbot-messages {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
   flex: 1;
   min-height: 0;
+  min-width: 0;
   overflow: auto;
   padding: 0 16px 16px;
 }
 
 .chatbot-message {
   max-width: 85%;
+  min-width: 0;
   padding: 10px 12px;
   border-radius: 14px;
   font-size: 0.92rem;
@@ -2001,6 +2004,8 @@ html[data-theme='light'] .hero h1 span {
 
 .chatbot-message__text {
   white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .chatbot-message__time {
