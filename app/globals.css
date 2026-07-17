@@ -1473,12 +1473,12 @@ html[data-theme='light'] .hero h1 span {
 }
 
 .theme-orb__arm--set {
-  animation: armSet 2.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: armSet 2.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .theme-orb__arm--rise {
   opacity: 0;
-  animation: armRise 2.2s cubic-bezier(0.4, 0, 0.2, 1) 1.4s forwards;
+  animation: armRise 2.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2s forwards;
 }
 
 .theme-orb__body {
@@ -1494,13 +1494,13 @@ html[data-theme='light'] .hero h1 span {
 }
 
 .theme-orb__body--sun {
-  background: radial-gradient(circle, #fff8e0 15%, #ffd700 45%, #ff9500 100%);
-  box-shadow: 0 0 18px 6px rgba(255, 200, 0, 0.5), 0 0 40px 12px rgba(255, 150, 0, 0.15);
+  background: radial-gradient(circle, #fff8e0 10%, #ffd700 40%, #ff9500 100%);
+  box-shadow: 0 0 20px 7px rgba(255, 200, 0, 0.55), 0 0 44px 14px rgba(255, 150, 0, 0.18);
 }
 
 .theme-orb__body--moon {
-  background: radial-gradient(circle at 35% 35%, #f8f8ff 30%, #d8d8e8 100%);
-  box-shadow: 0 0 12px 4px rgba(200, 200, 230, 0.35);
+  background: radial-gradient(circle at 35% 35%, #f8f8ff 25%, #d8d8e8 100%);
+  box-shadow: 0 0 14px 5px rgba(200, 200, 230, 0.4);
 }
 
 .theme-orb__stars {
@@ -1544,14 +1544,14 @@ html[data-theme='light'] .hero h1 span {
 }
 
 @keyframes armSet {
-  0%   { transform: rotate(-15deg); }
-  100% { transform: rotate(110deg); }
+  0%   { transform: rotate(15deg); }
+  100% { transform: rotate(120deg); }
 }
 
 @keyframes armRise {
-  0%   { transform: rotate(110deg); opacity: 0; }
-  12%  { opacity: 1; }
-  100% { transform: rotate(-15deg); opacity: 1; }
+  0%   { transform: rotate(120deg); opacity: 0; }
+  10%  { opacity: 1; }
+  100% { transform: rotate(30deg); opacity: 1; }
 }
 
 @keyframes skyGradSunrise {
