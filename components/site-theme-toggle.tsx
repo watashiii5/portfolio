@@ -128,31 +128,33 @@ export function ThemeToggleButton() {
     >
       {anim && (
         <span className="theme-orb__dome" aria-hidden="true">
-          <span className="theme-orb__sky" />
-          <span className="theme-orb__arm theme-orb__arm--set">
-            <span className={`theme-orb__body theme-orb__body--${isSunrise ? 'moon' : 'sun'}`}>
-              {isSunrise ? <MoonSVG /> : <SunSVG />}
+          <span className="theme-orb__dome-inner">
+            <span className="theme-orb__sky" />
+            <span className="theme-orb__arm theme-orb__arm--set">
+              <span className={`theme-orb__body theme-orb__body--${isSunrise ? 'moon' : 'sun'}`}>
+                {isSunrise ? <MoonSVG /> : <SunSVG />}
+              </span>
             </span>
-          </span>
-          <span className="theme-orb__arm theme-orb__arm--rise">
-            <span className={`theme-orb__body theme-orb__body--${isSunrise ? 'sun' : 'moon'}`}>
-              {isSunrise ? <SunSVG /> : <MoonSVG />}
+            <span className="theme-orb__arm theme-orb__arm--rise">
+              <span className={`theme-orb__body theme-orb__body--${isSunrise ? 'sun' : 'moon'}`}>
+                {isSunrise ? <SunSVG /> : <MoonSVG />}
+              </span>
             </span>
-          </span>
-          <span className="theme-orb__stars">
-            <i /><i /><i /><i /><i /><i /><i /><i />
-            <i /><i /><i /><i /><i /><i /><i /><i />
-            <i /><i /><i /><i /><i /><i /><i /><i />
-          </span>
-          <span className="theme-orb__clouds">
-            <span className="theme-orb__cloud theme-orb__cloud--1" />
-            <span className="theme-orb__cloud theme-orb__cloud--2" />
-            <span className="theme-orb__cloud theme-orb__cloud--3" />
-          </span>
-          <span className="theme-orb__birds">
-            <span className="theme-orb__bird theme-orb__bird--1" />
-            <span className="theme-orb__bird theme-orb__bird--2" />
-            <span className="theme-orb__bird theme-orb__bird--3" />
+            <span className="theme-orb__stars">
+              <i /><i /><i /><i /><i /><i /><i /><i />
+              <i /><i /><i /><i /><i /><i /><i /><i />
+              <i /><i /><i /><i /><i /><i /><i /><i />
+            </span>
+            <span className="theme-orb__clouds">
+              <span className="theme-orb__cloud theme-orb__cloud--1" />
+              <span className="theme-orb__cloud theme-orb__cloud--2" />
+              <span className="theme-orb__cloud theme-orb__cloud--3" />
+            </span>
+            <span className="theme-orb__birds">
+              <span className="theme-orb__bird theme-orb__bird--1" />
+              <span className="theme-orb__bird theme-orb__bird--2" />
+              <span className="theme-orb__bird theme-orb__bird--3" />
+            </span>
           </span>
         </span>
       )}

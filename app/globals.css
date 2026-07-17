@@ -1450,6 +1450,12 @@ html[data-theme='light'] .hero h1 span {
              domeGlow 3.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+.theme-orb__dome-inner {
+  position: absolute;
+  inset: 0;
+  animation: innerFade 3.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 .theme-orb__sky {
   position: absolute;
   inset: 0;
@@ -1568,11 +1574,11 @@ html[data-theme='light'] .hero h1 span {
 }
 
 .theme-orb--sunrise .theme-orb__clouds {
-  animation: fadeIn 1.5s ease 1.8s forwards;
+  animation: fadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 1.0s forwards;
 }
 
 .theme-orb--sunset .theme-orb__clouds {
-  animation: fadeOut 1.5s ease 0.5s forwards;
+  animation: fadeOut 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
 }
 
 .theme-orb__cloud {
@@ -1628,11 +1634,11 @@ html[data-theme='light'] .hero h1 span {
 }
 
 .theme-orb--sunrise .theme-orb__birds {
-  animation: fadeIn 1s ease 2.2s forwards;
+  animation: fadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.4s forwards;
 }
 
 .theme-orb--sunset .theme-orb__birds {
-  animation: fadeOut 0.8s ease 0.3s forwards;
+  animation: fadeOut 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
 }
 
 .theme-orb__bird {
@@ -1676,6 +1682,13 @@ html[data-theme='light'] .hero h1 span {
   14%  { opacity: 1; transform: scale(1); transform-origin: bottom left; }
   82%  { opacity: 1; transform: scale(1); transform-origin: bottom left; }
   100% { opacity: 0; transform: scale(0.03); transform-origin: bottom left; }
+}
+
+@keyframes innerFade {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  78%  { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 @keyframes domeGlow {
