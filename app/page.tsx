@@ -271,7 +271,7 @@ export default function HomePage() {
             <div className="section-kicker">Education</div>
             <h2>Academic background.</h2>
           </div>
-          <a className="button" href="/portfolio/workExperience/CV_Jermaine_Pasamba.pdf" download>
+          <a className="button" href="/portfolio/workExperience/Jermaine PasambaCV.pdf" download>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: 6 }}>
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
               <polyline points="7 10 12 15 17 10" />
@@ -349,7 +349,7 @@ export default function HomePage() {
             <div className="about-card__text">
               <p>I am a Computer Science student at Bulacan State University graduated in June 2026, with full-stack experience in Next.js and FastAPI, a 250-hour web development internship, and specialized expertise in building algorithmic optimization systems.</p>
               <div className="about-card__actions">
-                <a className="button" href="/portfolio/workExperience/CV_Jermaine_Pasamba.pdf" download>
+                <a className="button" href="/portfolio/workExperience/Jermaine PasambaCV.pdf" download>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: 6 }}>
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                     <polyline points="7 10 12 15 17 10" />
