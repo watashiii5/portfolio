@@ -5,7 +5,7 @@ import { OpenChatbotButton } from '@/components/open-chatbot-button';
 import { ProjectVisual } from '@/components/project-visual';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { ThemeToggleButton } from '@/components/site-theme-toggle';
-import { featuredProjects, projects, siteStats } from '@/lib/projects';
+import { featuredProjects, projects } from '@/lib/projects';
 
 const socialLinks = [
   {
@@ -98,13 +98,42 @@ export default function HomePage() {
               Contact
             </Link>
           </div>
-          <div className="hero-meta">
-            {siteStats.map((stat) => (
-              <div className="stat-card" key={stat.label}>
-                <span className="stat-label">{stat.label}</span>
-                <span className="stat-value">{stat.value}</span>
-              </div>
-            ))}
+          <div className="stack-bento">
+            <div className="stack-bento__header">Primary stack</div>
+            <div className="stack-bento__grid">
+              {[
+                { name: 'Next.js', abbr: 'N', color: '#fff' },
+                { name: 'TypeScript', abbr: 'TS', color: '#3178c6' },
+                { name: 'Python', abbr: 'Py', color: '#3776ab' },
+                { name: 'Supabase', abbr: 'Sb', color: '#3ecf8e' },
+                { name: 'FlutterFlow', abbr: 'FF', color: '#6c63ff' },
+                { name: 'Groq API', abbr: 'GQ', color: '#f55036' },
+                { name: 'Vercel', abbr: 'V', color: '#fff' },
+                { name: 'Render', abbr: 'Rd', color: '#46e3b7' },
+              ].map((t) => (
+                <div className="stack-tile" key={t.name} title={t.name}>
+                  <span className="stack-tile__icon" style={{ color: t.color }}>{t.abbr}</span>
+                  <span className="stack-tile__name">{t.name}</span>
+                </div>
+              ))}
+            </div>
+            <div className="stack-bento__divider" />
+            <div className="stack-bento__header stack-bento__header--sub">Also experienced with</div>
+            <div className="stack-bento__grid stack-bento__grid--secondary">
+              {[
+                { name: 'Unity', abbr: 'U', color: '#fff' },
+                { name: 'Phaser', abbr: 'Ph', color: '#c53aff' },
+                { name: 'Java', abbr: 'J', color: '#ed8b00' },
+                { name: 'C#', abbr: 'C#', color: '#68217a' },
+                { name: 'Figma', abbr: 'Fi', color: '#a259ff' },
+                { name: 'FastAPI', abbr: 'FA', color: '#009688' },
+              ].map((t) => (
+                <div className="stack-tile stack-tile--sm" key={t.name} title={t.name}>
+                  <span className="stack-tile__icon" style={{ color: t.color }}>{t.abbr}</span>
+                  <span className="stack-tile__name">{t.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
