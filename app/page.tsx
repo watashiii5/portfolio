@@ -149,7 +149,7 @@ export default function HomePage() {
           <div className="hero-stats">
             {[
               { label: 'Projects', value: '9' },
-              { label: 'Internship', value: '300 hrs' },
+              { label: 'Internship', value: '250 hrs' },
               { label: 'Live demos', value: '4' },
               { label: 'Stack', value: 'Next.js + Supabase' },
             ].map((stat) => (

@@ -80,7 +80,7 @@ export const projects: Project[] = [
     slug: 'web-developer-intern',
     title: 'Web Developer Intern',
     category: 'Internship',
-    summary: '300-hour internship with FlutterFlow, Supabase, Figma, and Groq for product UI and chatbot work.',
+    summary: '250-hour internship with FlutterFlow, Supabase, Figma, and Groq for product UI and chatbot work.',
     intro: 'Completed my OJT at Nantes Bautista Consulting Inc. with weekly team planning, review sessions, and product-focused UI work across the stack.',
     accent: '#f59e0b',
     visual: {
@@ -98,7 +98,7 @@ export const projects: Project[] = [
     ],
     metrics: [
       { label: 'Company', value: 'Nantes Bautista Consulting Inc.' },
-      { label: 'Hours', value: '300' },
+      { label: 'Hours', value: '250' },
       { label: 'Tooling', value: 'FlutterFlow + Supabase' },
     ],
     media: [

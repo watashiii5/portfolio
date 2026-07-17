@@ -82,7 +82,7 @@ const jermaineProfile = {
     {
       title: "Web Developer Intern",
       category: "Internship",
-      summary: "300-hour internship at Nantes Bautista Consulting Inc. with FlutterFlow, Supabase, Figma, and Groq for product UI and chatbot work.",
+      summary: "250-hour internship at Nantes Bautista Consulting Inc. with FlutterFlow, Supabase, Figma, and Groq for product UI and chatbot work.",
       tech: ["FlutterFlow", "Supabase", "Figma", "Groq API"],
       role: "Web developer intern",
       highlights: "Collaborated through weekly reviews aligned with team goals. Built and refined UI flows in FlutterFlow with a Groq-powered chatbot. Focused on polished, practical, and professional output.",
@@ -151,7 +151,7 @@ const jermaineProfile = {
   ],
   siteStats: {
     totalProjects: 9,
-    internshipHours: "300 hrs",
+    internshipHours: "250 hrs",
     liveDemos: 4,
     primaryStack: "Next.js + Supabase"
   }
@@ -165,12 +165,12 @@ When visitors ask about his personal side, interests, or favorites, use the foll
 
 - Tech Stack: Next.js (App Router), TypeScript, Python (FastAPI), Supabase, FlutterFlow, Vercel, Render, Unity, Phaser 3, Java, C#, Groq API.
 - Career Goal: Seeking remote, entry-level developer roles (target: 30k+ PHP).
-- Internship: 300-hour OJT at Nantes Bautista Consulting Inc. (June-July 2025) doing FlutterFlow + Supabase + Groq API work.
+- Internship: 250-hour OJT at Nantes Bautista Consulting Inc. (June-July 2025) doing FlutterFlow + Supabase + Groq API work.
 
 PROJECTS (9 total, 4 have live demos):
 
 1. QTime Room Allocation (Thesis) — Next.js, TypeScript, Supabase, Python. Room allocation tool for BulSU College of Science using Quantum-Inspired Annealing. Live: qia-room-allocation.vercel.app
-2. Web Developer Intern (Internship) — FlutterFlow, Supabase, Figma, Groq API. Product UI and chatbot work at Nantes Bautista Consulting Inc. 300 hours.
+2. Web Developer Intern (Internship) — FlutterFlow, Supabase, Figma, Groq API. Product UI and chatbot work at Nantes Bautista Consulting Inc. 250 hours.
 3. YUI AI Companion (AI App) — HTML, CSS, JavaScript, Groq API. Character-first companion chat interface. Live: yui-sao.vercel.app
 4. IT Ticketing System (Support) — Web UI, Workflow design, Support ops. Centralized help desk for tracking and resolving requests. Live: ticketing-system-beta-ten.vercel.app
 5. Lainfern Adventure (Game) — Unity, Game design. Nature-inspired adventure game with discovery mechanics. Live on Itch.io.
