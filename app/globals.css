@@ -1704,6 +1704,8 @@ html[data-theme='light'] .hero h1 span {
     flex-direction: column;
     gap: 12px;
     padding: 18px 14px;
+    align-items: center;
+    text-align: center;
   }
 
   .timeline-item::before {
@@ -1718,10 +1720,12 @@ html[data-theme='light'] .hero h1 span {
   .timeline-header {
     flex-direction: column;
     gap: 2px;
+    justify-content: center;
   }
 
   .timeline-details li {
     padding-left: 12px;
+    text-align: left;
   }
 }
 
