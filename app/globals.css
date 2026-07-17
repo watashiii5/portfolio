@@ -1540,6 +1540,14 @@ html[data-theme='light'] .hero h1 span {
 .theme-orb__stars i:nth-child(14) { top: 6%;  left: 8%;  width: 2.5px; height: 2.5px; }
 .theme-orb__stars i:nth-child(15) { top: 22%; left: 45%; width: 1.5px; height: 1.5px; }
 .theme-orb__stars i:nth-child(16) { top: 1%;  left: 75%; width: 2px; height: 2px; }
+.theme-orb__stars i:nth-child(17) { top: 9%;  left: 58%; width: 2px; height: 2px; }
+.theme-orb__stars i:nth-child(18) { top: 3%;  left: 35%; width: 1.5px; height: 1.5px; }
+.theme-orb__stars i:nth-child(19) { top: 15%; left: 82%; width: 2px; height: 2px; }
+.theme-orb__stars i:nth-child(20) { top: 11%; left: 5%;  width: 2.5px; height: 2.5px; }
+.theme-orb__stars i:nth-child(21) { top: 20%; left: 70%; width: 1.5px; height: 1.5px; }
+.theme-orb__stars i:nth-child(22) { top: 2%;  left: 62%; width: 2px; height: 2px; }
+.theme-orb__stars i:nth-child(23) { top: 17%; left: 30%; width: 2px; height: 2px; }
+.theme-orb__stars i:nth-child(24) { top: 5%;  left: 92%; width: 1.5px; height: 1.5px; }
 
 .theme-orb--sunrise .theme-orb__stars i {
   animation: starFadeOut 2.2s ease-in forwards;
@@ -1582,7 +1590,7 @@ html[data-theme='light'] .hero h1 span {
 
 .theme-orb__cloud--1 {
   width: 28px;
-  bottom: 38%;
+  bottom: 22%;
   left: -30px;
   animation: cloudDrift1 3.8s ease-in-out forwards;
 }
@@ -1591,7 +1599,7 @@ html[data-theme='light'] .hero h1 span {
 
 .theme-orb__cloud--2 {
   width: 22px;
-  bottom: 50%;
+  bottom: 30%;
   left: -25px;
   opacity: 0.6;
   animation: cloudDrift2 3.8s ease-in-out 0.4s forwards;
@@ -1601,7 +1609,7 @@ html[data-theme='light'] .hero h1 span {
 
 .theme-orb__cloud--3 {
   width: 18px;
-  bottom: 62%;
+  bottom: 16%;
   left: -20px;
   opacity: 0.4;
   animation: cloudDrift3 3.8s ease-in-out 0.8s forwards;

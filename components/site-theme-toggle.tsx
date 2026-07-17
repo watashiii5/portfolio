@@ -142,6 +142,7 @@ export function ThemeToggleButton() {
           <span className="theme-orb__stars">
             <i /><i /><i /><i /><i /><i /><i /><i />
             <i /><i /><i /><i /><i /><i /><i /><i />
+            <i /><i /><i /><i /><i /><i /><i /><i />
           </span>
           <span className="theme-orb__clouds">
             <span className="theme-orb__cloud theme-orb__cloud--1" />
