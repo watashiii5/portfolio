@@ -7,11 +7,7 @@ type ThemeMode = 'dark' | 'light';
 const THEME_KEY = 'jermaine-portfolio-theme';
 const THEME_EVENT = 'jermaine-portfolio-theme-change';
 
-type ThemeToggleButtonProps = {
-  compact?: boolean;
-};
-
-export function ThemeToggleButton({ compact = false }: ThemeToggleButtonProps) {
+export function ThemeToggleButton() {
   const [theme, setTheme] = useState<ThemeMode>('dark');
   const [ready, setReady] = useState(false);
 
@@ -59,20 +55,40 @@ export function ThemeToggleButton({ compact = false }: ThemeToggleButtonProps) {
   }
 
   return (
-    <button className={`theme-toggle-button${compact ? ' theme-toggle-button--compact' : ''}`} type="button" onClick={toggleTheme} aria-label="Toggle theme">
-      <span className="theme-toggle-icon" aria-hidden="true">
+    <button
+      className={`theme-orb theme-orb--${theme}`}
+      type="button"
+      onClick={toggleTheme}
+      aria-label={ready ? (theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode') : 'Toggle theme'}
+    >
+      <span className="theme-orb__glow" aria-hidden="true" />
+      <span className="theme-orb__icon" aria-hidden="true">
         {theme === 'dark' ? (
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-            <circle cx="12" cy="12" r="4.5" fill="currentColor" />
-            <path d="M12 1.8v3M12 19.2v3M4.7 4.7l2.1 2.1M17.2 17.2l2.1 2.1M1.8 12h3M19.2 12h3M4.7 19.3l2.1-2.1M17.2 6.8l2.1-2.1" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+            <path
+              d="M24.8 18.4A10.4 10.4 0 0 1 13.6 7.2a10.6 10.6 0 1 0 11.2 11.2Z"
+              fill="currentColor"
+            />
+            <circle cx="20" cy="10" r="1" fill="currentColor" opacity="0.5" />
+            <circle cx="25" cy="14" r="0.7" fill="currentColor" opacity="0.4" />
+            <circle cx="23" cy="7" r="0.5" fill="currentColor" opacity="0.3" />
           </svg>
         ) : (
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-            <path d="M18 15.8A7.8 7.8 0 0 1 8.2 6a8 8 0 1 0 9.8 9.8Z" fill="currentColor" />
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+            <circle cx="16" cy="16" r="6" fill="currentColor" />
+            <g stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="16" y1="26" x2="16" y2="30" />
+              <line x1="2" y1="16" x2="6" y2="16" />
+              <line x1="26" y1="16" x2="30" y2="16" />
+              <line x1="6.1" y1="6.1" x2="8.9" y2="8.9" />
+              <line x1="23.1" y1="23.1" x2="25.9" y2="25.9" />
+              <line x1="6.1" y1="25.9" x2="8.9" y2="23.1" />
+              <line x1="23.1" y1="8.9" x2="25.9" y2="6.1" />
+            </g>
           </svg>
         )}
       </span>
-      <span className="theme-toggle-label">{ready ? (theme === 'dark' ? 'Light' : 'Dark') : 'Theme'}</span>
     </button>
   );
 }

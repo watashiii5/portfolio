@@ -72,7 +72,7 @@ export default function HomePage() {
               </a>
             ))}
           </div>
-          <ThemeToggleButton compact />
+          <ThemeToggleButton />
         </div>
       </header>
 
