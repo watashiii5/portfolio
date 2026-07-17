@@ -74,8 +74,8 @@ function CustomIcon({ name, isDark, size = 22 }: { name: string; isDark: boolean
     ),
     'C#': (
       <svg viewBox="0 0 24 24" width={size} height={size} fill="none">
-        <circle cx="12" cy="12" r="10" stroke={accent('#68217A')} strokeWidth="1.5" />
-        <text x="6" y="16.5" fill={accent('#68217A')} fontSize="10" fontWeight="800" fontFamily="monospace">C#</text>
+        <circle cx="12" cy="12" r="10" stroke={isDark ? '#9B59B6' : '#68217A'} strokeWidth="1.5" />
+        <text x="6" y="16.5" fill={isDark ? '#9B59B6' : '#68217A'} fontSize="10" fontWeight="800" fontFamily="monospace">C#</text>
       </svg>
     ),
   };
