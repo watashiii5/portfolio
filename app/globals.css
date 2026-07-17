@@ -1425,10 +1425,10 @@ html[data-theme='light'] .hero h1 span {
 
 .theme-orb--animating {
   position: fixed !important;
-  bottom: clamp(12px, 2vw, 20px) !important;
-  left: clamp(12px, 2vw, 20px) !important;
-  width: min(68vw, 68vh, 380px) !important;
-  height: min(68vw, 68vh, 380px) !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: min(55vw, 55vh, 280px) !important;
+  height: min(55vw, 55vh, 280px) !important;
   border-radius: 0 100% 0 0 !important;
   overflow: hidden;
   pointer-events: none;
@@ -1483,24 +1483,24 @@ html[data-theme='light'] .hero h1 span {
 
 .theme-orb__body {
   position: absolute;
-  top: -18px;
+  top: -16px;
   left: 50%;
   transform: translateX(-50%);
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: grid;
   place-items: center;
 }
 
 .theme-orb__body--sun {
-  background: radial-gradient(circle, #ffd700 20%, #ff8c00 100%);
-  box-shadow: 0 0 22px 8px rgba(255, 200, 0, 0.55), 0 0 50px 16px rgba(255, 140, 0, 0.18);
+  background: radial-gradient(circle, #fff8e0 15%, #ffd700 45%, #ff9500 100%);
+  box-shadow: 0 0 18px 6px rgba(255, 200, 0, 0.5), 0 0 40px 12px rgba(255, 150, 0, 0.15);
 }
 
 .theme-orb__body--moon {
-  background: radial-gradient(circle at 35% 35%, #f0f0f0 35%, #c8c8d8 100%);
-  box-shadow: 0 0 14px 5px rgba(200, 200, 220, 0.35);
+  background: radial-gradient(circle at 35% 35%, #f8f8ff 30%, #d8d8e8 100%);
+  box-shadow: 0 0 12px 4px rgba(200, 200, 230, 0.35);
 }
 
 .theme-orb__stars {
@@ -1555,21 +1555,21 @@ html[data-theme='light'] .hero h1 span {
 }
 
 @keyframes skyGradSunrise {
-  0%   { background: linear-gradient(160deg, #0b0b1e 0%, #151530 40%, #1e1040 100%); }
-  20%  { background: linear-gradient(160deg, #1a1040 0%, #3d1a50 35%, #6b2060 70%, #a03050 100%); }
-  40%  { background: linear-gradient(160deg, #4a1942 0%, #c84b31 40%, #e87040 70%, #f4a261 100%); }
-  60%  { background: linear-gradient(160deg, #d4764e 0%, #f0a060 30%, #f4c980 60%, #ffe4b0 100%); }
-  80%  { background: linear-gradient(160deg, #6db3d8 0%, #87ceeb 40%, #a8daf0 70%, #d0ecff 100%); }
-  100% { background: linear-gradient(160deg, #5aafe0 0%, #82c8e8 35%, #b0ddf5 65%, #d8eeff 100%); }
+  0%   { background: linear-gradient(160deg, #061019 0%, #0a1624 40%, #0f1e38 100%); }
+  18%  { background: linear-gradient(160deg, #12153a 0%, #3a1848 30%, #6b2060 65%, #a03858 100%); }
+  38%  { background: linear-gradient(160deg, #6b2060 0%, #d4604a 35%, #e8884a 65%, #f4b868 100%); }
+  58%  { background: linear-gradient(160deg, #e09050 0%, #f0c078 30%, #f8e0a8 60%, #fff4d8 100%); }
+  78%  { background: linear-gradient(160deg, #7ac8d8 0%, #9ad8e8 35%, #b8e8f0 65%, #d8f2fa 100%); }
+  100% { background: linear-gradient(160deg, #c6dce4 0%, #ddeef4 35%, #edf7fa 65%, #f4fbfd 100%); }
 }
 
 @keyframes skyGradSunset {
-  0%   { background: linear-gradient(160deg, #5aafe0 0%, #82c8e8 35%, #b0ddf5 65%, #d8eeff 100%); }
-  20%  { background: linear-gradient(160deg, #d4764e 0%, #f0a060 30%, #f4c980 60%, #ffe4b0 100%); }
-  40%  { background: linear-gradient(160deg, #c84b31 0%, #e87040 35%, #f4a261 65%, #ffd166 100%); }
-  60%  { background: linear-gradient(160deg, #6b2060 0%, #a03050 35%, #4a1942 70%, #2d1060 100%); }
-  80%  { background: linear-gradient(160deg, #1a1040 0%, #151530 40%, #0f1030 70%, #0b0b1e 100%); }
-  100% { background: linear-gradient(160deg, #080818 0%, #0d0d25 35%, #10102a 65%, #0b0b1e 100%); }
+  0%   { background: linear-gradient(160deg, #c6dce4 0%, #ddeef4 35%, #edf7fa 65%, #f4fbfd 100%); }
+  18%  { background: linear-gradient(160deg, #e09050 0%, #f0c078 30%, #f8e0a8 60%, #fff4d8 100%); }
+  38%  { background: linear-gradient(160deg, #d4604a 0%, #e8884a 35%, #c84838 65%, #8a2850 100%); }
+  58%  { background: linear-gradient(160deg, #6b2060 0%, #3a1848 35%, #1a1040 65%, #0f0e30 100%); }
+  78%  { background: linear-gradient(160deg, #0a1624 0%, #081020 40%, #070e1c 70%, #061019 100%); }
+  100% { background: linear-gradient(160deg, #050c15 0%, #061019 35%, #0a1624 65%, #061019 100%); }
 }
 
 @keyframes starFadeIn {

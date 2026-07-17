@@ -10,27 +10,45 @@ const THEME_EVENT = 'jermaine-portfolio-theme-change';
 const CYCLE_MS = 3800;
 
 const SunSVG = () => (
-  <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
-    <circle cx="16" cy="16" r="6" fill="#ffd700" />
-    <g stroke="#ffb800" strokeWidth="1.5" strokeLinecap="round">
-      <line x1="16" y1="3" x2="16" y2="7" />
-      <line x1="16" y1="25" x2="16" y2="29" />
-      <line x1="3" y1="16" x2="7" y2="16" />
-      <line x1="25" y1="16" x2="29" y2="16" />
-      <line x1="6.8" y1="6.8" x2="9.6" y2="9.6" />
-      <line x1="22.4" y1="22.4" x2="25.2" y2="25.2" />
-      <line x1="6.8" y1="25.2" x2="9.6" y2="22.4" />
-      <line x1="22.4" y1="9.6" x2="25.2" y2="6.8" />
+  <svg viewBox="0 0 36 36" width="30" height="30" fill="none">
+    <circle cx="18" cy="18" r="7" fill="#ffd700" />
+    <circle cx="18" cy="18" r="7" fill="url(#sunGlow)" />
+    <defs>
+      <radialGradient id="sunGlow">
+        <stop offset="0%" stopColor="#fff8e0" />
+        <stop offset="50%" stopColor="#ffd700" />
+        <stop offset="100%" stopColor="#ff9500" />
+      </radialGradient>
+    </defs>
+    <g stroke="#ffb300" strokeWidth="1.4" strokeLinecap="round" opacity="0.85">
+      <line x1="18" y1="3" x2="18" y2="7.5" />
+      <line x1="18" y1="28.5" x2="18" y2="33" />
+      <line x1="3" y1="18" x2="7.5" y2="18" />
+      <line x1="28.5" y1="18" x2="33" y2="18" />
+      <line x1="7.4" y1="7.4" x2="10.6" y2="10.6" />
+      <line x1="25.4" y1="25.4" x2="28.6" y2="28.6" />
+      <line x1="7.4" y1="28.6" x2="10.6" y2="25.4" />
+      <line x1="25.4" y1="10.6" x2="28.6" y2="7.4" />
     </g>
   </svg>
 );
 
 const MoonSVG = () => (
-  <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
-    <path d="M24.8 18.4A10.4 10.4 0 0 1 13.6 7.2a10.6 10.6 0 1 0 11.2 11.2Z" fill="#e0e0ec" />
-    <circle cx="20" cy="10" r="1.2" fill="#b8b8cc" opacity="0.6" />
-    <circle cx="24" cy="14" r="0.8" fill="#b8b8cc" opacity="0.4" />
-    <circle cx="22" cy="7" r="0.6" fill="#b8b8cc" opacity="0.3" />
+  <svg viewBox="0 0 36 36" width="30" height="30" fill="none">
+    <path
+      d="M27.6 20.2A11.5 11.5 0 0 1 15.2 7.8a11.8 11.8 0 1 0 12.4 12.4Z"
+      fill="url(#moonGrad)"
+    />
+    <defs>
+      <radialGradient id="moonGrad" cx="0.38" cy="0.38">
+        <stop offset="0%" stopColor="#f8f8ff" />
+        <stop offset="60%" stopColor="#e0e0ec" />
+        <stop offset="100%" stopColor="#c0c0d0" />
+      </radialGradient>
+    </defs>
+    <circle cx="22.5" cy="11" r="1.3" fill="#b0b0c4" opacity="0.5" />
+    <circle cx="26.5" cy="15.5" r="0.9" fill="#b0b0c4" opacity="0.35" />
+    <circle cx="24" cy="8" r="0.7" fill="#b0b0c4" opacity="0.25" />
   </svg>
 );
 
