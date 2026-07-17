@@ -1280,6 +1280,23 @@ html[data-theme='light'] .hero h1 span {
   pointer-events: auto;
 }
 
+.scroll-top-wrap {
+  position: fixed;
+  right: calc(clamp(12px, 2vw, 20px) + min(24rem, calc(100vw - 24px)) + 12px);
+  bottom: clamp(12px, 2vw, 20px);
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.4) translateY(20px);
+  transition: opacity 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.scroll-top-wrap--visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
 .scroll-top {
   width: 42px;
   height: 42px;
@@ -1290,19 +1307,9 @@ html[data-theme='light'] .hero h1 span {
   display: grid;
   place-items: center;
   cursor: pointer;
-  opacity: 0;
-  transform: scale(0.4) translateY(12px);
-  transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s, box-shadow 0.2s;
-  pointer-events: none;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-}
-
-.scroll-top--visible {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-  pointer-events: auto;
-  transition-delay: 0.08s;
 }
 
 .scroll-top:hover {
@@ -1407,6 +1414,179 @@ html[data-theme='light'] .hero h1 span {
 @keyframes sunPulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.8; }
+}
+
+/* ── Sky cycle transition ── */
+.sky-cycle {
+  position: fixed;
+  bottom: clamp(12px, 2vw, 20px);
+  left: clamp(12px, 2vw, 20px);
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  z-index: 9999;
+  overflow: hidden;
+  pointer-events: none;
+  animation: skyCycleFade 3.8s ease-in-out forwards;
+}
+
+.sky-cycle__sky {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.sky-cycle--sunrise .sky-cycle__sky {
+  background: radial-gradient(circle at 50% 120%, #1a1a2e 0%, #16213e 40%, #0f3460 70%, #533483 100%);
+  animation: skySunrise 3.8s ease-in-out forwards;
+}
+
+.sky-cycle--sunset .sky-cycle__sky {
+  background: radial-gradient(circle at 50% 80%, #87ceeb 0%, #f4a261 50%, #e76f51 80%, #1a1a2e 100%);
+  animation: skySunset 3.8s ease-in-out forwards;
+}
+
+.sky-cycle__sun,
+.sky-cycle__moon {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sky-cycle__sun {
+  background: radial-gradient(circle, #ffd700 30%, #ff8c00 100%);
+  box-shadow: 0 0 24px 8px rgba(255, 200, 0, 0.5);
+}
+
+.sky-cycle__moon {
+  background: radial-gradient(circle at 35% 35%, #f0f0f0 40%, #d4d4d4 100%);
+  box-shadow: 0 0 16px 4px rgba(200, 200, 220, 0.4);
+}
+
+/* Sunrise: moon sets, sun rises */
+.sky-cycle__moon--set {
+  bottom: 50%;
+  animation: moonSet 3.8s ease-in-out forwards;
+}
+
+.sky-cycle__sun--rise {
+  bottom: -40px;
+  animation: sunRise 3.8s ease-in-out forwards;
+}
+
+/* Sunset: sun sets, moon rises */
+.sky-cycle__sun--set {
+  bottom: 50%;
+  animation: sunSet 3.8s ease-in-out forwards;
+}
+
+.sky-cycle__moon--rise {
+  bottom: -40px;
+  animation: moonRise 3.8s ease-in-out forwards;
+}
+
+.sky-cycle__glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.sky-cycle__glow--sunrise {
+  background: radial-gradient(circle at 50% 80%, rgba(255, 140, 50, 0.6) 0%, transparent 60%);
+  animation: glowSunrise 3.8s ease-in-out forwards;
+}
+
+.sky-cycle__glow--sunset {
+  background: radial-gradient(circle at 50% 80%, rgba(255, 100, 50, 0.6) 0%, transparent 60%);
+  animation: glowSunset 3.8s ease-in-out forwards;
+}
+
+.sky-cycle__stars {
+  position: absolute;
+  inset: 0;
+}
+
+.sky-cycle__star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+}
+
+.sky-cycle--sunset .sky-cycle__star {
+  animation: starAppear 0.4s ease forwards;
+}
+
+@keyframes skySunrise {
+  0% { background: radial-gradient(circle at 50% 120%, #1a1a2e 0%, #16213e 40%, #0f3460 70%, #533483 100%); }
+  35% { background: radial-gradient(circle at 50% 90%, #2d1b69 0%, #e76f51 40%, #f4a261 70%, #ffd166 100%); }
+  65% { background: radial-gradient(circle at 50% 60%, #87ceeb 0%, #98d8ef 40%, #b8e0f0 70%, #ffe4b5 100%); }
+  100% { background: radial-gradient(circle at 50% 40%, #87ceeb 0%, #b0e0e6 40%, #e0f0ff 70%, #ffffff 100%); }
+}
+
+@keyframes skySunset {
+  0% { background: radial-gradient(circle at 50% 40%, #87ceeb 0%, #b0e0e6 40%, #e0f0ff 70%, #ffffff 100%); }
+  35% { background: radial-gradient(circle at 50% 70%, #f4a261 0%, #e76f51 40%, #d62828 70%, #2d1b69 100%); }
+  65% { background: radial-gradient(circle at 50% 100%, #1a1a2e 0%, #16213e 40%, #0f3460 70%, #533483 100%); }
+  100% { background: radial-gradient(circle at 50% 120%, #0d0d1a 0%, #1a1a2e 40%, #16213e 70%, #0f3460 100%); }
+}
+
+@keyframes moonSet {
+  0% { bottom: 15%; opacity: 1; }
+  40% { bottom: 50%; opacity: 0.8; }
+  100% { bottom: 110%; opacity: 0; }
+}
+
+@keyframes sunRise {
+  0% { bottom: -40px; opacity: 0; }
+  30% { bottom: 10%; opacity: 0.6; }
+  60% { bottom: 25%; opacity: 1; }
+  100% { bottom: 30%; opacity: 1; }
+}
+
+@keyframes sunSet {
+  0% { bottom: 30%; opacity: 1; }
+  40% { bottom: 15%; opacity: 0.8; }
+  100% { bottom: -40px; opacity: 0; }
+}
+
+@keyframes moonRise {
+  0% { bottom: -40px; opacity: 0; }
+  40% { bottom: 10%; opacity: 0.6; }
+  70% { bottom: 22%; opacity: 1; }
+  100% { bottom: 25%; opacity: 1; }
+}
+
+@keyframes glowSunrise {
+  0%, 20% { opacity: 0; }
+  40% { opacity: 0.8; }
+  60% { opacity: 0.5; }
+  100% { opacity: 0; }
+}
+
+@keyframes glowSunset {
+  0%, 15% { opacity: 0; }
+  35% { opacity: 0.7; }
+  55% { opacity: 0.4; }
+  100% { opacity: 0; }
+}
+
+@keyframes starAppear {
+  0% { opacity: 0; transform: scale(0); }
+  100% { opacity: 0.8; transform: scale(1); }
+}
+
+@keyframes skyCycleFade {
+  0% { opacity: 0; transform: scale(0.6); }
+  8% { opacity: 1; transform: scale(1); }
+  88% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.1); }
 }
 
 .chatbot-launcher {
@@ -1758,6 +1938,10 @@ html[data-theme='light'] .hero h1 span {
 
   .chatbot-panel {
     width: min(22rem, calc(100vw - 18px));
+  }
+
+  .scroll-top-wrap {
+    right: calc(clamp(12px, 2vw, 20px) + min(22rem, calc(100vw - 18px)) + 12px);
   }
 
   .theme-float {
