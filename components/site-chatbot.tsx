@@ -18,6 +18,10 @@ function formatTime(date: Date) {
   return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
 }
 
+const PANEL_HEIGHT_MIN = 280;
+const PANEL_HEIGHT_MAX_RATIO = 0.85;
+const PANEL_HEIGHT_DEFAULT = 480;
+
 export default function SiteChatbot() {
   const apiUrl = process.env.NEXT_PUBLIC_CHATBOT_API_URL || 'https://portfolio-opal-iota-2ffsqksb9m.vercel.app/api/chat';
   const [open, setOpen] = useState(false);
@@ -26,9 +30,11 @@ export default function SiteChatbot() {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [liveHint, setLiveHint] = useState<string | null>(null);
+  const [panelHeight, setPanelHeight] = useState(PANEL_HEIGHT_DEFAULT);
   const sessionIdRef = useRef('');
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const hintTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const dragRef = useRef<{ startY: number; startHeight: number } | null>(null);
 
   useEffect(() => {
     const saved = sessionStorage.getItem(STORAGE_KEY);
@@ -119,6 +125,29 @@ export default function SiteChatbot() {
 
   const title = useMemo(() => 'Ask about Jermaine', []);
 
+  function onDragStart(e: React.MouseEvent) {
+    e.preventDefault();
+    dragRef.current = { startY: e.clientY, startHeight: panelHeight };
+    const onMove = (ev: MouseEvent) => {
+      if (!dragRef.current) return;
+      const delta = dragRef.current.startY - ev.clientY;
+      const maxH = window.innerHeight * PANEL_HEIGHT_MAX_RATIO;
+      const next = Math.min(maxH, Math.max(PANEL_HEIGHT_MIN, dragRef.current.startHeight + delta));
+      setPanelHeight(next);
+    };
+    const onUp = () => {
+      dragRef.current = null;
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseup', onUp);
+      document.body.style.userSelect = '';
+      document.body.style.cursor = '';
+    };
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+    document.body.style.userSelect = 'none';
+    document.body.style.cursor = 'ns-resize';
+  }
+
   async function sendMessage() {
     const text = input.trim();
     if (!text || busy) return;
@@ -178,7 +207,10 @@ export default function SiteChatbot() {
       </button>
 
       {open ? (
-        <section className="chatbot-panel" id="portfolio-chatbot-panel" aria-label="Portfolio chatbot">
+        <section className="chatbot-panel" id="portfolio-chatbot-panel" aria-label="Portfolio chatbot" style={{ height: panelHeight }}>
+          <div className="chatbot-drag-handle" onMouseDown={onDragStart} aria-hidden="true">
+            <span className="chatbot-drag-handle__bar" />
+          </div>
           <header className="chatbot-panel__header">
             <div className="chatbot-panel__brand">
               <span className="chatbot-panel__avatar" aria-hidden="true">

@@ -1171,11 +1171,36 @@ html[data-theme='light'] .hero h1 span {
   right: 0;
   bottom: 64px;
   width: min(24rem, calc(100vw - 24px));
+  height: 480px;
+  display: flex;
+  flex-direction: column;
   border-radius: 24px;
   background: color-mix(in srgb, var(--surface-strong) 96%, transparent);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
   overflow: hidden;
+  resize: none;
+}
+
+.chatbot-drag-handle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 0 2px;
+  cursor: ns-resize;
+  flex-shrink: 0;
+}
+
+.chatbot-drag-handle__bar {
+  width: 36px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  transition: background 0.2s;
+}
+
+.chatbot-drag-handle:hover .chatbot-drag-handle__bar {
+  background: rgba(255, 255, 255, 0.35);
 }
 
 .chatbot-panel__header {
@@ -1183,8 +1208,9 @@ html[data-theme='light'] .hero h1 span {
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
-  padding: 16px 16px 10px;
+  padding: 10px 16px 10px;
   text-align: left;
+  flex-shrink: 0;
 }
 
 .chatbot-panel__brand {
@@ -1241,7 +1267,8 @@ html[data-theme='light'] .hero h1 span {
 .chatbot-messages {
   display: grid;
   gap: 10px;
-  max-height: 18rem;
+  flex: 1;
+  min-height: 0;
   overflow: auto;
   padding: 0 16px 16px;
 }
@@ -1313,6 +1340,7 @@ html[data-theme='light'] .hero h1 span {
   grid-template-columns: 1fr auto;
   gap: 8px;
   padding: 0 16px 12px;
+  flex-shrink: 0;
 }
 
 .chatbot-input {
