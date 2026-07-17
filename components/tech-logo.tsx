@@ -56,16 +56,20 @@ function CustomIcon({ name, isDark, size = 22 }: { name: string; isDark: boolean
     ),
     'Phaser': (
       <svg viewBox="0 0 24 24" width={size} height={size} fill="none">
-        <rect x="2" y="2" width="20" height="20" rx="4" stroke={accent('#C53AFF')} strokeWidth="1.5" />
-        <path d="M7 8h4c2.2 0 4 1.8 4 4s-1.8 4-4 4H7V8z" stroke={accent('#C53AFF')} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="17" cy="8" r="1.5" fill={accent('#C53AFF')} />
+        <path d="M12 2C12 2 5 10 5 14.5a7 7 0 0 0 14 0C19 10 12 2 12 2z" fill={accent('#C53AFF')} />
+        <circle cx="9.5" cy="13.5" r="1.3" fill="#fff" />
+        <circle cx="14.5" cy="13.5" r="1.3" fill="#fff" />
+        <path d="M9.5 16.5c1 1.2 4 1.2 5 0" stroke="#fff" strokeWidth="1" strokeLinecap="round" fill="none" />
       </svg>
     ),
     'Java': (
       <svg viewBox="0 0 24 24" width={size} height={size} fill="none">
-        <path d="M6 3c5.5 3 8.5 7 9 11.5-.5 3-2 5.5-3 6.5" stroke={accent('#ED8B00')} strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M18 3c-5 3.5-7.5 7.5-8 11.5.5 3 1.5 5 2.5 6.5" stroke={accent('#ED8B00')} strokeWidth="1.5" strokeLinecap="round" />
-        <text x="7" y="16" fill={accent('#ED8B00')} fontSize="7" fontWeight="800" fontFamily="monospace">Jv</text>
+        <rect x="5" y="12" width="14" height="9" rx="1.5" stroke={accent('#ED8B00')} strokeWidth="1.5" />
+        <path d="M8 12V9c0-1 .5-2 2-2.5" stroke={accent('#ED8B00')} strokeWidth="1.3" strokeLinecap="round" />
+        <path d="M12 12V8.5c0-1 .8-1.8 2-2" stroke={accent('#ED8B00')} strokeWidth="1.3" strokeLinecap="round" />
+        <path d="M16 12V10c0-.8.5-1.5 1.5-1.8" stroke={accent('#ED8B00')} strokeWidth="1.3" strokeLinecap="round" />
+        <line x1="7" y1="15" x2="17" y2="15" stroke={accent('#ED8B00')} strokeWidth="1" opacity="0.5" />
+        <line x1="7" y1="17.5" x2="17" y2="17.5" stroke={accent('#ED8B00')} strokeWidth="1" opacity="0.5" />
       </svg>
     ),
     'C#': (
