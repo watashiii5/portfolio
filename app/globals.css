@@ -1720,7 +1720,7 @@ html[data-theme='light'] .hero h1 span {
   .timeline-header {
     flex-direction: column;
     gap: 2px;
-    justify-content: center;
+    align-items: center;
   }
 
   .timeline-details li {
