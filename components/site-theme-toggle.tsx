@@ -112,7 +112,7 @@ export function ThemeToggleButton() {
         commit(pendingRef.current);
         pendingRef.current = null;
       }
-    }, 2600);
+    }, 1900);
 
     clearTimer.current = setTimeout(() => setAnim(null), CYCLE_MS);
   }

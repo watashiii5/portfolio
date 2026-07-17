@@ -1445,7 +1445,9 @@ html[data-theme='light'] .hero h1 span {
   overflow: hidden;
   z-index: 9999;
   pointer-events: none;
-  animation: domeLifecycle 3.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  filter: brightness(1);
+  animation: domeLifecycle 3.8s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+             domeGlow 3.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .theme-orb__sky {
@@ -1454,11 +1456,11 @@ html[data-theme='light'] .hero h1 span {
 }
 
 .theme-orb--sunrise .theme-orb__sky {
-  animation: skyGradSunrise 3.8s ease-in-out forwards;
+  animation: skyGradSunrise 3.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .theme-orb--sunset .theme-orb__sky {
-  animation: skyGradSunset 3.8s ease-in-out forwards;
+  animation: skyGradSunset 3.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .theme-orb__arm {
@@ -1472,12 +1474,12 @@ html[data-theme='light'] .hero h1 span {
 }
 
 .theme-orb__arm--set {
-  animation: armSet 2.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: armSet 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .theme-orb__arm--rise {
   opacity: 0;
-  animation: armRise 2.4s cubic-bezier(0.16, 1, 0.3, 1) 1.0s forwards;
+  animation: armRise 2.4s cubic-bezier(0.22, 1, 0.36, 1) 1.0s forwards;
 }
 
 .theme-orb__body {
@@ -1669,10 +1671,20 @@ html[data-theme='light'] .hero h1 span {
 }
 
 @keyframes domeLifecycle {
-  0%   { opacity: 0; transform: scale(0.05); transform-origin: bottom left; }
-  10%  { opacity: 1; transform: scale(1); transform-origin: bottom left; }
-  85%  { opacity: 1; transform: scale(1); transform-origin: bottom left; }
-  100% { opacity: 0.3; transform: scale(0.05); transform-origin: bottom left; }
+  0%   { opacity: 0; transform: scale(0.03); transform-origin: bottom left; }
+  8%   { opacity: 1; transform: scale(1.04); transform-origin: bottom left; }
+  14%  { opacity: 1; transform: scale(1); transform-origin: bottom left; }
+  82%  { opacity: 1; transform: scale(1); transform-origin: bottom left; }
+  100% { opacity: 0; transform: scale(0.03); transform-origin: bottom left; }
+}
+
+@keyframes domeGlow {
+  0%   { box-shadow: 0 0 0 0 transparent; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); }
+  12%  { box-shadow: 0 0 30px 8px rgba(127, 216, 228, 0.25), 0 0 60px 16px rgba(127, 216, 228, 0.1); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); }
+  45%  { box-shadow: 0 0 40px 12px rgba(255, 200, 100, 0.35), 0 0 80px 24px rgba(255, 160, 60, 0.12); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+  55%  { box-shadow: 0 0 40px 12px rgba(100, 180, 220, 0.3), 0 0 80px 24px rgba(80, 160, 200, 0.1); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+  80%  { box-shadow: 0 0 20px 6px rgba(127, 216, 228, 0.15), 0 0 40px 12px rgba(127, 216, 228, 0.05); backdrop-filter: blur(1px); -webkit-backdrop-filter: blur(1px); }
+  100% { box-shadow: 0 0 0 0 transparent; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); }
 }
 
 @keyframes armSet {
