@@ -9,171 +9,157 @@ const THEME_KEY = 'jermaine-portfolio-theme';
 const THEME_EVENT = 'jermaine-portfolio-theme-change';
 const CYCLE_MS = 3800;
 
-function SkyCycle({ dir, onDone }: { dir: AnimDir; onDone: () => void }) {
-  const isSunrise = dir === 'sunrise';
+const SunSVG = () => (
+  <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+    <circle cx="16" cy="16" r="6" fill="#ffd700" />
+    <g stroke="#ffb800" strokeWidth="1.5" strokeLinecap="round">
+      <line x1="16" y1="3" x2="16" y2="7" />
+      <line x1="16" y1="25" x2="16" y2="29" />
+      <line x1="3" y1="16" x2="7" y2="16" />
+      <line x1="25" y1="16" x2="29" y2="16" />
+      <line x1="6.8" y1="6.8" x2="9.6" y2="9.6" />
+      <line x1="22.4" y1="22.4" x2="25.2" y2="25.2" />
+      <line x1="6.8" y1="25.2" x2="9.6" y2="22.4" />
+      <line x1="22.4" y1="9.6" x2="25.2" y2="6.8" />
+    </g>
+  </svg>
+);
 
-  return (
-    <div className={`sky-cycle sky-cycle--${dir}`} onAnimationEnd={onDone}>
-      <div className="sky-cycle__sky" />
+const MoonSVG = () => (
+  <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+    <path d="M24.8 18.4A10.4 10.4 0 0 1 13.6 7.2a10.6 10.6 0 1 0 11.2 11.2Z" fill="#e0e0ec" />
+    <circle cx="20" cy="10" r="1.2" fill="#b8b8cc" opacity="0.6" />
+    <circle cx="24" cy="14" r="0.8" fill="#b8b8cc" opacity="0.4" />
+    <circle cx="22" cy="7" r="0.6" fill="#b8b8cc" opacity="0.3" />
+  </svg>
+);
 
-      {isSunrise ? (
-        <>
-          <div className="sky-cycle__moon sky-cycle__moon--set" />
-          <div className="sky-cycle__sun sky-cycle__sun--rise" />
-          <div className="sky-cycle__glow sky-cycle__glow--sunrise" />
-        </>
-      ) : (
-        <>
-          <div className="sky-cycle__sun sky-cycle__sun--set" />
-          <div className="sky-cycle__moon sky-cycle__moon--rise" />
-          <div className="sky-cycle__glow sky-cycle__glow--sunset" />
-        </>
-      )}
+const SmallSunSVG = () => (
+  <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+    <circle cx="16" cy="16" r="6" fill="currentColor" />
+    <g stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+      <line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="16" y1="26" x2="16" y2="30" />
+      <line x1="2" y1="16" x2="6" y2="16" />
+      <line x1="26" y1="16" x2="30" y2="16" />
+      <line x1="6.1" y1="6.1" x2="8.9" y2="8.9" />
+      <line x1="23.1" y1="23.1" x2="25.9" y2="25.9" />
+      <line x1="6.1" y1="25.9" x2="8.9" y2="23.1" />
+      <line x1="23.1" y1="8.9" x2="25.9" y2="6.1" />
+    </g>
+  </svg>
+);
 
-      <div className="sky-cycle__stars">
-        {isSunrise ? null : (
-          <>
-            <span className="sky-cycle__star" style={{ top: '18%', left: '30%', animationDelay: '1.6s' }} />
-            <span className="sky-cycle__star" style={{ top: '12%', left: '60%', animationDelay: '2s' }} />
-            <span className="sky-cycle__star" style={{ top: '28%', left: '75%', animationDelay: '2.3s' }} />
-            <span className="sky-cycle__star" style={{ top: '8%', left: '45%', animationDelay: '1.8s' }} />
-            <span className="sky-cycle__star" style={{ top: '22%', left: '20%', animationDelay: '2.5s' }} />
-          </>
-        )}
-      </div>
-    </div>
-  );
-}
+const SmallMoonSVG = () => (
+  <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+    <path d="M24.8 18.4A10.4 10.4 0 0 1 13.6 7.2a10.6 10.6 0 1 0 11.2 11.2Z" fill="currentColor" />
+    <circle cx="20" cy="10" r="1" fill="currentColor" opacity="0.5" />
+    <circle cx="25" cy="14" r="0.7" fill="currentColor" opacity="0.4" />
+    <circle cx="23" cy="7" r="0.5" fill="currentColor" opacity="0.3" />
+  </svg>
+);
 
 export function ThemeToggleButton() {
   const [theme, setTheme] = useState<ThemeMode>('dark');
   const [ready, setReady] = useState(false);
   const [anim, setAnim] = useState<AnimDir>(null);
   const pendingRef = useRef<ThemeMode | null>(null);
-  const cycleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const commitTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const clearTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const applyTheme = (nextTheme: ThemeMode) => {
-      setTheme(nextTheme);
-      document.documentElement.dataset.theme = nextTheme;
+    const apply = (t: ThemeMode) => {
+      setTheme(t);
+      document.documentElement.dataset.theme = t;
     };
-
     const stored = window.localStorage.getItem(THEME_KEY) as ThemeMode | null;
     const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-    const nextTheme = stored === 'light' || stored === 'dark' ? stored : prefersLight ? 'light' : 'dark';
-
-    applyTheme(nextTheme);
+    const next = stored === 'light' || stored === 'dark' ? stored : prefersLight ? 'light' : 'dark';
+    apply(next);
     setReady(true);
 
-    const handleStorage = (event: StorageEvent) => {
-      if (event.key === THEME_KEY && (event.newValue === 'light' || event.newValue === 'dark')) {
-        applyTheme(event.newValue);
-      }
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === THEME_KEY && (e.newValue === 'light' || e.newValue === 'dark')) apply(e.newValue);
     };
-
-    const handleThemeChange = (event: Event) => {
-      const customEvent = event as CustomEvent<ThemeMode>;
-      if (customEvent.detail === 'light' || customEvent.detail === 'dark') {
-        applyTheme(customEvent.detail);
-      }
+    const onCustom = (e: Event) => {
+      const d = (e as CustomEvent<ThemeMode>).detail;
+      if (d === 'light' || d === 'dark') apply(d);
     };
-
-    window.addEventListener('storage', handleStorage);
-    window.addEventListener(THEME_EVENT, handleThemeChange as EventListener);
-
+    window.addEventListener('storage', onStorage);
+    window.addEventListener(THEME_EVENT, onCustom as EventListener);
     return () => {
-      window.removeEventListener('storage', handleStorage);
-      window.removeEventListener(THEME_EVENT, handleThemeChange as EventListener);
+      window.removeEventListener('storage', onStorage);
+      window.removeEventListener(THEME_EVENT, onCustom as EventListener);
     };
   }, []);
 
-  const commitTheme = useCallback((next: ThemeMode) => {
+  useEffect(() => () => {
+    if (commitTimer.current) clearTimeout(commitTimer.current);
+    if (clearTimer.current) clearTimeout(clearTimer.current);
+  }, []);
+
+  const commit = useCallback((next: ThemeMode) => {
     setTheme(next);
     document.documentElement.dataset.theme = next;
     window.localStorage.setItem(THEME_KEY, next);
     window.dispatchEvent(new CustomEvent(THEME_EVENT, { detail: next }));
   }, []);
 
-  function toggleTheme() {
+  function toggle() {
     if (anim) return;
+    const next: ThemeMode = theme === 'dark' ? 'light' : 'dark';
+    pendingRef.current = next;
+    setAnim(theme === 'dark' ? 'sunrise' : 'sunset');
 
-    const nextTheme: ThemeMode = theme === 'dark' ? 'light' : 'dark';
-    const dir: AnimDir = theme === 'dark' ? 'sunrise' : 'sunset';
-
-    pendingRef.current = nextTheme;
-    setAnim(dir);
-
-    cycleTimerRef.current = setTimeout(() => {
+    commitTimer.current = setTimeout(() => {
       if (pendingRef.current) {
-        commitTheme(pendingRef.current);
+        commit(pendingRef.current);
         pendingRef.current = null;
       }
-    }, CYCLE_MS * 0.45);
+    }, 2600);
+
+    clearTimer.current = setTimeout(() => setAnim(null), CYCLE_MS);
   }
 
-  function handleAnimDone() {
-    if (cycleTimerRef.current) clearTimeout(cycleTimerRef.current);
-    if (pendingRef.current) {
-      commitTheme(pendingRef.current);
-      pendingRef.current = null;
-    }
-    setAnim(null);
-  }
+  const isSunrise = anim === 'sunrise';
 
   return (
-    <>
-      {anim && <SkyCycle dir={anim} onDone={handleAnimDone} />}
-      <button
-        className={`theme-orb theme-orb--${theme}`}
-        type="button"
-        onClick={toggleTheme}
-        aria-label={ready ? (theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode') : 'Toggle theme'}
-      >
-        <span className="theme-orb__glow" aria-hidden="true" />
-        <span className="theme-orb__icon" aria-hidden="true">
-          {theme === 'dark' ? (
-            <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
-              <path
-                d="M24.8 18.4A10.4 10.4 0 0 1 13.6 7.2a10.6 10.6 0 1 0 11.2 11.2Z"
-                fill="currentColor"
-              />
-              <circle cx="20" cy="10" r="1" fill="currentColor" opacity="0.5" />
-              <circle cx="25" cy="14" r="0.7" fill="currentColor" opacity="0.4" />
-              <circle cx="23" cy="7" r="0.5" fill="currentColor" opacity="0.3" />
-            </svg>
-          ) : (
-            <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
-              <circle cx="16" cy="16" r="6" fill="currentColor" />
-              <g stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="16" y1="26" x2="16" y2="30" />
-                <line x1="2" y1="16" x2="6" y2="16" />
-                <line x1="26" y1="16" x2="30" y2="16" />
-                <line x1="6.1" y1="6.1" x2="8.9" y2="8.9" />
-                <line x1="23.1" y1="23.1" x2="25.9" y2="25.9" />
-                <line x1="6.1" y1="25.9" x2="8.9" y2="23.1" />
-                <line x1="23.1" y1="8.9" x2="25.9" y2="6.1" />
-              </g>
-            </svg>
-          )}
+    <button
+      className={`theme-orb theme-orb--${theme}${anim ? ` theme-orb--animating theme-orb--${anim}` : ''}`}
+      type="button"
+      onClick={toggle}
+      aria-label={ready ? (theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode') : 'Toggle theme'}
+    >
+      {anim && (
+        <span className="theme-orb__dome" aria-hidden="true">
+          <span className="theme-orb__sky" />
+          <span className="theme-orb__arm theme-orb__arm--set">
+            <span className={`theme-orb__body theme-orb__body--${isSunrise ? 'moon' : 'sun'}`}>
+              {isSunrise ? <MoonSVG /> : <SunSVG />}
+            </span>
+          </span>
+          <span className="theme-orb__arm theme-orb__arm--rise">
+            <span className={`theme-orb__body theme-orb__body--${isSunrise ? 'sun' : 'moon'}`}>
+              {isSunrise ? <SunSVG /> : <MoonSVG />}
+            </span>
+          </span>
+          <span className="theme-orb__stars">
+            <i /><i /><i /><i /><i /><i /><i /><i />
+          </span>
         </span>
-      </button>
-    </>
+      )}
+      <span className="theme-orb__glow" aria-hidden="true" />
+      <span className="theme-orb__icon" aria-hidden="true">
+        {theme === 'dark' ? <SmallMoonSVG /> : <SmallSunSVG />}
+      </span>
+    </button>
   );
 }
 
 function ScrollToTop() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 400);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
   return (
     <button
-      className={`scroll-top ${visible ? 'scroll-top--visible' : ''}`}
+      className="scroll-top"
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       aria-label="Scroll to top"
@@ -214,7 +200,6 @@ function FloatingThemeToggle() {
         retryTimer = setTimeout(setup, 200);
         return;
       }
-
       observer = new IntersectionObserver(
         ([entry]) => setVisible(!entry.isIntersecting),
         { threshold: 0 }
@@ -223,7 +208,6 @@ function FloatingThemeToggle() {
     }
 
     setup();
-
     return () => {
       if (observer) observer.disconnect();
       if (retryTimer) clearTimeout(retryTimer);
