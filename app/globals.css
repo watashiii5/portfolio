@@ -1424,19 +1424,10 @@ html[data-theme='light'] .hero h1 span {
 }
 
 .theme-orb--animating {
-  position: fixed !important;
-  bottom: 0 !important;
-  left: 0 !important;
-  width: min(55vw, 55vh, 280px) !important;
-  height: min(55vw, 55vh, 280px) !important;
-  border-radius: 0 100% 0 0 !important;
-  overflow: hidden;
   pointer-events: none;
-  z-index: 9999;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  animation: domeLifecycle 3.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .theme-orb--animating .theme-orb__glow,
@@ -1445,8 +1436,16 @@ html[data-theme='light'] .hero h1 span {
 }
 
 .theme-orb__dome {
-  position: absolute;
-  inset: 0;
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: min(55vw, 55vh, 280px);
+  height: min(55vw, 55vh, 280px);
+  border-radius: 0 100% 0 0;
+  overflow: hidden;
+  z-index: 9999;
+  pointer-events: none;
+  animation: domeLifecycle 3.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .theme-orb__sky {
