@@ -432,6 +432,19 @@ html[data-theme='light'] .hero h1 span {
   line-height: 1;
 }
 
+.stack-tile__logo {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.stack-tile__logo--sm {
+  width: 20px;
+  height: 20px;
+}
+
 .stack-tile--sm .stack-tile__icon {
   font-size: 1.05rem;
 }
@@ -459,6 +472,16 @@ html[data-theme='light'] .hero h1 span {
 
   .stack-tile {
     padding: 10px 4px 8px;
+  }
+
+  .stack-tile__logo {
+    width: 22px;
+    height: 22px;
+  }
+
+  .stack-tile__logo--sm {
+    width: 18px;
+    height: 18px;
   }
 
   .stack-tile__icon {
@@ -733,6 +756,39 @@ html[data-theme='light'] .hero h1 span {
 .hero-badge span {
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  width: 100%;
+  max-width: 20rem;
+  margin-top: 10px;
+}
+
+.hero-stats .stat-card {
+  padding: 12px 10px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--surface-strong) 60%, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-stats .stat-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.hero-stats .stat-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  display: block;
+  margin-top: 2px;
 }
 
 .section {
@@ -1571,6 +1627,11 @@ html[data-theme='light'] .hero h1 span {
     position: static;
     width: 100%;
     margin-top: 12px;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
   }
 
   .chatbot-panel {

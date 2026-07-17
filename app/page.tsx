@@ -102,17 +102,17 @@ export default function HomePage() {
             <div className="stack-bento__header">Primary stack</div>
             <div className="stack-bento__grid">
               {[
-                { name: 'Next.js', abbr: 'N', color: '#fff' },
-                { name: 'TypeScript', abbr: 'TS', color: '#3178c6' },
-                { name: 'Python', abbr: 'Py', color: '#3776ab' },
-                { name: 'Supabase', abbr: 'Sb', color: '#3ecf8e' },
-                { name: 'FlutterFlow', abbr: 'FF', color: '#6c63ff' },
-                { name: 'Groq API', abbr: 'GQ', color: '#f55036' },
-                { name: 'Vercel', abbr: 'V', color: '#fff' },
-                { name: 'Render', abbr: 'Rd', color: '#46e3b7' },
+                { name: 'Next.js', slug: 'nextdotjs', color: 'FFFFFF' },
+                { name: 'TypeScript', slug: 'typescript', color: '3178C6' },
+                { name: 'Python', slug: 'python', color: '3776AB' },
+                { name: 'Supabase', slug: 'supabase', color: '3ECF8E' },
+                { name: 'FlutterFlow', slug: 'flutterflow', color: '6C63FF' },
+                { name: 'Groq', slug: 'groq', color: 'F55036' },
+                { name: 'Vercel', slug: 'vercel', color: 'FFFFFF' },
+                { name: 'Render', slug: 'render', color: '46E3B7' },
               ].map((t) => (
                 <div className="stack-tile" key={t.name} title={t.name}>
-                  <span className="stack-tile__icon" style={{ color: t.color }}>{t.abbr}</span>
+                  <img className="stack-tile__logo" src={`https://cdn.simpleicons.org/${t.slug}/${t.color}`} alt={`${t.name} logo`} loading="lazy" decoding="async" />
                   <span className="stack-tile__name">{t.name}</span>
                 </div>
               ))}
@@ -121,15 +121,15 @@ export default function HomePage() {
             <div className="stack-bento__header stack-bento__header--sub">Also experienced with</div>
             <div className="stack-bento__grid stack-bento__grid--secondary">
               {[
-                { name: 'Unity', abbr: 'U', color: '#fff' },
-                { name: 'Phaser', abbr: 'Ph', color: '#c53aff' },
-                { name: 'Java', abbr: 'J', color: '#ed8b00' },
-                { name: 'C#', abbr: 'C#', color: '#68217a' },
-                { name: 'Figma', abbr: 'Fi', color: '#a259ff' },
-                { name: 'FastAPI', abbr: 'FA', color: '#009688' },
+                { name: 'Unity', slug: 'unity', color: 'FFFFFF' },
+                { name: 'Phaser', slug: 'phaser', color: 'C53AFF' },
+                { name: 'Java', slug: 'java', color: 'ED8B00' },
+                { name: 'C#', slug: 'csharp', color: '68217A' },
+                { name: 'Figma', slug: 'figma', color: 'A259FF' },
+                { name: 'FastAPI', slug: 'fastapi', color: '009688' },
               ].map((t) => (
                 <div className="stack-tile stack-tile--sm" key={t.name} title={t.name}>
-                  <span className="stack-tile__icon" style={{ color: t.color }}>{t.abbr}</span>
+                  <img className="stack-tile__logo stack-tile__logo--sm" src={`https://cdn.simpleicons.org/${t.slug}/${t.color}`} alt={`${t.name} logo`} loading="lazy" decoding="async" />
                   <span className="stack-tile__name">{t.name}</span>
                 </div>
               ))}
@@ -145,6 +145,19 @@ export default function HomePage() {
           <div className="hero-badge">
             <strong>Bulacan State University</strong>
             <span>B.S. Computer Science — June 2026 Graduate</span>
+          </div>
+          <div className="hero-stats">
+            {[
+              { label: 'Projects', value: '9' },
+              { label: 'Internship', value: '300 hrs' },
+              { label: 'Live demos', value: '4' },
+              { label: 'Stack', value: 'Next.js + Supabase' },
+            ].map((stat) => (
+              <div className="stat-card" key={stat.label}>
+                <span className="stat-label">{stat.label}</span>
+                <span className="stat-value">{stat.value}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
