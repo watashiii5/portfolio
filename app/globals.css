@@ -2458,6 +2458,126 @@ html[data-theme='light'] .hero h1 span {
   }
 }
 
+/* ── Certificates ── */
+.certificate-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.certificate-card {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0;
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--surface-strong) 72%, transparent);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color 0.5s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.certificate-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+  transform: translateY(-3px);
+}
+
+.certificate-card__preview {
+  position: relative;
+  background: color-mix(in srgb, var(--bg-2) 60%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 280px;
+}
+
+.certificate-card__preview img {
+  width: 100%;
+  height: auto;
+  max-height: 340px;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.certificate-card:hover .certificate-card__preview img {
+  transform: scale(1.02);
+}
+
+.certificate-card__zoom-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.certificate-card:hover .certificate-card__zoom-hint {
+  opacity: 1;
+}
+
+.certificate-card__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(18px, 3vw, 28px);
+  gap: 4px;
+}
+
+.certificate-card__info h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 700;
+  color: var(--heading);
+  margin: 0 0 4px;
+}
+
+.certificate-card__org {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+.certificate-card__meta {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.certificate-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+@media (max-width: 720px) {
+  .certificate-card {
+    grid-template-columns: 1fr;
+  }
+
+  .certificate-card__preview {
+    min-height: 200px;
+    padding: 16px;
+  }
+
+  .certificate-card__preview img {
+    max-height: 260px;
+  }
+}
+
 /* ── Image Lightbox ── */
 .image-lightbox {
   position: fixed;

@@ -6,6 +6,7 @@ import { ProjectVisual } from '@/components/project-visual';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { ThemeToggleButton } from '@/components/site-theme-toggle';
 import TechLogo from '@/components/tech-logo';
+import { ZoomableImage } from '@/components/zoomable-image';
 import { featuredProjects, projects } from '@/lib/projects';
 
 const socialLinks = [
@@ -321,6 +322,48 @@ export default function HomePage() {
                 <span className="timeline-date">June 2007 – March 2016</span>
               </div>
               <p className="timeline-org">Elementary Education</p>
+            </div>
+          </article>
+        </div>
+      </section>
+      </ScrollReveal>
+
+      <ScrollReveal delay={100}>
+      <section className="section" id="certificates">
+        <div className="section-head">
+          <div>
+            <div className="section-kicker">Certificates</div>
+            <h2>Certifications.</h2>
+          </div>
+        </div>
+
+        <div className="certificate-grid">
+          <article className="certificate-card">
+            <div className="certificate-card__preview">
+              <ZoomableImage
+                src="/portfolio/Certification/Intern_Certificate_OJT.png"
+                alt="Certificate of Completion — Jermaine Pasamba, Web Developer Intern at Nantes Bautista Consulting"
+              />
+              <span className="certificate-card__zoom-hint">Click to zoom</span>
+            </div>
+            <div className="certificate-card__info">
+              <h3>Certificate of Completion</h3>
+              <p className="certificate-card__org">Nantes Bautista Consulting</p>
+              <p className="certificate-card__meta">Web Developer Intern — June 2025 – July 2025</p>
+              <p className="certificate-card__meta">250 hours of On-the-Job Training</p>
+              <div className="certificate-card__actions">
+                <a className="button" href="/portfolio/Certification/Certificate of Completion-Jermaine Pasamba(Internship).pdf" download>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: 6 }}>
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  Download PDF
+                </a>
+                <a className="button-ghost" href="/portfolio/Certification/Intern_Certificate_OJT.png" target="_blank" rel="noreferrer">
+                  Open full image
+                </a>
+              </div>
             </div>
           </article>
         </div>
