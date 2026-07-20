@@ -1029,10 +1029,10 @@ html[data-theme='light'] .hero h1 span {
   color: #22c55e;
   font-weight: 600;
   text-align: center;
-  animation: fadeIn 0.4s ease;
+  animation: formFadeIn 0.4s ease;
 }
 
-@keyframes fadeIn {
+@keyframes formFadeIn {
   from { opacity: 0; transform: translateY(-4px); }
   to { opacity: 1; transform: translateY(0); }
 }
@@ -1988,12 +1988,6 @@ html[data-theme='light'] .hero h1 span {
   100% { background: linear-gradient(160deg, #050c15 0%, #061019 35%, #0a1624 65%, #061019 100%); }
 }
 
-@keyframes starFadeIn {
-  0%   { opacity: 0; transform: scale(0); }
-  60%  { opacity: 0.9; transform: scale(1.1); }
-  100% { opacity: 0.7; transform: scale(1); }
-}
-
 @keyframes starFadeOut {
   0%   { opacity: 0.7; transform: scale(1); }
   100% { opacity: 0; transform: scale(0.3); }
@@ -2431,6 +2425,33 @@ html[data-theme='light'] .hero h1 span {
   .theme-float {
     left: 12px;
   }
+
+  .ambient {
+    display: none;
+  }
+
+  .hero-card,
+  .hero-badge,
+  .project-meta span,
+  .project-stack li,
+  .project-highlights li,
+  .resource-card,
+  .stat-card,
+  .info-card,
+  .feature-card,
+  .contact-card,
+  .project-card,
+  .media-card,
+  .media-frame,
+  .project-summary-card,
+  .project-media-card,
+  .scroll-top,
+  .section-nav,
+  .carousel__btn,
+  .certificate-card__zoom-hint {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
 @keyframes popIn {
@@ -2464,7 +2485,6 @@ html[data-theme='light'] .hero h1 span {
   opacity: 0;
   transform: translateY(32px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
 }
 
 .scroll-reveal.revealed {
@@ -2878,12 +2898,49 @@ html[data-theme='light'] .hero h1 span {
   background: rgba(255, 255, 255, 0.2);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 @keyframes zoomIn {
   from { opacity: 0; transform: scale(0.85); }
   to { opacity: 1; transform: scale(1); }
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .ambient {
+    animation: none;
+    filter: blur(0);
+  }
+
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .theme-orb__dome,
+  .theme-orb__dome-inner,
+  .theme-orb__sky,
+  .theme-orb__arm,
+  .theme-orb--sunrise .theme-orb__stars i,
+  .theme-orb--sunset .theme-orb__stars i,
+  .theme-orb--sunrise .theme-orb__clouds,
+  .theme-orb--sunset .theme-orb__clouds,
+  .theme-orb__cloud--1,
+  .theme-orb__cloud--2,
+  .theme-orb__cloud--3,
+  .theme-orb--sunrise .theme-orb__birds,
+  .theme-orb--sunset .theme-orb__birds,
+  .theme-orb__bird--1,
+  .theme-orb__bird--2,
+  .theme-orb__bird--3,
+  .theme-orb--light .theme-orb__glow {
+    animation-duration: 3.8s !important;
+  }
 }
