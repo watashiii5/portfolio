@@ -1417,28 +1417,28 @@ html[data-theme='light'] .hero h1 span {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow: hidden;
+}
+
+.carousel__fade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
 }
 
 .carousel__track {
   display: flex;
   gap: 16px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  padding: 8px 4px 12px;
-  -webkit-overflow-scrolling: touch;
-}
-
-.carousel__track::-webkit-scrollbar {
-  display: none;
+  padding: 8px 0 12px;
+  will-change: transform;
 }
 
 .carousel__card {
   position: relative;
-  flex: 0 0 calc(50% - 8px);
-  max-width: 34rem;
+  flex: 0 0 400px;
   scroll-snap-align: center;
   overflow: hidden;
   display: grid;
@@ -1449,7 +1449,8 @@ html[data-theme='light'] .hero h1 span {
   border: 1px solid var(--border);
   padding: clamp(18px, 3vw, 28px);
   text-decoration: none;
-  transition: border-color 0.5s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.5s ease, box-shadow 0.2s ease, transform 0.2s ease, opacity 0.4s ease;
+  min-height: 100%;
 }
 
 .carousel__card::before {
@@ -1466,9 +1467,11 @@ html[data-theme='light'] .hero h1 span {
 }
 
 .carousel__card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px) scale(1) !important;
   border-color: var(--accent);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+  opacity: 1 !important;
+  z-index: 3;
 }
 
 .carousel__card h3 {
@@ -1491,6 +1494,8 @@ html[data-theme='light'] .hero h1 span {
   align-items: center;
   justify-content: center;
   gap: 18px;
+  position: relative;
+  z-index: 3;
 }
 
 .carousel__btn {
@@ -1505,6 +1510,8 @@ html[data-theme='light'] .hero h1 span {
   cursor: pointer;
   transition: border-color 0.25s ease, background 0.25s ease, opacity 0.25s ease;
   flex-shrink: 0;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .carousel__btn:hover {
@@ -1540,9 +1547,20 @@ html[data-theme='light'] .hero h1 span {
   transform: scale(1.2);
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1080px) {
   .carousel__card {
-    flex: 0 0 85%;
+    flex: 0 0 340px;
+  }
+}
+
+@media (max-width: 720px) {
+  .carousel__fade {
+    mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  }
+
+  .carousel__card {
+    flex: 0 0 280px;
   }
 
   .carousel__card h3 {
