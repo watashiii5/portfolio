@@ -2408,12 +2408,15 @@ html[data-theme='light'] .hero h1 span {
   }
 
   .hero-badge {
-    position: static;
+    position: relative;
+    z-index: 1;
     width: 100%;
     margin-top: 12px;
   }
 
   .hero-stats {
+    position: relative;
+    z-index: 1;
     grid-template-columns: repeat(2, 1fr);
     max-width: 100%;
   }
