@@ -17,6 +17,7 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const dragRef = useRef({ startX: 0, currentX: 0, dragging: false, startTime: 0 });
 
   const n = projects.length;
 
@@ -58,13 +59,12 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
     const centerOffset = (container.offsetWidth - step) / 2;
 
     if (nextIdx >= n * 3) {
-      const jumpIndex = n + 1;
       track.style.transition = 'none';
-      track.style.transform = `translateX(${-n * step + centerOffset}px)`;
+      track.style.transform = `translateX(${-(n - 1) * step + centerOffset}px)`;
       track.getBoundingClientRect();
       track.style.transition = `transform ${TRANSITION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`;
-      track.style.transform = `translateX(${-jumpIndex * step + centerOffset}px)`;
-      setActiveIndex(jumpIndex);
+      track.style.transform = `translateX(${-n * step + centerOffset}px)`;
+      setActiveIndex(n);
     } else {
       moveTo(nextIdx, true);
     }
@@ -79,17 +79,82 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
     const centerOffset = (container.offsetWidth - step) / 2;
 
     if (prevIdx < 0) {
-      const jumpIndex = n * 2 - 2;
       track.style.transition = 'none';
-      track.style.transform = `translateX(${-((n * 2) - 1) * step + centerOffset}px)`;
+      track.style.transform = `translateX(${-n * step + centerOffset}px)`;
       track.getBoundingClientRect();
       track.style.transition = `transform ${TRANSITION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`;
-      track.style.transform = `translateX(${-jumpIndex * step + centerOffset}px)`;
-      setActiveIndex(jumpIndex);
+      track.style.transform = `translateX(${-(n - 1) * step + centerOffset}px)`;
+      setActiveIndex(n - 1);
     } else {
       moveTo(prevIdx, true);
     }
   }, [activeIndex, getCardStep, n, moveTo]);
+
+  const startTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      next();
+    }, AUTO_ADVANCE_MS);
+  }, [next]);
+
+  const stopTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = null;
+  }, []);
+
+  const handlePointerDown = useCallback((e: React.PointerEvent) => {
+    if (e.button !== 0) return;
+    const track = trackRef.current;
+    if (!track) return;
+    track.style.transition = 'none';
+    dragRef.current = {
+      startX: e.clientX,
+      currentX: e.clientX,
+      dragging: true,
+      startTime: Date.now(),
+    };
+    stopTimer();
+  }, [stopTimer]);
+
+  const handlePointerMove = useCallback((e: React.PointerEvent) => {
+    const d = dragRef.current;
+    if (!d.dragging) return;
+    const track = trackRef.current;
+    const container = containerRef.current;
+    if (!track || !container) return;
+    const step = getCardStep();
+    const centerOffset = (container.offsetWidth - step) / 2;
+    const dx = e.clientX - d.startX;
+    const base = -activeIndex * step + centerOffset;
+    track.style.transform = `translateX(${base + dx}px)`;
+    d.currentX = e.clientX;
+  }, [activeIndex, getCardStep]);
+
+  const handlePointerUp = useCallback((e: React.PointerEvent) => {
+    const d = dragRef.current;
+    if (!d.dragging) return;
+    d.dragging = false;
+
+    const dx = e.clientX - d.startX;
+    const elapsed = Date.now() - d.startTime;
+    const velocity = Math.abs(dx) / Math.max(elapsed, 1);
+    const isFlick = velocity > 0.4 && Math.abs(dx) > 20;
+
+    if (isFlick || Math.abs(dx) > 80) {
+      if (dx < 0) next();
+      else prev();
+    } else {
+      goTo(activeIndex, true);
+    }
+
+    startTimer();
+  }, [activeIndex, goTo, next, prev, startTimer]);
+
+  const handlePointerCancel = useCallback(() => {
+    dragRef.current.dragging = false;
+    goTo(activeIndex, true);
+    startTimer();
+  }, [activeIndex, goTo, startTimer]);
 
   useEffect(() => {
     if (n === 0) return;
@@ -97,14 +162,9 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
   }, [n, goTo]);
 
   useEffect(() => {
-    timerRef.current = setInterval(() => {
-      next();
-    }, AUTO_ADVANCE_MS);
-
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [next]);
+    startTimer();
+    return stopTimer;
+  }, [startTimer, stopTimer]);
 
   const cardCenterIndex = ((activeIndex % n) + n) % n;
 
@@ -115,7 +175,15 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
   return (
     <div className="carousel" ref={containerRef}>
       <div className="carousel__fade" aria-hidden="true" />
-      <div className="carousel__track" ref={trackRef}>
+      <div
+        className="carousel__track"
+        ref={trackRef}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerCancel}
+        style={{ touchAction: 'pan-y', userSelect: 'none' }}
+      >
         {tripled.map((project, i) => {
           const dist = Math.abs(i - activeIndex);
           const scale = Math.max(0.82, 1 - dist * 0.06);

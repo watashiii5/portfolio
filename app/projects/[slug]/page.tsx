@@ -81,6 +81,17 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       </div>
 
       <article className="project-shell">
+        <div className="project-actions" style={{ marginBottom: 0 }}>
+          <Link className="button" href="/">
+            Back to home
+          </Link>
+          {project.liveUrl ? (
+            <a className="button-ghost" href={project.liveUrl} target="_blank" rel="noreferrer">
+              View live demo
+            </a>
+          ) : null}
+        </div>
+
         <div className="project-hero">
           <section className="project-summary-card" style={{ ['--card-accent' as never]: project.accent } as React.CSSProperties}>
             <div className="project-kicker">{project.category}</div>
@@ -91,17 +102,6 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             <div className="project-meta">
               {project.role ? <span className="pill">{project.role}</span> : null}
               {project.timeline ? <span className="pill">{project.timeline}</span> : null}
-            </div>
-
-            <div className="project-actions">
-              <Link className="button" href="/">
-                Back to home
-              </Link>
-              {project.liveUrl ? (
-                <a className="button-ghost" href={project.liveUrl} target="_blank" rel="noreferrer">
-                  View live demo
-                </a>
-              ) : null}
             </div>
           </section>
 
