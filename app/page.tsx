@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { ContactForm } from '@/components/contact-form';
 import { OpenChatbotButton } from '@/components/open-chatbot-button';
+import ProjectCarousel from '@/components/project-carousel';
 import { ProjectVisual } from '@/components/project-visual';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { ThemeToggleButton } from '@/components/site-theme-toggle';
@@ -207,25 +208,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="project-grid">
-          {projects.filter(p => !featured.some(f => f?.slug === p.slug)).map((project) => (
-              <Link className="project-card" href={`/projects/${project.slug}`} key={project.slug}>
-                <ProjectVisual project={project} />
-                <div className="project-pill-row">
-                  <span className="pill">{project.category}</span>
-                </div>
-                <h3>{project.title}</h3>
-                <p>{project.summary}</p>
-                <div className="tag-row">
-                  {project.tech.slice(0, 3).map((stack) => (
-                    <span className="tag" key={stack}>
-                      {stack}
-                    </span>
-                  ))}
-                </div>
-              </Link>
-          ))}
-        </div>
+        <ProjectCarousel projects={projects.filter(p => !featured.some(f => f?.slug === p.slug))} />
       </section>
       </ScrollReveal>
 
