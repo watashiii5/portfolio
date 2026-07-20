@@ -17,7 +17,6 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const transitionRef = useRef(true);
 
   const n = projects.length;
 
@@ -29,54 +28,68 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
     return second.offsetLeft - first.offsetLeft;
   }, []);
 
-  const goTo = useCallback((index: number, smooth = true) => {
+  const moveTo = useCallback((index: number, smooth: boolean) => {
     const track = trackRef.current;
     const container = containerRef.current;
     if (!track || !container) return;
-
     const step = getCardStep();
-    const totalItems = track.children.length;
-    const targetOffset = index * step;
     const centerOffset = (container.offsetWidth - step) / 2;
 
-    transitionRef.current = smooth;
-    if (!smooth) {
-      track.style.transition = 'none';
-    } else {
+    if (smooth) {
       track.style.transition = `transform ${TRANSITION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`;
+    } else {
+      track.style.transition = 'none';
     }
 
-    track.style.transform = `translateX(${-targetOffset + centerOffset}px)`;
+    track.style.transform = `translateX(${-index * step + centerOffset}px)`;
     setActiveIndex(index);
-
-    if (!smooth) {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          track.style.transition = `transform ${TRANSITION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`;
-        });
-      });
-    }
   }, [getCardStep]);
+
+  const goTo = useCallback((index: number, smooth = true) => {
+    moveTo(index, smooth);
+  }, [moveTo]);
 
   const next = useCallback(() => {
     const nextIdx = activeIndex + 1;
+    const track = trackRef.current;
+    const container = containerRef.current;
+    if (!track || !container) return;
+    const step = getCardStep();
+    const centerOffset = (container.offsetWidth - step) / 2;
+
     if (nextIdx >= n * 3) {
-      goTo(n, false);
-      requestAnimationFrame(() => goTo(n + 1));
+      const jumpIndex = n + 1;
+      track.style.transition = 'none';
+      track.style.transform = `translateX(${-n * step + centerOffset}px)`;
+      track.getBoundingClientRect();
+      track.style.transition = `transform ${TRANSITION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`;
+      track.style.transform = `translateX(${-jumpIndex * step + centerOffset}px)`;
+      setActiveIndex(jumpIndex);
     } else {
-      goTo(nextIdx);
+      moveTo(nextIdx, true);
     }
-  }, [activeIndex, goTo, n]);
+  }, [activeIndex, getCardStep, n, moveTo]);
 
   const prev = useCallback(() => {
     const prevIdx = activeIndex - 1;
+    const track = trackRef.current;
+    const container = containerRef.current;
+    if (!track || !container) return;
+    const step = getCardStep();
+    const centerOffset = (container.offsetWidth - step) / 2;
+
     if (prevIdx < 0) {
-      goTo(n * 2 - 1, false);
-      requestAnimationFrame(() => goTo(n * 2 - 2));
+      const jumpIndex = n * 2 - 2;
+      track.style.transition = 'none';
+      track.style.transform = `translateX(${-((n * 2) - 1) * step + centerOffset}px)`;
+      track.getBoundingClientRect();
+      track.style.transition = `transform ${TRANSITION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`;
+      track.style.transform = `translateX(${-jumpIndex * step + centerOffset}px)`;
+      setActiveIndex(jumpIndex);
     } else {
-      goTo(prevIdx);
+      moveTo(prevIdx, true);
     }
-  }, [activeIndex, goTo, n]);
+  }, [activeIndex, getCardStep, n, moveTo]);
 
   useEffect(() => {
     if (n === 0) return;
