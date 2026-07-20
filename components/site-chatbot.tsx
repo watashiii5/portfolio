@@ -15,7 +15,7 @@ function createId() {
 }
 
 function formatTime(date: Date) {
-  return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
 }
 
 const PANEL_HEIGHT_MIN = 280;
