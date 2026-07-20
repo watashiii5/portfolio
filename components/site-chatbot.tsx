@@ -76,7 +76,7 @@ export default function SiteChatbot() {
       { id: 'all-projects', msg: 'Here is a complete view of all his work. 📚' },
       { id: 'experience', msg: 'His internship experience at NB Consulting! 💼' },
       { id: 'education', msg: 'His academic journey from elementary to college. 🎓' },
-      { id: 'certificates', msg: 'He earned a certificate for his 250-hour internship! 📜' },
+      { id: 'certificates', msg: 'He has certificates from his internship and a thesis competition! 📜' },
       { id: 'about', msg: 'Learn more about Jermaine here! 🧑‍💻' },
       { id: 'contact', msg: 'Need to reach him? You can send a direct email here! ✉️' }
     ];

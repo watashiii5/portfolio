@@ -2620,6 +2620,8 @@ html[data-theme='light'] .hero h1 span {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
   padding: clamp(18px, 3vw, 28px);
   gap: 4px;
 }
@@ -2648,6 +2650,7 @@ html[data-theme='light'] .hero h1 span {
 .certificate-card__actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
   margin-top: 16px;
 }

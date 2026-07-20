@@ -267,7 +267,7 @@ export default function HomePage() {
             <div className="section-kicker">Education</div>
             <h2>Academic background.</h2>
           </div>
-          <a className="button" href="/portfolio/workExperience/Jermaine PasambaCV.pdf" download>
+          <a className="button" href="/portfolio/workExperience/Jermaine_Pasamba_Curriculum_Vitae.pdf" download>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: 6 }}>
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
               <polyline points="7 10 12 15 17 10" />
@@ -366,6 +366,27 @@ export default function HomePage() {
               </div>
             </div>
           </article>
+
+          <article className="certificate-card">
+            <div className="certificate-card__preview">
+              <ZoomableImage
+                src="/portfolio/Certification/Certificate_thesis.jpg"
+                alt="Certificate of Participation — Best Programmed System Competition 2026, Bulacan State University"
+              />
+              <span className="certificate-card__zoom-hint">Click to zoom</span>
+            </div>
+            <div className="certificate-card__info">
+              <h3>Certificate of Participation</h3>
+              <p className="certificate-card__org">Bulacan State University</p>
+              <p className="certificate-card__meta">Best Programmed System Competition 2026</p>
+              <p className="certificate-card__meta">April 7, 2026</p>
+              <div className="certificate-card__actions">
+                <a className="button-ghost" href="/portfolio/Certification/Certificate_thesis.jpg" target="_blank" rel="noreferrer">
+                  Open full image
+                </a>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
       </ScrollReveal>
@@ -387,7 +408,7 @@ export default function HomePage() {
             <div className="about-card__text">
               <p>I am a Computer Science student at Bulacan State University graduated in June 2026, with full-stack experience in Next.js and FastAPI, a 250-hour web development internship, and specialized expertise in building algorithmic optimization systems.</p>
               <div className="about-card__actions">
-                <a className="button" href="/portfolio/workExperience/Jermaine PasambaCV.pdf" download>
+                <a className="button" href="/portfolio/workExperience/Jermaine_Pasamba_Curriculum_Vitae.pdf" download>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: 6 }}>
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                     <polyline points="7 10 12 15 17 10" />
