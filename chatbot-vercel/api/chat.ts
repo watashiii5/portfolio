@@ -112,8 +112,9 @@ const jermaineProfile = {
       summary: "Nature-inspired adventure game with discovery mechanics, built in Unity.",
       tech: ["Unity", "Game design", "Interaction systems"],
       role: "Team project",
-      highlights: "Features exploration and discovery mechanics inspired by natural environments. Includes a logbook system to track findings. Published on Itch.io.",
-      liveUrl: "https://watashi5.itch.io/lainferns-adventure"
+      highlights: "Features exploration and discovery mechanics inspired by natural environments. Includes a logbook system to track findings. Live demo available in browser, with downloadable version on Itch.io.",
+      liveUrl: "https://watashiii5.github.io/Game-Dev-Project/",
+      downloadUrl: "https://watashi5.itch.io/lainferns-adventure"
     },
     {
       title: "Word Sprint: Island Escape",

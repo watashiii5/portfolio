@@ -90,6 +90,11 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               View live demo
             </a>
           ) : null}
+          {project.downloadUrl ? (
+            <a className="button-ghost" href={project.downloadUrl} target="_blank" rel="noreferrer">
+              Download
+            </a>
+          ) : null}
         </div>
 
         <div className="project-hero">

@@ -23,6 +23,7 @@ export type Project = {
   highlights: string[];
   metrics: Array<{ label: string; value: string }>;
   liveUrl?: string;
+  downloadUrl?: string;
   sourceUrl?: string;
   media: ProjectMedia[];
 };
@@ -188,14 +189,15 @@ export const projects: Project[] = [
     highlights: [
       'Features exploration and discovery mechanics inspired by natural environments.',
       'Includes a logbook system to track findings and progress throughout the game.',
-      'Available to play as a live demo published on the Itch.io platform.',
+      'Available to play as a live demo in the browser.',
     ],
     metrics: [
       { label: 'Platform', value: 'Unity' },
       { label: 'Mood', value: 'Nature-inspired adventure' },
-      { label: 'Distribution', value: 'Itch.io' },
+      { label: 'Distribution', value: 'Web & Itch.io' },
     ],
-    liveUrl: 'https://watashi5.itch.io/lainferns-adventure',
+    liveUrl: 'https://watashiii5.github.io/Game-Dev-Project/',
+    downloadUrl: 'https://watashi5.itch.io/lainferns-adventure',
     media: [
       { kind: 'image', src: asset('/projects/Game Development/1.png'), alt: 'Game screenshot 1' },
       { kind: 'image', src: asset('/projects/Game Development/2.png'), alt: 'Game screenshot 2' },
