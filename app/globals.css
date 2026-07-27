@@ -1010,8 +1010,34 @@ html[data-theme='light'] .hero h1 span {
 }
 
 .contact-card {
-  display: grid;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+}
+
+.contact-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.contact-card h3 {
+  margin: 0;
+}
+
+.contact-card__detail {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
 }
 
 .contact-card p,
@@ -1024,6 +1050,232 @@ html[data-theme='light'] .hero h1 span {
   width: 100%;
 }
 
+/* ── Email Composer ── */
+
+.email-composer {
+  width: 100%;
+  max-width: 52rem;
+  border-radius: 20px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface-strong) 94%, transparent), color-mix(in srgb, var(--surface) 97%, transparent));
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color 0.4s, box-shadow 0.4s;
+}
+
+.email-composer:hover {
+  border-color: color-mix(in srgb, var(--accent) 25%, var(--border));
+}
+
+.email-composer__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: color-mix(in srgb, var(--surface-strong) 60%, transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.email-composer__toolbar-left {
+  display: flex;
+  gap: 7px;
+}
+
+.email-composer__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.email-composer__dot--red   { background: #ef4444; }
+.email-composer__dot--yellow { background: #eab308; }
+.email-composer__dot--green  { background: #22c55e; }
+
+.email-composer__toolbar-title {
+  flex: 1;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.email-composer__toolbar-right {
+  min-width: 50px;
+  text-align: right;
+}
+
+.email-composer__badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  animation: formFadeIn 0.3s ease;
+}
+
+.email-composer__badge--sent {
+  background: color-mix(in srgb, #22c55e 15%, transparent);
+  color: #22c55e;
+}
+
+.email-composer__badge--error {
+  background: color-mix(in srgb, #ef4444 15%, transparent);
+  color: #ef4444;
+}
+
+.email-composer__fields {
+  padding: 0 20px;
+}
+
+.email-composer__field-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 10px 0;
+}
+
+.email-composer__field-row:last-child {
+  border-bottom: none;
+}
+
+.email-composer__label {
+  flex-shrink: 0;
+  width: 60px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.email-composer__field-inputs {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.email-composer__field {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 0.9rem;
+  padding: 4px 0;
+  outline: none;
+  font-family: inherit;
+  transition: color 0.3s;
+}
+
+.email-composer__field::placeholder {
+  color: var(--muted);
+}
+
+.email-composer__field--static {
+  color: var(--text-secondary);
+  font-weight: 500;
+  cursor: default;
+}
+
+.email-composer__field-sep {
+  color: var(--muted);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.email-composer__divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 0 20px;
+}
+
+.email-composer__body {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.email-composer__textarea {
+  width: 100%;
+  min-height: 180px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  padding: 18px 20px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  resize: vertical;
+  outline: none;
+  font-family: inherit;
+  transition: color 0.3s;
+}
+
+.email-composer__textarea::placeholder {
+  color: var(--muted);
+}
+
+.email-composer__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px 16px;
+  gap: 12px;
+}
+
+.email-composer__send {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: not-allowed;
+  transition: all 0.25s ease;
+  font-family: inherit;
+}
+
+.email-composer__send--active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+.email-composer__send--active:hover {
+  box-shadow: 0 4px 18px color-mix(in srgb, var(--accent) 35%, transparent);
+  transform: translateY(-1px);
+}
+
+.email-composer__send--active:active {
+  transform: translateY(0);
+}
+
+.email-composer__success,
+.email-composer__error-msg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  animation: formFadeIn 0.4s ease;
+}
+
+.email-composer__success {
+  color: #22c55e;
+}
+
+.email-composer__error-msg {
+  color: #ef4444;
+}
+
+/* ── Contact Form (compat — keep form-success for any legacy use) ── */
+
 .form-success {
   margin-top: 8px;
   color: #22c55e;
@@ -1035,6 +1287,45 @@ html[data-theme='light'] .hero h1 span {
 @keyframes formFadeIn {
   from { opacity: 0; transform: translateY(-4px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .email-composer__field-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 8px 0;
+  }
+
+  .email-composer__label {
+    width: auto;
+  }
+
+  .email-composer__field-inputs {
+    width: 100%;
+  }
+
+  .email-composer__send {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .email-composer__actions {
+    padding: 0 16px 14px;
+  }
+
+  .email-composer__fields {
+    padding: 0 16px;
+  }
+
+  .email-composer__textarea {
+    padding: 14px 16px;
+    min-height: 140px;
+  }
+
+  .email-composer__divider {
+    margin: 0 16px;
+  }
 }
 
 /* ── CV Download Modal ── */
@@ -1189,31 +1480,6 @@ html[data-theme='light'] .hero h1 span {
   color: #ef4444;
   font-size: 0.82rem;
   font-weight: 600;
-}
-
-.web3-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 16px;
-  width: 100%;
-}
-
-.form-input, .form-textarea {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: var(--surface-soft);
-  color: var(--text);
-  font-family: inherit;
-  font-size: 0.95rem;
-  transition: border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
-}
-
-.form-textarea {
-  min-height: 100px;
-  resize: vertical;
 }
 
 .project-shell {
@@ -3235,15 +3501,15 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
   display: flex;
   flex-direction: column;
   gap: 0;
-  max-width: 52rem;
+  max-width: 56rem;
   margin: 0 auto;
 }
 
 .edu-track {
   position: absolute;
-  left: 22px;
-  top: 0;
-  bottom: 0;
+  left: 42px;
+  top: 24px;
+  bottom: 24px;
   width: 2px;
 }
 
@@ -3253,21 +3519,30 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
   background: linear-gradient(
     180deg,
     var(--accent) 0%,
-    color-mix(in srgb, var(--accent) 50%, transparent) 50%,
-    color-mix(in srgb, var(--accent) 15%, transparent) 100%
+    color-mix(in srgb, var(--accent) 40%, transparent) 60%,
+    color-mix(in srgb, var(--accent) 10%, transparent) 100%
   );
   border-radius: 2px;
 }
 
 .edu-step {
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
+  gap: 28px;
+  align-items: stretch;
   position: relative;
 }
 
-.edu-step__marker {
+.edu-step__rail {
   flex-shrink: 0;
+  width: 84px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.edu-step__marker {
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -3278,6 +3553,7 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
   justify-content: center;
   z-index: 2;
   transition: box-shadow 0.3s, transform 0.3s;
+  flex-shrink: 0;
 }
 
 .edu-step:hover .edu-step__marker {
@@ -3292,34 +3568,10 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
   color: var(--accent);
 }
 
-.edu-step__card {
-  flex: 1;
-  min-width: 0;
-  padding: clamp(18px, 3vw, 24px);
-  border-radius: 18px;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--surface-strong) 92%, transparent), color-mix(in srgb, var(--surface) 96%, transparent));
-  border: 1px solid var(--border);
-  margin-bottom: 16px;
-  transition: border-color 0.4s, box-shadow 0.4s, transform 0.3s;
-}
-
-.edu-step:hover .edu-step__card {
-  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  transform: translateX(4px);
-}
-
-.edu-step__top {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 12px;
-}
-
-.edu-step__logo {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
+.edu-step__rail-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.96);
   border: 1px solid var(--border);
@@ -3329,22 +3581,52 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
   justify-content: center;
 }
 
-.edu-step__logo img {
+.edu-step__rail-logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   padding: 4px;
 }
 
+.edu-step__rail-date {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.35;
+  max-width: 80px;
+}
+
+.edu-step__card {
+  flex: 1;
+  min-width: 0;
+  padding: clamp(20px, 3vw, 28px);
+  border-radius: 18px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--surface-strong) 92%, transparent), color-mix(in srgb, var(--surface) 96%, transparent));
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: border-color 0.4s, box-shadow 0.4s, transform 0.3s;
+}
+
+.edu-step:hover .edu-step__card {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
 .edu-step__level {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 3px 10px;
+  letter-spacing: 0.08em;
+  padding: 3px 12px;
   border-radius: 999px;
-  margin-bottom: 4px;
 }
 
 .edu-step__level--college {
@@ -3362,64 +3644,44 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
   color: #34d399;
 }
 
-.edu-step__date {
-  display: block;
-  font-size: 0.78rem;
-  color: var(--muted);
-  font-weight: 500;
-}
-
 .edu-step__school {
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(1.05rem, 2vw, 1.3rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  margin: 0 0 4px;
+  margin: 4px 0 0;
   color: var(--heading);
 }
 
 .edu-step__degree {
   font-size: 0.9rem;
   color: var(--text-secondary);
-  margin: 0 0 12px;
-  font-weight: 500;
-}
-
-.edu-step__details {
-  list-style: none;
-  padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  font-weight: 500;
+  max-width: 44ch;
 }
 
-.edu-step__details li {
-  font-size: 0.85rem;
-  line-height: 1.55;
-  color: var(--text);
-  padding-left: 16px;
-  position: relative;
+.edu-step__detail {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 4px 0 0;
+  font-weight: 500;
+  max-width: 44ch;
 }
 
-.edu-step__details li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--muted);
-}
+/* ── Education — Mobile ── */
 
 @media (max-width: 640px) {
   .edu-track {
-    left: 18px;
+    left: 22px;
   }
 
   .edu-step {
-    gap: 14px;
+    gap: 16px;
+  }
+
+  .edu-step__rail {
+    width: 60px;
   }
 
   .edu-step__marker {
@@ -3428,26 +3690,73 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
   }
 
   .edu-step__number {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
+  }
+
+  .edu-step__rail-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .edu-step__rail-date {
+    font-size: 0.62rem;
+    max-width: 60px;
   }
 
   .edu-step__card {
-    padding: 16px 14px;
-  }
-
-  .edu-step__top {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .edu-step__logo {
-    width: 44px;
-    height: 44px;
+    padding: 18px 16px;
+    margin-bottom: 14px;
   }
 
   .edu-step__school {
-    font-size: 1.05rem;
+    font-size: 1rem;
+  }
+
+  .edu-step__degree {
+    font-size: 0.85rem;
+  }
+
+  .edu-step__detail {
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .edu-track {
+    left: 16px;
+  }
+
+  .edu-step {
+    gap: 12px;
+  }
+
+  .edu-step__rail {
+    width: 48px;
+  }
+
+  .edu-step__marker {
+    width: 32px;
+    height: 32px;
+  }
+
+  .edu-step__number {
+    font-size: 0.72rem;
+  }
+
+  .edu-step__rail-logo {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+
+  .edu-step__rail-date {
+    font-size: 0.58rem;
+    max-width: 48px;
+  }
+
+  .edu-step__card {
+    padding: 14px 12px;
+    border-radius: 14px;
   }
 }
 

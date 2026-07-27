@@ -297,65 +297,53 @@ export default function HomePage() {
           </div>
 
           <article className="edu-step">
-            <div className="edu-step__marker">
-              <span className="edu-step__number">1</span>
+            <div className="edu-step__rail">
+              <div className="edu-step__marker">
+                <span className="edu-step__number">1</span>
+              </div>
+              <div className="edu-step__rail-logo">
+                <img src="/portfolio/education/bulsuLogo.png" alt="Bulacan State University" />
+              </div>
+              <span className="edu-step__rail-date">Aug 2022 – June 2026</span>
             </div>
             <div className="edu-step__card">
-              <div className="edu-step__top">
-                <div className="edu-step__logo">
-                  <img src="/portfolio/education/bulsuLogo.png" alt="Bulacan State University" />
-                </div>
-                <div>
-                  <span className="edu-step__level edu-step__level--college">College</span>
-                  <span className="edu-step__date">Aug 2022 – June 2026</span>
-                </div>
-              </div>
+              <span className="edu-step__level edu-step__level--college">College</span>
               <h3 className="edu-step__school">Bulacan State University</h3>
               <p className="edu-step__degree">BS in Mathematics with Specialization in Computer Science</p>
-              <ul className="edu-step__details">
-                <li>BulSU Microsoft Student Community</li>
-              </ul>
+              <p className="edu-step__detail">BulSU Microsoft Student Community</p>
             </div>
           </article>
 
           <article className="edu-step">
-            <div className="edu-step__marker">
-              <span className="edu-step__number">2</span>
+            <div className="edu-step__rail">
+              <div className="edu-step__marker">
+                <span className="edu-step__number">2</span>
+              </div>
+              <div className="edu-step__rail-logo">
+                <img src="/portfolio/education/eccat(hsLogo).png" alt="Early Christian College of Arts and Technology" />
+              </div>
+              <span className="edu-step__rail-date">June 2016 – May 2022</span>
             </div>
             <div className="edu-step__card">
-              <div className="edu-step__top">
-                <div className="edu-step__logo">
-                  <img src="/portfolio/education/eccat(hsLogo).png" alt="Early Christian College of Arts and Technology" />
-                </div>
-                <div>
-                  <span className="edu-step__level edu-step__level--hs">High School</span>
-                  <span className="edu-step__date">June 2016 – May 2022</span>
-                </div>
-              </div>
+              <span className="edu-step__level edu-step__level--hs">High School</span>
               <h3 className="edu-step__school">Early Christian College of Arts and Technology</h3>
               <p className="edu-step__degree">Junior & Senior High School</p>
-              <ul className="edu-step__details">
-                <li>Designed and optimized a robotic control system</li>
-                <li>Math Quiz Bee Section Representative</li>
-                <li>Peer Counseling, Math Wizard, Book Lovers, Chess Club</li>
-              </ul>
+              <p className="edu-step__detail">Robotics · Math Quiz Bee Rep · Peer Counseling · Chess Club</p>
             </div>
           </article>
 
           <article className="edu-step">
-            <div className="edu-step__marker">
-              <span className="edu-step__number">3</span>
+            <div className="edu-step__rail">
+              <div className="edu-step__marker">
+                <span className="edu-step__number">3</span>
+              </div>
+              <div className="edu-step__rail-logo">
+                <img src="/portfolio/education/elemLogo.png" alt="Santa Maria Central School" />
+              </div>
+              <span className="edu-step__rail-date">June 2007 – March 2016</span>
             </div>
             <div className="edu-step__card">
-              <div className="edu-step__top">
-                <div className="edu-step__logo">
-                  <img src="/portfolio/education/elemLogo.png" alt="Santa Maria Central School" />
-                </div>
-                <div>
-                  <span className="edu-step__level edu-step__level--elem">Elementary</span>
-                  <span className="edu-step__date">June 2007 – March 2016</span>
-                </div>
-              </div>
+              <span className="edu-step__level edu-step__level--elem">Elementary</span>
               <h3 className="edu-step__school">Santa Maria Central School</h3>
               <p className="edu-step__degree">Elementary Education</p>
             </div>
@@ -417,9 +405,15 @@ export default function HomePage() {
         <div className="contact-grid">
           <div className="contact-top-row">
             <article className="contact-card">
+              <div className="contact-card__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </div>
               <h3>Direct contact</h3>
-              <p>Email: jermaine.pasamba@gmail.com</p>
-              <p>Contact number: 0942 696 3787</p>
+              <p className="contact-card__detail">jermaine.pasamba@gmail.com</p>
+              <p className="contact-card__detail">0942 696 3787</p>
               <div className="contact-actions">
                 <a className="button" href="https://www.linkedin.com/in/jermaine-pasamba-2b9256355/" target="_blank" rel="noreferrer">
                   View LinkedIn
@@ -428,8 +422,13 @@ export default function HomePage() {
             </article>
 
             <article className="contact-card">
+              <div className="contact-card__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+              </div>
               <h3>Chatbot</h3>
-              <p>Chat with my AI assistant to learn more about my experience.</p>
+              <p className="contact-card__detail">Chat with Porcha to learn more about my experience and projects.</p>
               <div className="contact-actions">
                 <OpenChatbotButton />
               </div>
