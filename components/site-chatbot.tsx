@@ -361,7 +361,7 @@ export default function SiteChatbot() {
               const isLastInGroup = idx === messages.length - 1 || messages[idx + 1]?.role !== message.role;
 
               return (
-                <div key={message.id}>
+                <div key={message.id} className={message.role === 'user' ? 'chatbot-msg-wrap chatbot-msg-wrap--user' : 'chatbot-msg-wrap'}>
                   {showDate && (
                     <div className="chatbot-date-sep">
                       <span>{displayDate(message.date)}</span>

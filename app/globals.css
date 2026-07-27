@@ -2915,9 +2915,13 @@ html[data-theme='light'] .hero h1 span {
 }
 
 .chatbot-message--user {
-  align-self: flex-end;
   margin-left: auto;
   margin-right: -20px;
+}
+
+.chatbot-msg-wrap--user {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .chatbot-message--assistant {
