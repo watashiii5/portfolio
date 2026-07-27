@@ -34,8 +34,8 @@ const jermaineProfile = {
       "Sandbox: Minecraft"
     ],
     moddingTinkering: [
-      "Extensively plays and tinkers with game modifications.",
-      "Favorite modpacks/ecosystems include Minecraft (specifically tech-heavy mods like 'Create') and various Terraria mods."
+      "Loves playing modded games — enjoys modpacks and modded servers, not mod development.",
+      "Favorite modded setups include Minecraft (especially tech-heavy modpacks like 'Create') and modded Terraria."
     ],
     unwinding: [
       "Watching anime (huge fan of the Isekai genre, magic systems, and reincarnation tropes).",
@@ -175,7 +175,7 @@ QUICK REFERENCE:
 - Stack: Next.js, TypeScript, Python, Supabase, FlutterFlow, Vercel, Unity, Phaser 3, Java, C#, Groq API
 - Top projects: QTime Room Allocation (thesis), YUI AI Companion, IT Ticketing System, Word Sprint (game)
 - Internship: 250-hr OJT at Nantes Bautista Consulting (FlutterFlow + Supabase + Groq, June–July 2025)
-- Gaming: Tetris, LoL, OSU!, Minecraft (Create mod), Terraria mods
+- Gaming: Tetris, LoL, OSU!, plays modded Minecraft (loves the Create modpack) and modded Terraria — he's a fan of modded games, not a mod creator
 - Fun fact: "HTML is a programming language and it was my first."
 - Personality: Quiet homebody, loves blue, fries & Coke, anime, Phonk music
 
