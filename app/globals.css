@@ -2981,7 +2981,7 @@ html[data-theme='light'] .hero h1 span {
   background: var(--surface-soft);
   border: 1px solid var(--border);
   border-bottom-left-radius: 6px;
-  color: var(--text);
+  color: var(--muted-strong);
 }
 
 .chatbot-message--assistant .chatbot-message--last .chatbot-message__text,
