@@ -156,7 +156,7 @@ a {
   align-items: center;
   gap: 16px;
   margin-bottom: clamp(18px, 4vw, 32px);
-  justify-items: start;
+  justify-items: center;
   justify-content: space-between;
 }
 
@@ -367,6 +367,12 @@ html[data-theme='light'] .hero h1 span {
 .hero-copy p {
   max-width: 58ch;
   margin-inline: auto;
+}
+
+.hero-marquee-wrap {
+  width: 100%;
+  padding: 0 clamp(16px, 5vw, 80px);
+  margin-bottom: clamp(20px, 4vw, 48px);
 }
 
 /* ── Stack Marquee ── */
@@ -581,6 +587,7 @@ html[data-theme='light'] .hero h1 span {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  justify-content: center;
 }
 
 .button,
@@ -3222,6 +3229,7 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
   .topbar,
   .section-head {
     grid-template-columns: 1fr;
+    justify-items: center;
   }
 
   .topbar-actions {
@@ -3229,12 +3237,31 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
   }
 
   .brand {
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-copy {
+    text-align: center;
+    align-items: center;
   }
 
   .hero h1,
   .project-shell h1 {
     font-size: clamp(2.8rem, 14vw, 4.2rem);
+    margin-inline: auto;
+  }
+
+  .hero-subtitle {
+    margin-inline: auto;
+  }
+
+  .hero-copy p {
+    margin-inline: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
   }
 
   .project-grid,
@@ -3247,6 +3274,11 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
 
   .hero-card {
     transform: none;
+  }
+
+  .hero-visual {
+    justify-items: center;
+    min-height: 20rem;
   }
 
   .hero-badge {

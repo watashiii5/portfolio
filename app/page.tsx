@@ -132,7 +132,6 @@ export default function HomePage() {
               Contact
             </Link>
           </div>
-          <StackMarquee />
         </div>
 
         <div className="hero-visual" aria-label="Portfolio preview illustration">
@@ -159,6 +158,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <div className="hero-marquee-wrap">
+        <StackMarquee />
+      </div>
 
       <ScrollReveal>
       <section className="section" id="projects">
