@@ -4,6 +4,7 @@ import { ContactForm } from '@/components/contact-form';
 import { OpenChatbotButton } from '@/components/open-chatbot-button';
 import CertificateCarousel from '@/components/certificate-carousel';
 import type { Certificate } from '@/components/certificate-carousel';
+import CvDownloadButton from '@/components/cv-download-button';
 import ProjectCarousel from '@/components/project-carousel';
 import { ProjectVisual } from '@/components/project-visual';
 import { ScrollReveal } from '@/components/scroll-reveal';
@@ -250,24 +251,32 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="timeline">
-          <article className="timeline-item">
-            <div className="timeline-logo">
-              <img src="/portfolio/workExperience/nbconsulting(ojtlogo).png" alt="Nantes Bautista Consulting" />
-            </div>
-            <div className="timeline-content">
-              <div className="timeline-header">
-                <h3>Web Developer Intern</h3>
-                <span className="timeline-date">June 2025 – July 2025</span>
+        <div className="exp-showcase">
+          <div className="exp-card">
+            <div className="exp-card__glow" aria-hidden="true" />
+            <div className="exp-card__top">
+              <div className="exp-card__logo">
+                <img src="/portfolio/workExperience/nbconsulting(ojtlogo).png" alt="Nantes Bautista Consulting" />
               </div>
-              <p className="timeline-org">Nantes Bautista Consulting</p>
-              <ul className="timeline-details">
-                <li>Served as the primary technical developer for a web-app system, utilizing FlutterFlow and Supabase to transition legacy processes into a modern digital interface.</li>
-                <li>Built and implemented complex system logic, including advanced search filtering and database queries, overcoming technical limitations in a low-code environment.</li>
-                <li>Collaborated with a cross-functional team to refine UI/UX components and ensure system performance met business objectives.</li>
-              </ul>
+              <div className="exp-card__meta">
+                <span className="exp-card__date">June 2025 – July 2025</span>
+                <span className="exp-card__hours">250 hrs</span>
+              </div>
             </div>
-          </article>
+            <h3 className="exp-card__title">Web Developer Intern</h3>
+            <p className="exp-card__org">Nantes Bautista Consulting</p>
+            <ul className="exp-card__details">
+              <li>Served as the primary technical developer, utilizing FlutterFlow and Supabase to transition legacy processes into a modern digital interface.</li>
+              <li>Built complex system logic including advanced search filtering and database queries, overcoming limitations in a low-code environment.</li>
+              <li>Collaborated with a cross-functional team to refine UI/UX components and ensure system performance met business objectives.</li>
+            </ul>
+            <div className="exp-card__tags">
+              <span className="exp-tag">FlutterFlow</span>
+              <span className="exp-tag">Supabase</span>
+              <span className="exp-tag">Groq API</span>
+              <span className="exp-tag">Figma</span>
+            </div>
+          </div>
         </div>
       </section>
       </ScrollReveal>
@@ -279,61 +288,76 @@ export default function HomePage() {
             <div className="section-kicker">Education</div>
             <h2>Academic background.</h2>
           </div>
-          <a className="button" href="/portfolio/workExperience/Jermaine_Pasamba_Curriculum_Vitae.pdf" download>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: 6 }}>
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-            Download CV
-          </a>
+          <CvDownloadButton pdfUrl="/portfolio/workExperience/Jermaine_Pasamba_Curriculum_Vitae.pdf" />
         </div>
 
-        <div className="timeline">
-          <article className="timeline-item">
-            <div className="timeline-logo">
-              <img src="/portfolio/education/bulsuLogo.png" alt="Bulacan State University" />
+        <div className="edu-journey">
+          <div className="edu-track" aria-hidden="true">
+            <div className="edu-track__line" />
+          </div>
+
+          <article className="edu-step">
+            <div className="edu-step__marker">
+              <span className="edu-step__number">1</span>
             </div>
-            <div className="timeline-content">
-              <div className="timeline-header">
-                <h3>Bulacan State University</h3>
-                <span className="timeline-date">August 2022 – June 2026</span>
+            <div className="edu-step__card">
+              <div className="edu-step__top">
+                <div className="edu-step__logo">
+                  <img src="/portfolio/education/bulsuLogo.png" alt="Bulacan State University" />
+                </div>
+                <div>
+                  <span className="edu-step__level edu-step__level--college">College</span>
+                  <span className="edu-step__date">Aug 2022 – June 2026</span>
+                </div>
               </div>
-              <p className="timeline-org">Bachelor of Science in Mathematics with Specialization in Computer Science</p>
-              <ul className="timeline-details">
-                <li>Organization/Club: BulSu Microsoft Student Community</li>
+              <h3 className="edu-step__school">Bulacan State University</h3>
+              <p className="edu-step__degree">BS in Mathematics with Specialization in Computer Science</p>
+              <ul className="edu-step__details">
+                <li>BulSU Microsoft Student Community</li>
               </ul>
             </div>
           </article>
 
-          <article className="timeline-item">
-            <div className="timeline-logo">
-              <img src="/portfolio/education/eccat(hsLogo).png" alt="Early Christian College of Arts and Technology" />
+          <article className="edu-step">
+            <div className="edu-step__marker">
+              <span className="edu-step__number">2</span>
             </div>
-            <div className="timeline-content">
-              <div className="timeline-header">
-                <h3>Early Christian College of Arts and Technology</h3>
-                <span className="timeline-date">June 2016 – May 2022</span>
+            <div className="edu-step__card">
+              <div className="edu-step__top">
+                <div className="edu-step__logo">
+                  <img src="/portfolio/education/eccat(hsLogo).png" alt="Early Christian College of Arts and Technology" />
+                </div>
+                <div>
+                  <span className="edu-step__level edu-step__level--hs">High School</span>
+                  <span className="edu-step__date">June 2016 – May 2022</span>
+                </div>
               </div>
-              <p className="timeline-org">Junior & Senior High School</p>
-              <ul className="timeline-details">
-                <li>Designed and optimized a robotic control system (Robotics)</li>
+              <h3 className="edu-step__school">Early Christian College of Arts and Technology</h3>
+              <p className="edu-step__degree">Junior & Senior High School</p>
+              <ul className="edu-step__details">
+                <li>Designed and optimized a robotic control system</li>
                 <li>Math Quiz Bee Section Representative</li>
-                <li>Memberships: Peer Counseling, Math Wizard, Book Lovers, Chess Club</li>
+                <li>Peer Counseling, Math Wizard, Book Lovers, Chess Club</li>
               </ul>
             </div>
           </article>
 
-          <article className="timeline-item">
-            <div className="timeline-logo">
-              <img src="/portfolio/education/elemLogo.png" alt="Santa Maria Elementary School" />
+          <article className="edu-step">
+            <div className="edu-step__marker">
+              <span className="edu-step__number">3</span>
             </div>
-            <div className="timeline-content">
-              <div className="timeline-header">
-                <h3>Santa Maria Central School</h3>
-                <span className="timeline-date">June 2007 – March 2016</span>
+            <div className="edu-step__card">
+              <div className="edu-step__top">
+                <div className="edu-step__logo">
+                  <img src="/portfolio/education/elemLogo.png" alt="Santa Maria Central School" />
+                </div>
+                <div>
+                  <span className="edu-step__level edu-step__level--elem">Elementary</span>
+                  <span className="edu-step__date">June 2007 – March 2016</span>
+                </div>
               </div>
-              <p className="timeline-org">Elementary Education</p>
+              <h3 className="edu-step__school">Santa Maria Central School</h3>
+              <p className="edu-step__degree">Elementary Education</p>
             </div>
           </article>
         </div>
@@ -370,14 +394,7 @@ export default function HomePage() {
             <div className="about-card__text">
               <p>I am a Computer Science student at Bulacan State University graduated in June 2026, with full-stack experience in Next.js and FastAPI, a 250-hour web development internship, and specialized expertise in building algorithmic optimization systems.</p>
               <div className="about-card__actions">
-                <a className="button" href="/portfolio/workExperience/Jermaine_Pasamba_Curriculum_Vitae.pdf" download>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: 6 }}>
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <polyline points="7 10 12 15 17 10" />
-                    <line x1="12" y1="15" x2="12" y2="3" />
-                  </svg>
-                  Download CV
-                </a>
+                <CvDownloadButton pdfUrl="/portfolio/workExperience/Jermaine_Pasamba_Curriculum_Vitae.pdf" />
                 <Link className="button-ghost" href="#contact">
                   Get in touch
                 </Link>
