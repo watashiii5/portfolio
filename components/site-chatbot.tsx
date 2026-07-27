@@ -373,13 +373,6 @@ export default function SiteChatbot() {
                         <img src={BOT_AVATAR_SRC} alt="" />
                       </span>
                     )}
-                    <div className="chatbot-message__body">
-                      <div
-                        className="chatbot-message__text"
-                        dangerouslySetInnerHTML={{ __html: renderMarkdown(message.content) }}
-                      />
-                      <span className="chatbot-message__time">{message.time}</span>
-                    </div>
                     {message.role === 'user' && (
                       <span className="chatbot-message__avatar chatbot-message__avatar--user" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -388,6 +381,13 @@ export default function SiteChatbot() {
                         </svg>
                       </span>
                     )}
+                    <div className="chatbot-message__body">
+                      <div
+                        className="chatbot-message__text"
+                        dangerouslySetInnerHTML={{ __html: renderMarkdown(message.content) }}
+                      />
+                      <span className="chatbot-message__time">{message.time}</span>
+                    </div>
                   </div>
                 </div>
               );
@@ -407,22 +407,23 @@ export default function SiteChatbot() {
                 </div>
               </div>
             )}
-
-            {showQuickReplies && !busy && messages.length <= 1 && (
-              <div className="chatbot-quick-replies">
-                {QUICK_REPLIES.map((reply) => (
-                  <button
-                    key={reply}
-                    className="chatbot-quick-reply"
-                    type="button"
-                    onClick={() => void sendMessage(reply)}
-                  >
-                    {reply}
-                  </button>
-                ))}
-              </div>
-            )}
           </div>
+
+          {/* ── Quick Replies (above input) ── */}
+          {showQuickReplies && !busy && messages.length <= 1 && (
+            <div className="chatbot-quick-replies">
+              {QUICK_REPLIES.map((reply) => (
+                <button
+                  key={reply}
+                  className="chatbot-quick-reply"
+                  type="button"
+                  onClick={() => void sendMessage(reply)}
+                >
+                  {reply}
+                </button>
+              ))}
+            </div>
+          )}
 
           {/* ── Input ── */}
           <form

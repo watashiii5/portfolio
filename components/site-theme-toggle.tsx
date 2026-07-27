@@ -59,8 +59,6 @@ export function ThemeToggleButton() {
   const [theme, setTheme] = useState<ThemeMode>('dark');
   const [ready, setReady] = useState(false);
   const [anim, setAnim] = useState<AnimDir>(null);
-  const pendingRef = useRef<ThemeMode | null>(null);
-  const commitTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const clearTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -90,7 +88,6 @@ export function ThemeToggleButton() {
   }, []);
 
   useEffect(() => () => {
-    if (commitTimer.current) clearTimeout(commitTimer.current);
     if (clearTimer.current) clearTimeout(clearTimer.current);
   }, []);
 
@@ -104,15 +101,8 @@ export function ThemeToggleButton() {
   function toggle() {
     if (anim) return;
     const next: ThemeMode = theme === 'dark' ? 'light' : 'dark';
-    pendingRef.current = next;
     setAnim(theme === 'dark' ? 'sunrise' : 'sunset');
-
-    commitTimer.current = setTimeout(() => {
-      if (pendingRef.current) {
-        commit(pendingRef.current);
-        pendingRef.current = null;
-      }
-    }, 1900);
+    commit(next);
 
     clearTimer.current = setTimeout(() => setAnim(null), CYCLE_MS);
   }

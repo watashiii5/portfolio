@@ -2916,7 +2916,7 @@ html[data-theme='light'] .hero h1 span {
 
 .chatbot-message--user {
   align-self: flex-end;
-  flex-direction: row-reverse;
+  margin-left: auto;
 }
 
 .chatbot-message--assistant {
@@ -3101,11 +3101,14 @@ html[data-theme='light'] .chatbot-message__text code {
 }
 
 html[data-theme='light'] .chatbot-quick-reply {
-  background: rgba(0, 0, 0, 0.03);
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text);
 }
 
 html[data-theme='light'] .chatbot-quick-reply:hover {
+  background: var(--accent);
   color: #fff;
+  border-color: var(--accent);
 }
 
 /* ── Input Area ── */
