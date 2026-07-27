@@ -265,17 +265,16 @@ export default function HomePage() {
 
           <div className="edu-h-timeline__node">
             <div className="edu-h-timeline__logo">
-              <img src="/portfolio/education/bulsuLogo.png" alt="Bulacan State University" />
+              <img src="/portfolio/education/elemLogo.png" alt="Santa Maria Central School" />
             </div>
             <div className="edu-h-timeline__dot">
-              <span>Tertiary</span>
+              <span>Primary</span>
             </div>
-            <div className="edu-h-timeline__date">Aug 2022 – June 2026</div>
+            <div className="edu-h-timeline__date">June 2007 – March 2016</div>
             <div className="edu-h-timeline__card">
-              <span className="edu-h-timeline__level edu-h-timeline__level--college">College</span>
-              <h3>Bulacan State University</h3>
-              <p>BS in Mathematics with Specialization in Computer Science</p>
-              <span className="edu-h-timeline__detail">BulSU Microsoft Student Community</span>
+              <span className="edu-h-timeline__level edu-h-timeline__level--elem">Elementary</span>
+              <h3>Santa Maria Central School</h3>
+              <p>Elementary Education</p>
             </div>
           </div>
 
@@ -297,16 +296,17 @@ export default function HomePage() {
 
           <div className="edu-h-timeline__node">
             <div className="edu-h-timeline__logo">
-              <img src="/portfolio/education/elemLogo.png" alt="Santa Maria Central School" />
+              <img src="/portfolio/education/bulsuLogo.png" alt="Bulacan State University" />
             </div>
             <div className="edu-h-timeline__dot">
-              <span>Primary</span>
+              <span>Tertiary</span>
             </div>
-            <div className="edu-h-timeline__date">June 2007 – March 2016</div>
+            <div className="edu-h-timeline__date">Aug 2022 – June 2026</div>
             <div className="edu-h-timeline__card">
-              <span className="edu-h-timeline__level edu-h-timeline__level--elem">Elementary</span>
-              <h3>Santa Maria Central School</h3>
-              <p>Elementary Education</p>
+              <span className="edu-h-timeline__level edu-h-timeline__level--college">College</span>
+              <h3>Bulacan State University</h3>
+              <p>BS in Mathematics with Specialization in Computer Science</p>
+              <span className="edu-h-timeline__detail">BulSU Microsoft Student Community</span>
             </div>
           </div>
         </div>
