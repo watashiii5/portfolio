@@ -102,6 +102,7 @@ export const projects: Project[] = [
       { label: 'Hours', value: '250' },
       { label: 'Tooling', value: 'FlutterFlow + Supabase' },
     ],
+    liveUrl: 'https://recrueit-latest-copy-e6pwl8.flutterflow.app/marketingPageResponsive',
     media: [
       { kind: 'image', src: asset('/projects/Web Developer Intern/RecrueIT_Text NEW (1) (1) (2).gif'), alt: 'RecrueIT logo animation' },
       { kind: 'image', src: asset('/projects/Web Developer Intern/RecrueITChatBOT.png'), alt: 'RecrueIT chatbot logo' },

@@ -86,7 +86,8 @@ const jermaineProfile = {
       tech: ["FlutterFlow", "Supabase", "Figma", "Groq API"],
       role: "Web developer intern",
       highlights: "Collaborated through weekly reviews aligned with team goals. Built and refined UI flows in FlutterFlow with a Groq-powered chatbot. Focused on polished, practical, and professional output.",
-      timeline: "June 2025 to July 2025"
+      timeline: "June 2025 to July 2025",
+      liveUrl: "https://recrueit-latest-copy-e6pwl8.flutterflow.app/marketingPageResponsive"
     },
     {
       title: "YUI AI Companion",
