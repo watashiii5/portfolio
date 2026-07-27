@@ -382,6 +382,7 @@ html[data-theme='light'] .hero h1 span {
   letter-spacing: 0.14em;
   color: var(--muted);
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .stack-marquee__header--sub {
@@ -395,15 +396,15 @@ html[data-theme='light'] .hero h1 span {
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 8%,
-    black 92%,
+    black 6%,
+    black 94%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 8%,
-    black 92%,
+    black 6%,
+    black 94%,
     transparent 100%
   );
 }
@@ -412,21 +413,7 @@ html[data-theme='light'] .hero h1 span {
   display: flex;
   gap: 12px;
   width: max-content;
-  animation: marqueeLeft 28s linear infinite;
-}
-
-.stack-marquee__inner--reverse {
-  animation: marqueeRight 24s linear infinite;
-}
-
-@keyframes marqueeLeft {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes marqueeRight {
-  0%   { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+  will-change: transform;
 }
 
 .stack-marquee__card {
@@ -484,11 +471,6 @@ html[data-theme='light'] .hero h1 span {
 
 .stack-marquee__card--sm .stack-marquee__name {
   font-size: 0.72rem;
-}
-
-/* pause on hover */
-.stack-marquee__track:hover .stack-marquee__inner {
-  animation-play-state: paused;
 }
 
 /* ── Large screens ── */
@@ -3401,6 +3383,7 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
 
 .about-card__actions {
   display: flex;
+  justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
 }
@@ -3700,9 +3683,9 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
 }
 
 .edu-h-timeline__dot {
-  width: 36px;
+  min-width: 36px;
   height: 36px;
-  border-radius: 50%;
+  border-radius: 999px;
   background: var(--surface-strong);
   border: 3px solid var(--accent);
   display: flex;
@@ -3710,6 +3693,7 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
   justify-content: center;
   z-index: 2;
   margin-bottom: 10px;
+  padding: 0 10px;
   transition: box-shadow 0.3s, transform 0.3s;
 }
 
@@ -3720,9 +3704,12 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
 
 .edu-h-timeline__dot span {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.65rem;
   font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--accent);
+  white-space: nowrap;
 }
 
 .edu-h-timeline__date {

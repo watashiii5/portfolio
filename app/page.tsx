@@ -8,8 +8,8 @@ import CvDownloadButton from '@/components/cv-download-button';
 import ProjectCarousel from '@/components/project-carousel';
 import { ProjectVisual } from '@/components/project-visual';
 import { ScrollReveal } from '@/components/scroll-reveal';
+import StackMarquee from '@/components/stack-marquee';
 import { ThemeToggleButton } from '@/components/site-theme-toggle';
-import TechLogo from '@/components/tech-logo';
 import { featuredProjects, projects } from '@/lib/projects';
 
 const certificates: Certificate[] = [
@@ -132,42 +132,7 @@ export default function HomePage() {
               Contact
             </Link>
           </div>
-          <div className="stack-marquee">
-            <div className="stack-marquee__header">Primary stack</div>
-            <div className="stack-marquee__track stack-marquee__track--primary">
-              <div className="stack-marquee__inner">
-                {[
-                  'Next.js', 'TypeScript', 'Python', 'Supabase',
-                  'FlutterFlow', 'Groq', 'Vercel', 'Render',
-                  'Next.js', 'TypeScript', 'Python', 'Supabase',
-                  'FlutterFlow', 'Groq', 'Vercel', 'Render',
-                ].map((name, i) => (
-                  <div className="stack-marquee__card" key={`p-${i}`} title={name}>
-                    <span className="stack-marquee__logo">
-                      <TechLogo name={name} />
-                    </span>
-                    <span className="stack-marquee__name">{name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="stack-marquee__header stack-marquee__header--sub">Also experienced with</div>
-            <div className="stack-marquee__track stack-marquee__track--secondary">
-              <div className="stack-marquee__inner stack-marquee__inner--reverse">
-                {[
-                  'Unity', 'Phaser', 'Java', 'C#', 'Figma', 'FastAPI',
-                  'Unity', 'Phaser', 'Java', 'C#', 'Figma', 'FastAPI',
-                ].map((name, i) => (
-                  <div className="stack-marquee__card stack-marquee__card--sm" key={`s-${i}`} title={name}>
-                    <span className="stack-marquee__logo stack-marquee__logo--sm">
-                      <TechLogo name={name} />
-                    </span>
-                    <span className="stack-marquee__name">{name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <StackMarquee />
         </div>
 
         <div className="hero-visual" aria-label="Portfolio preview illustration">
@@ -306,7 +271,7 @@ export default function HomePage() {
               <img src="/portfolio/education/bulsuLogo.png" alt="Bulacan State University" />
             </div>
             <div className="edu-h-timeline__dot">
-              <span>1</span>
+              <span>Tertiary</span>
             </div>
             <div className="edu-h-timeline__date">Aug 2022 – June 2026</div>
             <div className="edu-h-timeline__card">
@@ -322,7 +287,7 @@ export default function HomePage() {
               <img src="/portfolio/education/eccat(hsLogo).png" alt="Early Christian College of Arts and Technology" />
             </div>
             <div className="edu-h-timeline__dot">
-              <span>2</span>
+              <span>Secondary</span>
             </div>
             <div className="edu-h-timeline__date">June 2016 – May 2022</div>
             <div className="edu-h-timeline__card">
@@ -338,7 +303,7 @@ export default function HomePage() {
               <img src="/portfolio/education/elemLogo.png" alt="Santa Maria Central School" />
             </div>
             <div className="edu-h-timeline__dot">
-              <span>3</span>
+              <span>Primary</span>
             </div>
             <div className="edu-h-timeline__date">June 2007 – March 2016</div>
             <div className="edu-h-timeline__card">

@@ -70,6 +70,10 @@ export function ContactForm() {
       {/* ── Address Bar ── */}
       <div className="email-composer__fields">
         <div className="email-composer__field-row">
+          <label className="email-composer__label">To</label>
+          <span className="email-composer__field email-composer__field--static">jermaine.pasamba@gmail.com</span>
+        </div>
+        <div className="email-composer__field-row">
           <label className="email-composer__label">From</label>
           <div className="email-composer__field-inputs">
             <input
@@ -95,10 +99,6 @@ export function ContactForm() {
             />
             <span className="email-composer__field-sep">&gt;</span>
           </div>
-        </div>
-        <div className="email-composer__field-row">
-          <label className="email-composer__label">To</label>
-          <span className="email-composer__field email-composer__field--static">jermaine.pasamba@gmail.com</span>
         </div>
         <div className="email-composer__field-row">
           <label className="email-composer__label">Subject</label>
