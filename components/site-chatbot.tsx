@@ -1,12 +1,13 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 type ChatMessage = {
   id: string;
   role: 'assistant' | 'user';
   content: string;
   time: string;
+  date: string;
 };
 
 const STORAGE_KEY = 'jermaine-portfolio-chat';
@@ -18,9 +19,39 @@ function formatTime(date: Date) {
   return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
 }
 
-const PANEL_HEIGHT_MIN = 280;
+function formatDate(date: Date) {
+  return date.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function isToday(dateStr: string) {
+  return dateStr === formatDate(new Date());
+}
+
+function isYesterday(dateStr: string) {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  return dateStr === formatDate(d);
+}
+
+function displayDate(dateStr: string) {
+  if (isToday(dateStr)) return 'Today';
+  if (isYesterday(dateStr)) return 'Yesterday';
+  return dateStr;
+}
+
+const PANEL_HEIGHT_MIN = 320;
 const PANEL_HEIGHT_MAX_RATIO = 0.85;
-const PANEL_HEIGHT_DEFAULT = 480;
+const PANEL_HEIGHT_DEFAULT = 520;
+
+const QUICK_REPLIES = [
+  'What are his top projects?',
+  'What tech stack does he use?',
+  'Tell me about his experience',
+  'How can I contact him?',
+];
+
+const BOT_AVATAR_SRC = '/portfolio/Gemini_Generated_chatbotLogo.png';
+const BOT_BUSY_SRC = '/portfolio/merged.gif';
 
 export default function SiteChatbot() {
   const apiUrl = process.env.NEXT_PUBLIC_CHATBOT_API_URL || 'https://portfolio-opal-iota-2ffsqksb9m.vercel.app/api/chat';
@@ -31,10 +62,14 @@ export default function SiteChatbot() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [liveHint, setLiveHint] = useState<string | null>(null);
   const [panelHeight, setPanelHeight] = useState(PANEL_HEIGHT_DEFAULT);
+  const [showQuickReplies, setShowQuickReplies] = useState(true);
   const sessionIdRef = useRef('');
   const viewportRef = useRef<HTMLDivElement | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const hintTimerRef = useRef<NodeJS.Timeout | null>(null);
   const dragRef = useRef<{ startY: number; startHeight: number } | null>(null);
+
+  const now = useMemo(() => ({ time: formatTime(new Date()), date: formatDate(new Date()) }), []);
 
   useEffect(() => {
     const saved = sessionStorage.getItem(STORAGE_KEY);
@@ -46,7 +81,11 @@ export default function SiteChatbot() {
           sessionIdRef.current = parsed.sessionId;
         }
         if (Array.isArray(parsed.messages) && parsed.messages.length > 0) {
-          setMessages(parsed.messages.map((message) => ({ ...message, time: message.time || formatTime(new Date()) })));
+          setMessages(parsed.messages.map((m) => ({
+            ...m,
+            time: m.time || formatTime(new Date()),
+            date: m.date || formatDate(new Date()),
+          })));
           setReady(true);
           return;
         }
@@ -57,7 +96,13 @@ export default function SiteChatbot() {
 
     sessionIdRef.current = createId();
     setMessages([
-      { id: createId(), role: 'assistant', content: 'Hi, I am Porcha. I am a portfolio chatbot built by Jermaine. Ask me about his projects, tools, or experience.', time: formatTime(new Date()) },
+      {
+        id: createId(),
+        role: 'assistant',
+        content: 'Hi there! I\u2019m **Porcha**, Jermaine\u2019s AI assistant. I can tell you about his projects, tech stack, experience, or how to get in touch.',
+        time: formatTime(new Date()),
+        date: formatDate(new Date()),
+      },
     ]);
     setReady(true);
   }, []);
@@ -72,13 +117,13 @@ export default function SiteChatbot() {
     if (!ready) return;
 
     const sections = [
-      { id: 'projects', msg: 'Check out these featured projects! 🚀' },
-      { id: 'all-projects', msg: 'Here is a complete view of all his work. 📚' },
-      { id: 'experience', msg: 'His internship experience at NB Consulting! 💼' },
-      { id: 'education', msg: 'His academic journey from elementary to college. 🎓' },
-      { id: 'certificates', msg: 'He has certificates from his internship and a thesis competition! 📜' },
-      { id: 'about', msg: 'Learn more about Jermaine here! 🧑‍💻' },
-      { id: 'contact', msg: 'Need to reach him? You can send a direct email here! ✉️' }
+      { id: 'projects', msg: 'Check out these featured projects! \uD83D\uDE80' },
+      { id: 'all-projects', msg: 'Here is a complete view of all his work. \uD83D\uDCDA' },
+      { id: 'experience', msg: 'His internship experience at NB Consulting! \uD83D\uDCBC' },
+      { id: 'education', msg: 'His academic journey from elementary to college. \uD83C\uDF93' },
+      { id: 'certificates', msg: 'He has certificates from his internship and a thesis competition! \uD83D\uDCDC' },
+      { id: 'about', msg: 'Learn more about Jermaine here! \uD83E\uDDD1\u200D\uD83D\uDCBB' },
+      { id: 'contact', msg: 'Need to reach him? You can send a direct email here! \u2709\uFE0F' },
     ];
 
     const observer = new IntersectionObserver(
@@ -104,9 +149,8 @@ export default function SiteChatbot() {
       if (el) observer.observe(el);
     });
 
-    // Initial hint
     setTimeout(() => {
-      setLiveHint("Hi! I'm Porcha, Jermaine's AI assistant. 👋");
+      setLiveHint("Hi! I\u2019m Porcha, Jermaine\u2019s AI assistant. \uD83D\uDC4B");
       hintTimerRef.current = setTimeout(() => setLiveHint(null), 5000);
     }, 1500);
 
@@ -120,9 +164,22 @@ export default function SiteChatbot() {
 
   useEffect(() => {
     if (open) {
-      viewportRef.current?.scrollTo({ top: viewportRef.current.scrollHeight, behavior: 'smooth' });
+      requestAnimationFrame(() => {
+        viewportRef.current?.scrollTo({ top: viewportRef.current.scrollHeight, behavior: 'smooth' });
+      });
     }
   }, [messages, open]);
+
+  const autoResize = useCallback(() => {
+    const ta = textareaRef.current;
+    if (!ta) return;
+    ta.style.height = 'auto';
+    ta.style.height = Math.min(ta.scrollHeight, 120) + 'px';
+  }, []);
+
+  useEffect(() => {
+    autoResize();
+  }, [input, autoResize]);
 
   const title = useMemo(() => 'Ask about Jermaine', []);
 
@@ -149,23 +206,43 @@ export default function SiteChatbot() {
     document.body.style.cursor = 'ns-resize';
   }
 
-  async function sendMessage() {
-    const text = input.trim();
-    if (!text || busy) return;
+  async function sendMessage(text?: string) {
+    const textToSend = (text ?? input).trim();
+    if (!textToSend || busy) return;
 
-    const nextMessages = [...messages, { id: createId(), role: 'user' as const, content: text, time: formatTime(new Date()) }];
-    setMessages((current) => [...current, { id: createId(), role: 'user', content: text, time: formatTime(new Date()) }]);
+    const timestamp = new Date();
+    const newMsg: ChatMessage = {
+      id: createId(),
+      role: 'user',
+      content: textToSend,
+      time: formatTime(timestamp),
+      date: formatDate(timestamp),
+    };
+
+    setMessages((current) => [...current, newMsg]);
     setInput('');
     setBusy(true);
+    setShowQuickReplies(false);
+
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+    }
 
     const fallbackReply =
-      text.toLowerCase().includes('project') ? 'My strongest work is the thesis app, the internship build, and the AI companion.' :
-      text.toLowerCase().includes('stack') ? 'I mainly worked with Next.js, TypeScript, Supabase, FlutterFlow, Figma, and Groq.' :
-      text.toLowerCase().includes('contact') ? 'You can reach me through the contact section in the portfolio.' :
-      'Ask me about my projects, stack, or internship experience and I’ll keep it short.';
+      textToSend.toLowerCase().includes('project') ? 'His strongest work is the thesis app, the internship build, and the AI companion.' :
+      textToSend.toLowerCase().includes('stack') ? 'He mainly worked with Next.js, TypeScript, Supabase, FlutterFlow, Figma, and Groq.' :
+      textToSend.toLowerCase().includes('contact') ? 'You can reach him through the contact section in the portfolio.' :
+      'Ask me about his projects, stack, or internship experience and I\u2019ll keep it short.';
 
     const appendAssistantMessage = (content: string) => {
-      setMessages((current) => [...current, { id: createId(), role: 'assistant', content, time: formatTime(new Date()) }]);
+      const t = new Date();
+      setMessages((current) => [...current, {
+        id: createId(),
+        role: 'assistant',
+        content,
+        time: formatTime(t),
+        date: formatDate(t),
+      }]);
     };
 
     try {
@@ -173,13 +250,13 @@ export default function SiteChatbot() {
         const response = await fetch(apiUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ sessionId: sessionIdRef.current, messages: nextMessages }),
+          body: JSON.stringify({ sessionId: sessionIdRef.current, messages: [...messages, newMsg] }),
         });
 
         if (response.ok) {
           const data = (await response.json()) as { reply?: string };
           if (data.reply) {
-            appendAssistantMessage(data.reply as string);
+            appendAssistantMessage(data.reply);
             setBusy(false);
             return;
           }
@@ -194,78 +271,185 @@ export default function SiteChatbot() {
     }
   }
 
+  function onKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      void sendMessage();
+    }
+  }
+
+  function renderMarkdown(content: string) {
+    return content
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/`(.+?)`/g, '<code>$1</code>')
+      .replace(/\n/g, '<br/>');
+  }
+
+  let lastDate = '';
+
   return (
     <div className="chatbot-shell">
-      <button className="chatbot-launcher" type="button" onClick={() => { setOpen((value) => !value); setLiveHint(null); }} aria-expanded={open} aria-controls="portfolio-chatbot-panel" aria-label="Ask about Jermaine">
+      <button
+        className="chatbot-launcher"
+        type="button"
+        onClick={() => { setOpen((v) => !v); setLiveHint(null); }}
+        aria-expanded={open}
+        aria-controls="portfolio-chatbot-panel"
+        aria-label="Open chat with Porcha"
+      >
         <span className="chatbot-launcher__logoWrap" aria-hidden="true">
-          <img className="chatbot-launcher__logo" src={busy || (!open && !!liveHint) ? "/portfolio/merged.gif" : "/portfolio/Gemini_Generated_chatbotLogo.png"} alt="" />
+          <img
+            className="chatbot-launcher__logo"
+            src={busy || (!open && !!liveHint) ? BOT_BUSY_SRC : BOT_AVATAR_SRC}
+            alt=""
+          />
         </span>
+        <span className={`chatbot-launcher__pulse ${busy ? 'chatbot-launcher__pulse--active' : ''}`} aria-hidden="true" />
         {liveHint && !open && (
-          <div className="chatbot-bubble">
-            {liveHint}
-          </div>
+          <div className="chatbot-bubble">{liveHint}</div>
         )}
       </button>
 
-      {open ? (
-        <section className="chatbot-panel" id="portfolio-chatbot-panel" aria-label="Portfolio chatbot" style={{ height: panelHeight }}>
-          <div className="chatbot-drag-handle" onMouseDown={onDragStart} aria-hidden="true">
-            <span className="chatbot-drag-handle__bar" />
-          </div>
+      {open && (
+        <section
+          className="chatbot-panel"
+          id="portfolio-chatbot-panel"
+          role="dialog"
+          aria-label="Chat with Porcha"
+          style={{ height: panelHeight }}
+        >
+          {/* ── Header ── */}
           <header className="chatbot-panel__header">
             <div className="chatbot-panel__brand">
               <span className="chatbot-panel__avatar" aria-hidden="true">
-                <img src={busy ? "/portfolio/merged.gif" : "/portfolio/Gemini_Generated_chatbotLogo.png"} alt="" />
+                <img src={busy ? BOT_BUSY_SRC : BOT_AVATAR_SRC} alt="" />
+                <span className={`chatbot-panel__status ${busy ? 'chatbot-panel__status--busy' : 'chatbot-panel__status--online'}`} />
               </span>
-              <div>
-              <strong>Porcha</strong>
-              <p>A portfolio chatbot by Jermaine.</p>
+              <div className="chatbot-panel__brandText">
+                <strong className="chatbot-panel__name">Porcha</strong>
+                <span className="chatbot-panel__subtitle">{busy ? 'Typing\u2026' : 'Online \u2022 Portfolio Assistant'}</span>
               </div>
             </div>
-            <button className="chatbot-close" type="button" onClick={() => setOpen(false)} aria-label="Close chatbot">
-              ×
+            <button
+              className="chatbot-close"
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label="Close chat"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
             </button>
           </header>
 
-          <div className="chatbot-messages" ref={viewportRef}>
-            {messages.map((message) => (
-              <div key={message.id} className={`chatbot-message chatbot-message--${message.role}`}>
-                <div className="chatbot-message__text">{message.content}</div>
-                <div className="chatbot-message__time">{message.time}</div>
-              </div>
-            ))}
-            {busy ? (
-              <div className="chatbot-message chatbot-message--assistant chatbot-message--typing" aria-live="polite">
-                <span className="typing-dots" aria-label="Typing">
-                  <span />
-                  <span />
-                  <span />
-                </span>
-              </div>
-            ) : null}
+          {/* ── Drag handle ── */}
+          <div className="chatbot-drag-handle" onMouseDown={onDragStart} aria-hidden="true">
+            <span className="chatbot-drag-handle__bar" />
           </div>
 
+          {/* ── Messages ── */}
+          <div className="chatbot-messages" ref={viewportRef}>
+            {messages.map((message, idx) => {
+              const showDate = message.date !== lastDate;
+              lastDate = message.date;
+              const showAvatar = message.role === 'assistant' && (
+                idx === messages.length - 1 ||
+                messages[idx + 1]?.role !== 'assistant'
+              );
+              const isLastInGroup = idx === messages.length - 1 || messages[idx + 1]?.role !== message.role;
+
+              return (
+                <div key={message.id}>
+                  {showDate && (
+                    <div className="chatbot-date-sep">
+                      <span>{displayDate(message.date)}</span>
+                    </div>
+                  )}
+                  <div className={`chatbot-message chatbot-message--${message.role} ${isLastInGroup ? 'chatbot-message--last' : ''}`}>
+                    {message.role === 'assistant' && (
+                      <span className="chatbot-message__avatar" aria-hidden="true">
+                        <img src={BOT_AVATAR_SRC} alt="" />
+                      </span>
+                    )}
+                    <div className="chatbot-message__body">
+                      <div
+                        className="chatbot-message__text"
+                        dangerouslySetInnerHTML={{ __html: renderMarkdown(message.content) }}
+                      />
+                      <span className="chatbot-message__time">{message.time}</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+
+            {busy && (
+              <div className="chatbot-message chatbot-message--assistant chatbot-message--typing" aria-live="polite">
+                <span className="chatbot-message__avatar" aria-hidden="true">
+                  <img src={BOT_BUSY_SRC} alt="" />
+                </span>
+                <div className="chatbot-message__body">
+                  <span className="typing-dots" aria-label="Typing">
+                    <span />
+                    <span />
+                    <span />
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {showQuickReplies && !busy && messages.length <= 1 && (
+              <div className="chatbot-quick-replies">
+                {QUICK_REPLIES.map((reply) => (
+                  <button
+                    key={reply}
+                    className="chatbot-quick-reply"
+                    type="button"
+                    onClick={() => void sendMessage(reply)}
+                  >
+                    {reply}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* ── Input ── */}
           <form
             className="chatbot-form"
-            onSubmit={(event) => {
-              event.preventDefault();
+            onSubmit={(e) => {
+              e.preventDefault();
               void sendMessage();
             }}
           >
-            <input
-              className="chatbot-input"
-              type="text"
-              value={input}
-              onChange={(event) => setInput(event.target.value)}
-              placeholder="Ask something about me..."
-              aria-label="Ask something about Jermaine"
-            />
-            <button className="chatbot-send" type="submit" disabled={busy}>
-              {busy ? '...' : 'Send'}
+            <div className="chatbot-input-wrap">
+              <textarea
+                ref={textareaRef}
+                className="chatbot-input"
+                rows={1}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={onKeyDown}
+                placeholder="Type a message\u2026"
+                aria-label="Type a message to Porcha"
+              />
+            </div>
+            <button
+              className={`chatbot-send ${input.trim() && !busy ? 'chatbot-send--active' : ''}`}
+              type="submit"
+              disabled={!input.trim() || busy}
+              aria-label="Send message"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
             </button>
           </form>
         </section>
-      ) : null}
+      )}
     </div>
   );
 }
