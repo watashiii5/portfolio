@@ -2956,6 +2956,10 @@ html[data-theme='light'] .hero h1 span {
 .chatbot-message__avatar--user svg {
   width: 16px;
   height: 16px;
+  color: #000;
+}
+
+html[data-theme='light'] .chatbot-message__avatar--user svg {
   color: #fff;
 }
 
