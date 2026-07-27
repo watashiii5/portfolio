@@ -156,7 +156,7 @@ a {
   align-items: center;
   gap: 16px;
   margin-bottom: clamp(18px, 4vw, 32px);
-  justify-items: center;
+  justify-items: start;
   justify-content: space-between;
 }
 
@@ -3483,6 +3483,7 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
 .exp-card__top {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
   margin-bottom: 18px;
 }

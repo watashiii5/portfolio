@@ -139,16 +139,10 @@ export default function HomePage() {
           <div className="hero-card hero-card--photo">
             <img src="/portfolio/2by2New.png" alt="Bulacan State University portrait" loading="lazy" decoding="async" />
           </div>
-          <div className="hero-badge">
-            <strong>Bulacan State University</strong>
-            <span>B.S. Computer Science — June 2026 Graduate</span>
-          </div>
           <div className="hero-stats">
             {[
               { label: 'Projects', value: '9' },
-              { label: 'Internship', value: '250 hrs' },
               { label: 'Live demos', value: '4' },
-              { label: 'Stack', value: 'Next.js + Supabase' },
             ].map((stat) => (
               <div className="stat-card" key={stat.label}>
                 <span className="stat-label">{stat.label}</span>

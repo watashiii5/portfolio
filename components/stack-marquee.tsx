@@ -29,7 +29,7 @@ function MarqueeRow({
     const inner = innerRef.current;
     if (!track || !inner) return;
 
-    const setWidth = inner.scrollWidth / 2;
+    const setWidth = inner.scrollWidth / 3;
     let pos = reverse ? -setWidth : 0;
     let raf: number;
     let lastTime = performance.now();
@@ -51,7 +51,7 @@ function MarqueeRow({
     return () => cancelAnimationFrame(raf);
   }, [reverse, speed]);
 
-  const duplicated = [...items, ...items];
+  const duplicated = [...items, ...items, ...items];
 
   return (
     <div className="stack-marquee__track" ref={trackRef}>
