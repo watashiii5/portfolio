@@ -132,34 +132,40 @@ export default function HomePage() {
               Contact
             </Link>
           </div>
-          <div className="stack-bento">
-            <div className="stack-bento__header">Primary stack</div>
-            <div className="stack-bento__grid">
-              {[
-                'Next.js', 'TypeScript', 'Python', 'Supabase',
-                'FlutterFlow', 'Groq', 'Vercel', 'Render',
-              ].map((name) => (
-                <div className="stack-tile" key={name} title={name}>
-                  <span className="stack-tile__logo-wrap">
-                    <TechLogo name={name} />
-                  </span>
-                  <span className="stack-tile__name">{name}</span>
-                </div>
-              ))}
+          <div className="stack-marquee">
+            <div className="stack-marquee__header">Primary stack</div>
+            <div className="stack-marquee__track stack-marquee__track--primary">
+              <div className="stack-marquee__inner">
+                {[
+                  'Next.js', 'TypeScript', 'Python', 'Supabase',
+                  'FlutterFlow', 'Groq', 'Vercel', 'Render',
+                  'Next.js', 'TypeScript', 'Python', 'Supabase',
+                  'FlutterFlow', 'Groq', 'Vercel', 'Render',
+                ].map((name, i) => (
+                  <div className="stack-marquee__card" key={`p-${i}`} title={name}>
+                    <span className="stack-marquee__logo">
+                      <TechLogo name={name} />
+                    </span>
+                    <span className="stack-marquee__name">{name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="stack-bento__divider" />
-            <div className="stack-bento__header stack-bento__header--sub">Also experienced with</div>
-            <div className="stack-bento__grid stack-bento__grid--secondary">
-              {[
-                'Unity', 'Phaser', 'Java', 'C#', 'Figma', 'FastAPI',
-              ].map((name) => (
-                <div className="stack-tile stack-tile--sm" key={name} title={name}>
-                  <span className="stack-tile__logo-wrap stack-tile__logo-wrap--sm">
-                    <TechLogo name={name} />
-                  </span>
-                  <span className="stack-tile__name">{name}</span>
-                </div>
-              ))}
+            <div className="stack-marquee__header stack-marquee__header--sub">Also experienced with</div>
+            <div className="stack-marquee__track stack-marquee__track--secondary">
+              <div className="stack-marquee__inner stack-marquee__inner--reverse">
+                {[
+                  'Unity', 'Phaser', 'Java', 'C#', 'Figma', 'FastAPI',
+                  'Unity', 'Phaser', 'Java', 'C#', 'Figma', 'FastAPI',
+                ].map((name, i) => (
+                  <div className="stack-marquee__card stack-marquee__card--sm" key={`s-${i}`} title={name}>
+                    <span className="stack-marquee__logo stack-marquee__logo--sm">
+                      <TechLogo name={name} />
+                    </span>
+                    <span className="stack-marquee__name">{name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -288,66 +294,59 @@ export default function HomePage() {
             <div className="section-kicker">Education</div>
             <h2>Academic background.</h2>
           </div>
-          <CvDownloadButton pdfUrl="/portfolio/workExperience/Jermaine_Pasamba_Curriculum_Vitae.pdf" />
         </div>
 
-        <div className="edu-journey">
-          <div className="edu-track" aria-hidden="true">
-            <div className="edu-track__line" />
+        <div className="edu-h-timeline">
+          <div className="edu-h-timeline__track" aria-hidden="true">
+            <div className="edu-h-timeline__track-fill" />
           </div>
 
-          <article className="edu-step">
-            <div className="edu-step__rail">
-              <div className="edu-step__marker">
-                <span className="edu-step__number">1</span>
-              </div>
-              <div className="edu-step__rail-logo">
-                <img src="/portfolio/education/bulsuLogo.png" alt="Bulacan State University" />
-              </div>
-              <span className="edu-step__rail-date">Aug 2022 – June 2026</span>
+          <div className="edu-h-timeline__node">
+            <div className="edu-h-timeline__logo">
+              <img src="/portfolio/education/bulsuLogo.png" alt="Bulacan State University" />
             </div>
-            <div className="edu-step__card">
-              <span className="edu-step__level edu-step__level--college">College</span>
-              <h3 className="edu-step__school">Bulacan State University</h3>
-              <p className="edu-step__degree">BS in Mathematics with Specialization in Computer Science</p>
-              <p className="edu-step__detail">BulSU Microsoft Student Community</p>
+            <div className="edu-h-timeline__dot">
+              <span>1</span>
             </div>
-          </article>
+            <div className="edu-h-timeline__date">Aug 2022 – June 2026</div>
+            <div className="edu-h-timeline__card">
+              <span className="edu-h-timeline__level edu-h-timeline__level--college">College</span>
+              <h3>Bulacan State University</h3>
+              <p>BS in Mathematics with Specialization in Computer Science</p>
+              <span className="edu-h-timeline__detail">BulSU Microsoft Student Community</span>
+            </div>
+          </div>
 
-          <article className="edu-step">
-            <div className="edu-step__rail">
-              <div className="edu-step__marker">
-                <span className="edu-step__number">2</span>
-              </div>
-              <div className="edu-step__rail-logo">
-                <img src="/portfolio/education/eccat(hsLogo).png" alt="Early Christian College of Arts and Technology" />
-              </div>
-              <span className="edu-step__rail-date">June 2016 – May 2022</span>
+          <div className="edu-h-timeline__node">
+            <div className="edu-h-timeline__logo">
+              <img src="/portfolio/education/eccat(hsLogo).png" alt="Early Christian College of Arts and Technology" />
             </div>
-            <div className="edu-step__card">
-              <span className="edu-step__level edu-step__level--hs">High School</span>
-              <h3 className="edu-step__school">Early Christian College of Arts and Technology</h3>
-              <p className="edu-step__degree">Junior & Senior High School</p>
-              <p className="edu-step__detail">Robotics · Math Quiz Bee Rep · Peer Counseling · Chess Club</p>
+            <div className="edu-h-timeline__dot">
+              <span>2</span>
             </div>
-          </article>
+            <div className="edu-h-timeline__date">June 2016 – May 2022</div>
+            <div className="edu-h-timeline__card">
+              <span className="edu-h-timeline__level edu-h-timeline__level--hs">High School</span>
+              <h3>Early Christian College of Arts and Technology</h3>
+              <p>Junior & Senior High School</p>
+              <span className="edu-h-timeline__detail">Robotics · Math Quiz Bee Rep · Peer Counseling · Chess Club</span>
+            </div>
+          </div>
 
-          <article className="edu-step">
-            <div className="edu-step__rail">
-              <div className="edu-step__marker">
-                <span className="edu-step__number">3</span>
-              </div>
-              <div className="edu-step__rail-logo">
-                <img src="/portfolio/education/elemLogo.png" alt="Santa Maria Central School" />
-              </div>
-              <span className="edu-step__rail-date">June 2007 – March 2016</span>
+          <div className="edu-h-timeline__node">
+            <div className="edu-h-timeline__logo">
+              <img src="/portfolio/education/elemLogo.png" alt="Santa Maria Central School" />
             </div>
-            <div className="edu-step__card">
-              <span className="edu-step__level edu-step__level--elem">Elementary</span>
-              <h3 className="edu-step__school">Santa Maria Central School</h3>
-              <p className="edu-step__degree">Elementary Education</p>
+            <div className="edu-h-timeline__dot">
+              <span>3</span>
             </div>
-          </article>
+            <div className="edu-h-timeline__date">June 2007 – March 2016</div>
+            <div className="edu-h-timeline__card">
+              <span className="edu-h-timeline__level edu-h-timeline__level--elem">Elementary</span>
+              <h3>Santa Maria Central School</h3>
+              <p>Elementary Education</p>
+            </div>
+          </div>
         </div>
       </section>
       </ScrollReveal>
