@@ -2211,13 +2211,6 @@ html[data-theme='light'] .hero h1 span {
 }
 
 /* ── Theme dome transition ── */
-.theme-float:has(.theme-orb--animating) {
-  opacity: 1 !important;
-  transform: none !important;
-  pointer-events: auto !important;
-  transition: none !important;
-}
-
 .theme-orb--animating {
   pointer-events: none;
   background: transparent !important;
@@ -2240,7 +2233,6 @@ html[data-theme='light'] .hero h1 span {
   overflow: hidden;
   z-index: 9999;
   pointer-events: none;
-  contain: layout style;
   will-change: transform, opacity;
   animation: domeLifecycle 3.8s cubic-bezier(0.22, 1, 0.36, 1) forwards,
              domeGlow 3.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -2256,16 +2248,32 @@ html[data-theme='light'] .hero h1 span {
 .theme-orb__sky {
   position: absolute;
   inset: 0;
-  will-change: background;
 }
 
-.theme-orb--sunrise .theme-orb__sky {
-  animation: skyGradSunrise 3.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+.theme-orb__sky-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  will-change: opacity;
 }
 
-.theme-orb--sunset .theme-orb__sky {
-  animation: skyGradSunset 3.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
+.theme-orb__sky-layer--0 { animation: skyLayer0 3.8s linear forwards; }
+.theme-orb__sky-layer--1 { animation: skyLayer1 3.8s linear forwards; }
+.theme-orb__sky-layer--2 { animation: skyLayer2 3.8s linear forwards; }
+.theme-orb__sky-layer--3 { animation: skyLayer3 3.8s linear forwards; }
+.theme-orb__sky-layer--4 { animation: skyLayer4 3.8s linear forwards; }
+
+.theme-orb--sunrise .theme-orb__sky-layer--0 { background: linear-gradient(160deg, #061019 0%, #0a1624 40%, #0f1e38 100%); }
+.theme-orb--sunrise .theme-orb__sky-layer--1 { background: linear-gradient(160deg, #12153a 0%, #3a1848 30%, #6b2060 65%, #a03858 100%); }
+.theme-orb--sunrise .theme-orb__sky-layer--2 { background: linear-gradient(160deg, #6b2060 0%, #d4604a 35%, #e8884a 65%, #f4b868 100%); }
+.theme-orb--sunrise .theme-orb__sky-layer--3 { background: linear-gradient(160deg, #e09050 0%, #f0c078 30%, #f8e0a8 60%, #fff4d8 100%); }
+.theme-orb--sunrise .theme-orb__sky-layer--4 { background: linear-gradient(160deg, #c6dce4 0%, #ddeef4 35%, #edf7fa 65%, #f4fbfd 100%); }
+
+.theme-orb--sunset .theme-orb__sky-layer--0 { background: linear-gradient(160deg, #c6dce4 0%, #ddeef4 35%, #edf7fa 65%, #f4fbfd 100%); }
+.theme-orb--sunset .theme-orb__sky-layer--1 { background: linear-gradient(160deg, #e09050 0%, #f0c078 30%, #f8e0a8 60%, #fff4d8 100%); }
+.theme-orb--sunset .theme-orb__sky-layer--2 { background: linear-gradient(160deg, #d4604a 0%, #e8884a 35%, #c84838 65%, #8a2850 100%); }
+.theme-orb--sunset .theme-orb__sky-layer--3 { background: linear-gradient(160deg, #6b2060 0%, #3a1848 35%, #1a1040 65%, #0f0e30 100%); }
+.theme-orb--sunset .theme-orb__sky-layer--4 { background: linear-gradient(160deg, #050c15 0%, #061019 35%, #0a1624 65%, #061019 100%); }
 
 .theme-orb__arm {
   position: absolute;
@@ -2491,12 +2499,12 @@ html[data-theme='light'] .hero h1 span {
 }
 
 @keyframes domeGlow {
-  0%   { box-shadow: 0 0 0 0 transparent; }
+  0%   { box-shadow: 0 0 24px 6px rgba(127, 216, 228, 0), 0 0 48px 12px rgba(127, 216, 228, 0); }
   12%  { box-shadow: 0 0 24px 6px rgba(127, 216, 228, 0.22), 0 0 48px 12px rgba(127, 216, 228, 0.08); }
   45%  { box-shadow: 0 0 32px 10px rgba(255, 200, 100, 0.3), 0 0 64px 20px rgba(255, 160, 60, 0.1); }
   55%  { box-shadow: 0 0 32px 10px rgba(100, 180, 220, 0.25), 0 0 64px 20px rgba(80, 160, 200, 0.08); }
-  80%  { box-shadow: 0 0 16px 5px rgba(127, 216, 228, 0.12), 0 0 32px 10px rgba(127, 216, 228, 0.04); }
-  100% { box-shadow: 0 0 0 0 transparent; }
+  80%  { box-shadow: 0 0 24px 6px rgba(127, 216, 228, 0.12), 0 0 48px 12px rgba(127, 216, 228, 0.04); }
+  100% { box-shadow: 0 0 24px 6px rgba(127, 216, 228, 0), 0 0 48px 12px rgba(127, 216, 228, 0); }
 }
 
 @keyframes armSet {
@@ -2510,22 +2518,45 @@ html[data-theme='light'] .hero h1 span {
   100% { transform: rotate(35deg); opacity: 1; }
 }
 
-@keyframes skyGradSunrise {
-  0%   { background: linear-gradient(160deg, #061019 0%, #0a1624 40%, #0f1e38 100%); }
-  18%  { background: linear-gradient(160deg, #12153a 0%, #3a1848 30%, #6b2060 65%, #a03858 100%); }
-  38%  { background: linear-gradient(160deg, #6b2060 0%, #d4604a 35%, #e8884a 65%, #f4b868 100%); }
-  58%  { background: linear-gradient(160deg, #e09050 0%, #f0c078 30%, #f8e0a8 60%, #fff4d8 100%); }
-  78%  { background: linear-gradient(160deg, #7ac8d8 0%, #9ad8e8 35%, #b8e8f0 65%, #d8f2fa 100%); }
-  100% { background: linear-gradient(160deg, #c6dce4 0%, #ddeef4 35%, #edf7fa 65%, #f4fbfd 100%); }
+@keyframes skyLayer0 {
+  0%   { opacity: 1; }
+  14%  { opacity: 1; }
+  26%  { opacity: 0; }
+  100% { opacity: 0; }
 }
 
-@keyframes skyGradSunset {
-  0%   { background: linear-gradient(160deg, #c6dce4 0%, #ddeef4 35%, #edf7fa 65%, #f4fbfd 100%); }
-  18%  { background: linear-gradient(160deg, #e09050 0%, #f0c078 30%, #f8e0a8 60%, #fff4d8 100%); }
-  38%  { background: linear-gradient(160deg, #d4604a 0%, #e8884a 35%, #c84838 65%, #8a2850 100%); }
-  58%  { background: linear-gradient(160deg, #6b2060 0%, #3a1848 35%, #1a1040 65%, #0f0e30 100%); }
-  78%  { background: linear-gradient(160deg, #0a1624 0%, #081020 40%, #070e1c 70%, #061019 100%); }
-  100% { background: linear-gradient(160deg, #050c15 0%, #061019 35%, #0a1624 65%, #061019 100%); }
+@keyframes skyLayer1 {
+  0%   { opacity: 0; }
+  14%  { opacity: 0; }
+  26%  { opacity: 1; }
+  38%  { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes skyLayer2 {
+  0%   { opacity: 0; }
+  38%  { opacity: 0; }
+  50%  { opacity: 1; }
+  60%  { opacity: 1; }
+  72%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes skyLayer3 {
+  0%   { opacity: 0; }
+  60%  { opacity: 0; }
+  72%  { opacity: 1; }
+  80%  { opacity: 1; }
+  92%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes skyLayer4 {
+  0%   { opacity: 0; }
+  80%  { opacity: 0; }
+  92%  { opacity: 1; }
+  100% { opacity: 1; }
 }
 
 @keyframes starFadeOut {
@@ -4191,7 +4222,7 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
 
   .theme-orb__dome,
   .theme-orb__dome-inner,
-  .theme-orb__sky,
+  .theme-orb__sky-layer,
   .theme-orb__arm,
   .theme-orb--sunrise .theme-orb__stars i,
   .theme-orb--sunset .theme-orb__stars i,

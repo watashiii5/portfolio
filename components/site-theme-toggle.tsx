@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 type ThemeMode = 'dark' | 'light';
 type AnimDir = 'sunrise' | 'sunset' | null;
@@ -8,7 +9,7 @@ type AnimDir = 'sunrise' | 'sunset' | null;
 const THEME_KEY = 'jermaine-portfolio-theme';
 const THEME_EVENT = 'jermaine-portfolio-theme-change';
 const CYCLE_MS = 3800;
-const THEME_SWITCH_MS = Math.round(CYCLE_MS * 0.8);
+const THEME_SWITCH_MS = Math.round(CYCLE_MS * 0.9);
 let themeAnimationInFlight = false;
 
 const SunSVG = () => <span className="theme-orb__sun-disk" />;
@@ -123,15 +124,21 @@ export function ThemeToggleButton() {
 
   return (
     <button
-      className={`theme-orb theme-orb--${theme}${anim ? ` theme-orb--animating theme-orb--${anim}` : ''}`}
+      className={`theme-orb theme-orb--${theme}${anim ? ' theme-orb--animating' : ''}`}
       type="button"
       onClick={toggle}
       aria-label={ready ? (theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode') : 'Toggle theme'}
     >
-      {anim && (
-        <span className="theme-orb__dome" aria-hidden="true">
+      {anim && createPortal(
+        <span className={`theme-orb__dome theme-orb--${anim}`} aria-hidden="true">
           <span className="theme-orb__dome-inner">
-            <span className="theme-orb__sky" />
+            <span className="theme-orb__sky">
+              <i className="theme-orb__sky-layer theme-orb__sky-layer--0" />
+              <i className="theme-orb__sky-layer theme-orb__sky-layer--1" />
+              <i className="theme-orb__sky-layer theme-orb__sky-layer--2" />
+              <i className="theme-orb__sky-layer theme-orb__sky-layer--3" />
+              <i className="theme-orb__sky-layer theme-orb__sky-layer--4" />
+            </span>
             <span className="theme-orb__arm theme-orb__arm--set">
               <span className={`theme-orb__body theme-orb__body--${isSunrise ? 'moon' : 'sun'}`}>
                 {isSunrise ? <MoonSVG /> : <SunSVG />}
@@ -158,7 +165,8 @@ export function ThemeToggleButton() {
               <span className="theme-orb__bird theme-orb__bird--3" />
             </span>
           </span>
-        </span>
+        </span>,
+        document.body,
       )}
       <span className="theme-orb__glow" aria-hidden="true" />
       <span className="theme-orb__icon" aria-hidden="true">
