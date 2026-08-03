@@ -8,6 +8,8 @@ type AnimDir = 'sunrise' | 'sunset' | null;
 const THEME_KEY = 'jermaine-portfolio-theme';
 const THEME_EVENT = 'jermaine-portfolio-theme-change';
 const CYCLE_MS = 3800;
+const THEME_SWITCH_MS = Math.round(CYCLE_MS * 0.8);
+let themeAnimationInFlight = false;
 
 const SunSVG = () => <span className="theme-orb__sun-disk" />;
 
@@ -59,7 +61,8 @@ export function ThemeToggleButton() {
   const [theme, setTheme] = useState<ThemeMode>('dark');
   const [ready, setReady] = useState(false);
   const [anim, setAnim] = useState<AnimDir>(null);
-  const clearTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const themeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const animTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const apply = (t: ThemeMode) => {
@@ -88,7 +91,9 @@ export function ThemeToggleButton() {
   }, []);
 
   useEffect(() => () => {
-    if (clearTimer.current) clearTimeout(clearTimer.current);
+    if (themeTimer.current) clearTimeout(themeTimer.current);
+    if (animTimer.current) clearTimeout(animTimer.current);
+    themeAnimationInFlight = false;
   }, []);
 
   const commit = useCallback((next: ThemeMode) => {
@@ -99,12 +104,19 @@ export function ThemeToggleButton() {
   }, []);
 
   function toggle() {
-    if (anim) return;
+    if (anim || themeAnimationInFlight) return;
+    themeAnimationInFlight = true;
     const next: ThemeMode = theme === 'dark' ? 'light' : 'dark';
     setAnim(theme === 'dark' ? 'sunrise' : 'sunset');
-    commit(next);
 
-    clearTimer.current = setTimeout(() => setAnim(null), CYCLE_MS);
+    if (themeTimer.current) clearTimeout(themeTimer.current);
+    if (animTimer.current) clearTimeout(animTimer.current);
+
+    themeTimer.current = setTimeout(() => commit(next), THEME_SWITCH_MS);
+    animTimer.current = setTimeout(() => {
+      setAnim(null);
+      themeAnimationInFlight = false;
+    }, CYCLE_MS);
   }
 
   const isSunrise = anim === 'sunrise';
