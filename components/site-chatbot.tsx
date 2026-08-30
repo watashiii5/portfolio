@@ -228,11 +228,14 @@ export default function SiteChatbot() {
       textareaRef.current.style.height = 'auto';
     }
 
+    const lower = textToSend.toLowerCase();
     const fallbackReply =
-      textToSend.toLowerCase().includes('project') ? 'His strongest work is the thesis app, the internship build, and the AI companion.' :
-      textToSend.toLowerCase().includes('stack') ? 'He mainly worked with Next.js, TypeScript, Supabase, FlutterFlow, Figma, and Groq.' :
-      textToSend.toLowerCase().includes('contact') ? 'You can reach him through the contact section in the portfolio.' :
-      'Ask me about his projects, stack, or internship experience and I\u2019ll keep it short.';
+      /\b(hi|hello|hey|good (morning|afternoon|evening)|how are you)\b/.test(lower) ? 'Hi! I\u2019m **Porcha**, Jermaine\u2019s AI assistant. Ask me about his projects, stack, experience, or how to get in touch.' :
+      lower.includes('project') ? 'His strongest work is the thesis app, the internship build, and the AI companion.' :
+      lower.includes('stack') ? 'He mainly worked with Next.js, TypeScript, Supabase, FlutterFlow, Figma, and Groq.' :
+      lower.includes('experience') ? 'He has an OJT internship at NB Consulting plus on-going contract roles at Project REIMS (UP Diliman).' :
+      lower.includes('contact') ? 'You can reach him through the contact section in the portfolio.' :
+      'I\u2019m here to help with Jermaine\u2019s projects, stack, experience, or contact info — try one of those!';
 
     const appendAssistantMessage = (content: string) => {
       const t = new Date();

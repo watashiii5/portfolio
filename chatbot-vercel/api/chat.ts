@@ -238,7 +238,8 @@ export default async function handler(request: VercelRequest, response: VercelRe
   }
 
   const groqApiKey = process.env.GROQ_API_KEY;
-  const model = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile';
+  const defaultModel = 'openai/gpt-oss-120b';
+  const model = process.env.GROQ_MODEL || defaultModel;
 
   if (!groqApiKey) {
     return response.status(500).json({ error: 'GROQ_API_KEY is not configured.' });
@@ -258,21 +259,34 @@ export default async function handler(request: VercelRequest, response: VercelRe
     return response.status(400).json({ error: 'messages array is required.' });
   }
 
-  const payload = {
-    model,
-    messages: [{ role: 'system', content: buildSystemPrompt() }, ...messages],
-    temperature: 0.6,
-    max_tokens: 120,
-  };
+  async function requestGroq(modelId: string) {
+    const payload = {
+      model: modelId,
+      messages: [{ role: 'system', content: buildSystemPrompt() }, ...messages],
+      temperature: 0.6,
+      max_tokens: 120,
+    };
 
-  const groqResponse = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${groqApiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  });
+    return fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${groqApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+  }
+
+  let groqResponse = await requestGroq(model);
+
+  if (!groqResponse.ok) {
+    const errorText = await groqResponse.text();
+    const modelUnavailable = /does not exist|model_not_found/i.test(errorText);
+    if (model === defaultModel || !modelUnavailable) {
+      return response.status(502).json({ error: 'Groq request failed.', details: errorText });
+    }
+    groqResponse = await requestGroq(defaultModel);
+  }
 
   if (!groqResponse.ok) {
     const errorText = await groqResponse.text();

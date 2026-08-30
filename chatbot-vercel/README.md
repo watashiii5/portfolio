@@ -27,7 +27,7 @@ Response:
 ## Environment Variables
 
 - `GROQ_API_KEY`
-- `GROQ_MODEL` optional, defaults to `llama-3.3-70b-versatile`
+- `GROQ_MODEL` optional, defaults to `openai/gpt-oss-120b`
 
 ## Deploy on Vercel
 
