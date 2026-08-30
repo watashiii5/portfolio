@@ -74,10 +74,10 @@ const jermaineProfile = {
       title: "Junior IT Software and Systems Development Support",
       category: "Contract",
       summary: "On-going contract at Project REIMS (University of the Philippines Diliman) covering software development, deployment, database management, and system monitoring.",
-      tech: ["Software Development", "Database Management", "IT Support", "System Monitoring"],
+      tech: ["Software Development", "IT Support"],
       role: "Junior IT support & software development",
-      highlights: "Assists in the design, development, testing, and maintenance of core applications. Handles database management, data encoding, and continuous system monitoring. Collaborates in software sprints, technical meetings, and IT operations.",
-      timeline: "On-going"
+      highlights: "Collaborates closely with the project team in software development sprints, technical meetings, and IT-related operations.",
+      timeline: "Aug 2026 to Present (on-going)"
     },
     {
       title: "Junior Software Development Assistant",
@@ -86,7 +86,7 @@ const jermaineProfile = {
       tech: ["WordPress", "Technical Documentation", "Web Systems"],
       role: "Junior software development assistant",
       highlights: "Prepares comprehensive technical and project documentation, including meeting minutes for stakeholder reviews. Re-develops, updates, and improves existing web systems with WordPress.",
-      timeline: "On-going"
+      timeline: "April 2026 to July 2026"
     },
     {
       title: "QTime Room Allocation",

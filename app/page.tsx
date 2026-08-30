@@ -227,22 +227,18 @@ export default function HomePage() {
                 <span className="exp-card__logo-text">REIMS</span>
               </div>
               <div className="exp-card__meta">
-                <span className="exp-card__date">On-going</span>
-                <span className="exp-card__hours">Contract</span>
+                <span className="exp-card__date">Aug 2026 – Present</span>
+                <span className="exp-card__hours">On-going</span>
               </div>
             </div>
             <h3 className="exp-card__title">Junior IT Software and Systems Development Support</h3>
             <p className="exp-card__org">Project REIMS · University of the Philippines Diliman</p>
             <ul className="exp-card__details">
-              <li>Assisted in the design, development, testing, and maintenance of core software applications while ensuring robust system deployment and user support.</li>
-              <li>Executed database management, accurate data encoding, and continuous system monitoring activities to optimize application performance.</li>
               <li>Collaborated closely with the project team in software development sprints, technical meetings, and other assigned IT-related operations.</li>
             </ul>
             <div className="exp-card__tags">
               <span className="exp-tag">Software Development</span>
               <span className="exp-tag">IT Support</span>
-              <span className="exp-tag">Database Management</span>
-              <span className="exp-tag">System Monitoring</span>
             </div>
           </div>
 
@@ -253,7 +249,7 @@ export default function HomePage() {
                 <span className="exp-card__logo-text">REIMS</span>
               </div>
               <div className="exp-card__meta">
-                <span className="exp-card__date">On-going</span>
+                <span className="exp-card__date">April 2026 – July 2026</span>
                 <span className="exp-card__hours">Contract</span>
               </div>
             </div>
