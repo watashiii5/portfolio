@@ -224,6 +224,57 @@ export default function HomePage() {
             <div className="exp-card__glow" aria-hidden="true" />
             <div className="exp-card__top">
               <div className="exp-card__logo">
+                <span className="exp-card__logo-text">REIMS</span>
+              </div>
+              <div className="exp-card__meta">
+                <span className="exp-card__date">On-going</span>
+                <span className="exp-card__hours">Contract</span>
+              </div>
+            </div>
+            <h3 className="exp-card__title">Junior IT Software and Systems Development Support</h3>
+            <p className="exp-card__org">Project REIMS · University of the Philippines Diliman</p>
+            <ul className="exp-card__details">
+              <li>Assisted in the design, development, testing, and maintenance of core software applications while ensuring robust system deployment and user support.</li>
+              <li>Executed database management, accurate data encoding, and continuous system monitoring activities to optimize application performance.</li>
+              <li>Collaborated closely with the project team in software development sprints, technical meetings, and other assigned IT-related operations.</li>
+            </ul>
+            <div className="exp-card__tags">
+              <span className="exp-tag">Software Development</span>
+              <span className="exp-tag">IT Support</span>
+              <span className="exp-tag">Database Management</span>
+              <span className="exp-tag">System Monitoring</span>
+            </div>
+          </div>
+
+          <div className="exp-card">
+            <div className="exp-card__glow" aria-hidden="true" />
+            <div className="exp-card__top">
+              <div className="exp-card__logo">
+                <span className="exp-card__logo-text">REIMS</span>
+              </div>
+              <div className="exp-card__meta">
+                <span className="exp-card__date">On-going</span>
+                <span className="exp-card__hours">Contract</span>
+              </div>
+            </div>
+            <h3 className="exp-card__title">Junior Software Development Assistant</h3>
+            <p className="exp-card__org">Project REIMS · University of the Philippines Diliman</p>
+            <ul className="exp-card__details">
+              <li>Prepared comprehensive technical and project documentation, including detailed minutes of meetings for stakeholder reviews.</li>
+              <li>Re-developed, updated, and improved existing web systems utilizing WordPress to elevate organizational web presence.</li>
+            </ul>
+            <div className="exp-card__tags">
+              <span className="exp-tag">WordPress</span>
+              <span className="exp-tag">Technical Writing</span>
+              <span className="exp-tag">Web Systems</span>
+              <span className="exp-tag">Documentation</span>
+            </div>
+          </div>
+
+          <div className="exp-card">
+            <div className="exp-card__glow" aria-hidden="true" />
+            <div className="exp-card__top">
+              <div className="exp-card__logo">
                 <img src="/portfolio/workExperience/nbconsulting(ojtlogo).png" alt="Nantes Bautista Consulting" />
               </div>
               <div className="exp-card__meta">
@@ -343,7 +394,7 @@ export default function HomePage() {
             <div className="about-card__text">
               <p>I am a Computer Science student at Bulacan State University graduated in June 2026, with full-stack experience in Next.js and FastAPI, a 250-hour web development internship, and specialized expertise in building algorithmic optimization systems.</p>
               <div className="about-card__actions">
-                <CvDownloadButton pdfUrl="/portfolio/workExperience/Jermaine_Pasamba_Curriculum_Vitae.pdf" />
+                <CvDownloadButton pdfUrl="/portfolio/workExperience/Jermaine_Pasamba_Resume_Latest%202026.pdf" />
                 <Link className="button-ghost" href="#contact">
                   Get in touch
                 </Link>

@@ -71,6 +71,24 @@ const jermaineProfile = {
   },
   projects: [
     {
+      title: "Junior IT Software and Systems Development Support",
+      category: "Contract",
+      summary: "On-going contract at Project REIMS (University of the Philippines Diliman) covering software development, deployment, database management, and system monitoring.",
+      tech: ["Software Development", "Database Management", "IT Support", "System Monitoring"],
+      role: "Junior IT support & software development",
+      highlights: "Assists in the design, development, testing, and maintenance of core applications. Handles database management, data encoding, and continuous system monitoring. Collaborates in software sprints, technical meetings, and IT operations.",
+      timeline: "On-going"
+    },
+    {
+      title: "Junior Software Development Assistant",
+      category: "Contract",
+      summary: "On-going contract at Project REIMS (University of the Philippines Diliman) focused on technical documentation and WordPress web systems.",
+      tech: ["WordPress", "Technical Documentation", "Web Systems"],
+      role: "Junior software development assistant",
+      highlights: "Prepares comprehensive technical and project documentation, including meeting minutes for stakeholder reviews. Re-develops, updates, and improves existing web systems with WordPress.",
+      timeline: "On-going"
+    },
+    {
       title: "QTime Room Allocation",
       category: "Thesis",
       summary: "Room allocation tool for the College of Science with a cleaner scheduling workflow using Quantum-Inspired Annealing (QIA).",
@@ -176,7 +194,7 @@ Tone: Casual, friendly, slightly witty. Refer to him as "Jermaine".
 QUICK REFERENCE:
 - Stack: Next.js, TypeScript, Python, Supabase, FlutterFlow, Vercel, Unity, Phaser 3, Java, C#, Groq API
 - Top projects: QTime Room Allocation (thesis), YUI AI Companion, IT Ticketing System, Word Sprint (game)
-- Internship: 250-hr OJT at Nantes Bautista Consulting (FlutterFlow + Supabase + Groq, June–July 2025)
+- Internship & experience: 250-hr OJT at Nantes Bautista Consulting (FlutterFlow + Supabase + Groq, June–July 2025). On-going contract roles at Project REIMS (UP Diliman): Junior IT Software & Systems Development Support, and Junior Software Development Assistant (WordPress + documentation).
 - Gaming: Tetris, LoL, OSU!, plays modded Minecraft (loves the Create modpack) and modded Terraria — he's a fan of modded games, not a mod creator
 - Fun fact: "HTML is a programming language and it was my first."
 - Personality: Quiet homebody, loves blue, fries & Coke, anime, Phonk music

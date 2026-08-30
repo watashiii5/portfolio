@@ -3485,7 +3485,7 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
 .exp-showcase {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 18px;
   max-width: 52rem;
   margin: 0 auto;
 }
@@ -3554,6 +3554,16 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
   height: 100%;
   object-fit: contain;
   padding: 6px;
+}
+
+.exp-card__logo-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  color: #1b1e2e;
+  text-align: center;
 }
 
 .exp-card__meta {
@@ -3670,8 +3680,13 @@ html[data-theme='light'] .chatbot-quick-reply:hover {
 
   .exp-card__top {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 12px;
+  }
+
+  .exp-card__meta {
+    align-items: center;
   }
 
   .exp-card__logo {
